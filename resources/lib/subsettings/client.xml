@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="3000">
+	    <setting type="sep" />
+        <setting label="3001" type="lsep" />
+        <setting type="sep" />
+		<setting label="3002" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, pvr.tvh)" default="" />
+	</category>
+	<category label="3003">
+	    <setting type="sep" />
+        <setting label="3004" type="lsep" />
+        <setting type="sep" />
+	    <setting label="3005" type="bool" id="pvrconfig"/>
+		<setting label="3006" type="text" id="tvhip" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)" />
+		<setting label="3007" type="text" id="tvhusername" subsetting="true" option="writeable" enable="eq(-2,true)" visible="eq(-2,true)" />
+		<setting label="3008" type="text" id="tvhpassword" subsetting="true" option="hidden" enable="eq(-3,true)" visible="eq(-3,true)" />
+	</category>
+	<category label="1077">
+	    <setting type="sep" />
+        <setting label="1080" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1081" type="bool" id="kodiconfig"/>
+		<setting label="1082" type="bool" id="syncgroup" default="true" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)" />
+		<setting label="1099" type="bool" id="syncchannels" default="true" subsetting="true" enable="eq(-2,true)" visible="eq(-2,true)" />
+		<setting label="1083" type="bool" id="playmax" default="true" subsetting="true" enable="eq(-3,true)" visible="eq(-3,true)"/>
+		<setting label="1084" type="bool" id="video169" default="true" subsetting="true" enable="eq(-4,true)" visible="eq(-4,true)"/>
+		<setting label="1085" type="bool" id="optim" default="true" subsetting="true" enable="eq(-5,true)" visible="eq(-5,true)" />
+		<setting label="1086" type="bool" id="lastchannel" default="false" subsetting="true" enable="eq(-6,true)" visible="eq(-6,true)" />
+	</category>
+	<category label="1087">
+	    <setting type="sep" />
+        <setting label="1088" type="lsep" />
+        <setting type="sep" />
+		<setting label="1089" type="bool" id="enableguide"/>
+	    <setting label="1090" type="bool" id="disableup" default="true" enable="eq(-1,true)" visible="eq(-1,true)"/>
+		<setting label="1091" type="slider" id="upinterval" range="0,5,120" default="30" option="int" enable="eq(-2,true)" visible="eq(-2,true)"/>
+	</category>
+</settings>

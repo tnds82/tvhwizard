@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="6000">
+        <setting type="lsep" label="6001" />
+	    <setting type="sep" />
+		<setting label="6002" id="addonpin" type="text" option="hidden" default="" />
+		<setting label="6003" id="parentalcfg" type="bool" visible="false" default="" />
+        <setting label="6004" type="lsep" />
+        <setting type="sep" />
+		<setting label="6005" id="pvrparental" type="text" default="[COLOR red]Disable[/COLOR]" />	
+	    <setting type="sep" />
+	</category>
+</settings>

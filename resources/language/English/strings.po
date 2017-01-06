@@ -1,0 +1,1074 @@
+# Kodi Media Center language file
+# Addon Name: Tvh Wizard by Tnds
+# Addon id: script.tvhwizard.tnds
+# Addon version: 1.0.0
+# Addon Provider: tnds82
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2016-11-02 23:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "Addon Summary"
+msgid "Configuration of TvHeadend 4.2 and OSCam in LibreELEC"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "Addon Description: Use this addon to configure TvHeadend 4.2 and OSCam only from LibreELEC interface with list of updated and organized channels (DVB-C, DVB-S "Hispasat") and the respective Picons. Create user administrator and / or client with password. Add DVBapi client"
+msgstr ""
+
+msgctxt "#1000"
+msgid "Addons"
+msgstr ""
+
+msgctxt "#1001"
+msgid "Addons Required:"
+msgstr ""
+
+msgctxt "#1002"
+msgid "[COLOR chartreuse]Click to Install Tvheadend HTSP Client[/COLOR]"
+msgstr ""
+
+msgctxt "#1003"
+msgid "[COLOR chartreuse]Click to Install Tvheadend 4.2[/COLOR]"
+msgstr ""
+
+msgctxt "#1004"
+msgid "Configuration"
+msgstr ""
+
+msgctxt "#1005"
+msgid "TvHeadend General Configuration"
+msgstr ""
+
+msgctxt "#1006"
+msgid "Enabled Configuration"
+msgstr ""
+
+msgctxt "#1007"
+msgid "Enabled Expert Mode"
+msgstr ""
+
+msgctxt "#1008"
+msgid "Web Interface Language"
+msgstr ""
+
+msgctxt "#1009"
+msgid "Portuguese"
+msgstr ""
+
+msgctxt "#1010"
+msgid "English"
+msgstr ""
+
+msgctxt "#1011"
+msgid "EPG Language (priority order)"
+msgstr ""
+
+msgctxt "#1012"
+msgid "Users"
+msgstr ""
+
+msgctxt "#1013"
+msgid "Config Users Settings"
+msgstr ""
+
+msgctxt "#1014"
+msgid "Create Admin and Client user"
+msgstr ""
+
+msgctxt "#1015"
+msgid "Login Administrator"
+msgstr ""
+
+msgctxt "#1016"
+msgid "Login Client"
+msgstr ""
+
+msgctxt "#1017"
+msgid "Username"
+msgstr ""
+
+msgctxt "#1018"
+msgid "Password"
+msgstr ""
+
+msgctxt "#1019"
+msgid "Channels"
+msgstr ""
+
+msgctxt "#1020"
+msgid "Channels for TvHeadend"
+msgstr ""
+
+msgctxt "#1021"
+msgid "Enable Channels"
+msgstr ""
+
+msgctxt "#1022"
+msgid "Network"
+msgstr ""
+
+msgctxt "#1023"
+msgid "DVB-C"
+msgstr ""
+
+msgctxt "#1024"
+msgid "DVB-S"
+msgstr ""
+
+msgctxt "#1025"
+msgid "Country"
+msgstr ""
+
+msgctxt "#1026"
+msgid "Portugal"
+msgstr ""
+
+msgctxt "#1027"
+msgid "Channels (Cable Lisbon)"
+msgstr ""
+
+msgctxt "#1028"
+msgid "Channels (Cable Porto)"
+msgstr ""
+
+msgctxt "#1029"
+msgid "Channels Hispasat"
+msgstr ""
+
+msgctxt "#1030"
+msgid "Channels Astra"
+msgstr ""
+
+msgctxt "#1031"
+msgid "Channels (Cable Aveiro/Coimbra)"
+msgstr ""
+
+msgctxt "#1032"
+msgid "Channels (Cable Leiria)"
+msgstr ""
+
+msgctxt "#1033"
+msgid ""
+msgstr ""
+
+msgctxt "#1034"
+msgid ""
+msgstr ""
+
+msgctxt "#1035"
+msgid ""
+msgstr ""
+
+msgctxt "#1036"
+msgid ""
+msgstr ""
+
+msgctxt "#1037"
+msgid "Picons"
+msgstr ""
+
+msgctxt "#1038"
+msgid "Picons for TvHeadend"
+msgstr ""
+
+msgctxt "#1039"
+msgid "Enabled Picons"
+msgstr ""
+
+msgctxt "#1040"
+msgid "Enabled Image Cache"
+msgstr ""
+
+msgctxt "#1041"
+msgid "DVB Inputs"
+msgstr ""
+
+msgctxt "#1042"
+msgid "DVB Inputs Settings"
+msgstr ""
+
+msgctxt "#1043"
+msgid "Enabled Adapters"
+msgstr ""
+
+msgctxt "#1044"
+msgid "Wetek Play"
+msgstr ""
+
+msgctxt "#1045"
+msgid "DVB-S"
+msgstr ""
+
+msgctxt "#1046"
+msgid "DVB-C"
+msgstr ""
+
+msgctxt "#1047"
+msgid "Wetek Play 2"
+msgstr ""
+
+msgctxt "#1048"
+msgid "RPi2 / Generic x64"
+msgstr ""
+
+msgctxt "#1049"
+msgid "How many Adapters ?"
+msgstr ""
+
+msgctxt "#1050"
+msgid "One Tuner"
+msgstr ""
+
+msgctxt "#1051"
+msgid "Two Tuners"
+msgstr ""
+
+msgctxt "#1052"
+msgid "Three Tuners"
+msgstr ""
+
+msgctxt "#1053"
+msgid "Four Tuners"
+msgstr ""
+
+msgctxt "#1054"
+msgid "Five Tuners"
+msgstr ""
+
+msgctxt "#1055"
+msgid "K1 Plus Combo"
+msgstr ""
+
+msgctxt "#1056"
+msgid "Softcam"
+msgstr ""
+
+msgctxt "#1057"
+msgid "Config Softcam Settings"
+msgstr ""
+
+msgctxt "#1058"
+msgid "Add Conditional Access Client (DVBAPI)"
+msgstr ""
+
+msgctxt "#1059"
+msgid "Mode Choose"
+msgstr ""
+
+msgctxt "#1060"
+msgid "[COLOR orange]Click to see your IP[/COLOR]"
+msgstr ""
+
+msgctxt "#1063"
+msgid "IP Address (TCP Mode)"
+msgstr ""
+
+msgctxt "#1064"
+msgid "Connect Port"
+msgstr ""
+
+msgctxt "#1065"
+msgid "Camd.socket filename"
+msgstr ""
+
+msgctxt "#1066"
+msgid "[COLOR red]Information:[/COLOR] Mode: [COLOR white]pc-nodmx[/COLOR] - Communication through camd.socket"
+msgstr ""
+
+msgctxt "#1067"
+msgid "[COLOR red]Information:[/COLOR] Mode: [COLOR white]pc[/COLOR] - Communication through TCP/IP"
+msgstr ""
+
+msgctxt "#1068"
+msgid "Recordings"
+msgstr ""
+
+msgctxt "#1069"
+msgid "Config Recording Settings"
+msgstr ""
+
+msgctxt "#1070"
+msgid "Enable Recording"
+msgstr ""
+
+msgctxt "#1071"
+msgid "Choose Profile"
+msgstr ""
+
+msgctxt "#1072"
+msgid "Path for Recordings"
+msgstr ""
+
+msgctxt "#1073"
+msgid "PVR"
+msgstr ""
+
+msgctxt "#1074"
+msgid "Tvheadend HTSP Client Settings"
+msgstr ""
+
+msgctxt "#1075"
+msgid "Enable Config Client PVR"
+msgstr ""
+
+msgctxt "#1076"
+msgid "IP Adress Box"
+msgstr ""
+
+msgctxt "#1077"
+msgid "Kodi"
+msgstr ""
+
+msgctxt "#1078"
+msgid "Parental Control for Channels"
+msgstr ""
+
+msgctxt "#1079"
+msgid "Parental Control Information"
+msgstr ""
+
+msgctxt "#1080"
+msgid "Config Kodi Settings to Tvheadend"
+msgstr ""
+
+msgctxt "#1081"
+msgid "Enable Config Kodi"
+msgstr ""
+
+msgctxt "#1082"
+msgid "Enable Synchronise Channel Groups with Tvheadend"
+msgstr ""
+
+msgctxt "#1083"
+msgid "Enable Fullscreen"
+msgstr ""
+
+msgctxt "#1084"
+msgid "Enable 16:9 Image"
+msgstr ""
+
+msgctxt "#1085"
+msgid "Optimization"
+msgstr ""
+
+msgctxt "#1086"
+msgid "Continue Last Channel on Startup"
+msgstr ""
+
+msgctxt "#1087"
+msgid "Guide"
+msgstr ""
+
+msgctxt "#1088"
+msgid "Config Guide Settings"
+msgstr ""
+
+msgctxt "#1089"
+msgid "Enable Config Guide"
+msgstr ""
+
+msgctxt "#1090"
+msgid "Disable Prevent Updates during Playback"
+msgstr ""
+
+msgctxt "#1091"
+msgid "Update Interval"
+msgstr ""
+
+msgctxt "#1092"
+msgid "Timeshift"
+msgstr ""
+
+msgctxt "#1093"
+msgid "Config Timeshift Settings"
+msgstr ""
+
+msgctxt "#1094"
+msgid "Enable Timeshift"
+msgstr ""
+
+msgctxt "#1095"
+msgid "Matroska (mkv)"
+msgstr ""
+
+msgctxt "#1096"
+msgid "Pass-thru (pass)"
+msgstr ""
+
+msgctxt "#1097"
+msgid "HTSP (htsp)"
+msgstr ""
+
+msgctxt "#1098"
+msgid "Default mode"
+msgstr ""
+
+msgctxt "#1099"
+msgid "Enable Use Channel Number from Tvheadend"
+msgstr ""
+
+msgctxt "#2000"
+msgid "Update Channels"
+msgstr ""
+
+msgctxt "#2001"
+msgid "Use only to update channels and picons"
+msgstr ""
+
+msgctxt "#2002"
+msgid "[COLOR red]Attention:[/COLOR] If you create new tags you have to create again"
+msgstr ""
+
+msgctxt "#2003"
+msgid "Update Channels and Picons"
+msgstr ""
+
+msgctxt "#2004"
+msgid "Network"
+msgstr ""
+
+msgctxt "#2005"
+msgid "DVB-C"
+msgstr ""
+
+msgctxt "#2006"
+msgid "DVB-S"
+msgstr ""
+
+msgctxt "#2007"
+msgid "Country"
+msgstr ""
+
+msgctxt "#2008"
+msgid "Portugal"
+msgstr ""
+
+msgctxt "#2009"
+msgid "Channels (Cable Lisbon)"
+msgstr ""
+
+msgctxt "#2010"
+msgid "Channels (Cable Porto)"
+msgstr ""
+
+msgctxt "#2011"
+msgid "Channels Hispasat"
+msgstr ""
+
+msgctxt "#2012"
+msgid "Channels Astra"
+msgstr ""
+
+msgctxt "#2013"
+msgid "Channels (Cable Aveiro/Coimbra)"
+msgstr ""
+
+msgctxt "#2014"
+msgid "Channels (Cable Leiria)"
+msgstr ""
+
+msgctxt "#2015"
+msgid "Update IP"
+msgstr ""
+
+msgctxt "#2016"
+msgid "Update IP Address in Box"
+msgstr ""
+
+msgctxt "#2017"
+msgid "Enable automatic function"
+msgstr ""
+
+msgctxt "#3000"
+msgid "Addons"
+msgstr ""
+
+msgctxt "#3001"
+msgid "Addons Required:"
+msgstr ""
+
+msgctxt "#3002"
+msgid "[COLOR chartreuse]Click to Install Tvheadend HTSP Client[/COLOR]"
+msgstr ""
+
+msgctxt "#3003"
+msgid "PVR"
+msgstr ""
+
+msgctxt "#3004"
+msgid "Config Tvheadend HTSP Client"
+msgstr ""
+
+msgctxt "#3005"
+msgid "Enable Config Client PVR"
+msgstr ""
+
+msgctxt "#3006"
+msgid "Hostname/IP Adress from Server"
+msgstr ""
+
+msgctxt "#3007"
+msgid "Username"
+msgstr ""
+
+msgctxt "#3008"
+msgid "Password"
+msgstr ""
+
+msgctxt "#4000"
+msgid "OSCam"
+msgstr ""
+
+msgctxt "#4001"
+msgid "Config OSCam Settings"
+msgstr ""
+
+msgctxt "#4002"
+msgid "Enable OSCam"
+msgstr ""
+
+msgctxt "#4003"
+msgid "Username"
+msgstr ""
+
+msgctxt "#4004"
+msgid "Password"
+msgstr ""
+
+msgctxt "#4005"
+msgid "Port"
+msgstr ""
+
+msgctxt "#4006"
+msgid "Enable cccam"
+msgstr ""
+
+msgctxt "#4007"
+msgid "Port"
+msgstr ""
+
+msgctxt "#4008"
+msgid "OSCam Readers"
+msgstr ""
+
+msgctxt "#4009"
+msgid "Add Readers to OSCam"
+msgstr ""
+
+msgctxt "#4010"
+msgid "Readers"
+msgstr ""
+
+msgctxt "#4011"
+msgid "First Reader"
+msgstr ""
+
+msgctxt "#4012"
+msgid "Second Reader"
+msgstr ""
+
+msgctxt "#4013"
+msgid "Third Reader"
+msgstr ""
+
+msgctxt "#4014"
+msgid "Fourth Reader"
+msgstr ""
+
+msgctxt "#4015"
+msgid "Fifth Reader"
+msgstr ""
+
+msgctxt "#4016"
+msgid "Enable 1st Reader"
+msgstr ""
+
+msgctxt "#4017"
+msgid "Protocol"
+msgstr ""
+
+msgctxt "#4018"
+msgid "cccam"
+msgstr ""
+
+msgctxt "#4019"
+msgid "newcamd"
+msgstr ""
+
+msgctxt "#4020"
+msgid "cs357x"
+msgstr ""
+
+msgctxt "#4021"
+msgid "Label"
+msgstr ""
+
+msgctxt "#4022"
+msgid "Hostname or IP Address"
+msgstr ""
+
+msgctxt "#4023"
+msgid "Username"
+msgstr ""
+
+msgctxt "#4024"
+msgid "Password"
+msgstr ""
+
+msgctxt "#4025"
+msgid "Enable 2nd Reader"
+msgstr ""
+
+msgctxt "#4026"
+msgid "Enable 3rd Reader"
+msgstr ""
+
+msgctxt "#4027"
+msgid "Enable 4th Reader"
+msgstr ""
+
+msgctxt "#4028"
+msgid "Enable 5th Reader"
+msgstr ""
+
+msgctxt "#4029"
+msgid "OSCam Users"
+msgstr ""
+
+msgctxt "#4030"
+msgid "Add Users to OSCam"
+msgstr ""
+
+msgctxt "#4031"
+msgid "Users"
+msgstr ""
+
+msgctxt "#4032"
+msgid "First Users"
+msgstr ""
+
+msgctxt "#4033"
+msgid "Second Users"
+msgstr ""
+
+msgctxt "#4034"
+msgid "Third Users"
+msgstr ""
+
+msgctxt "#4035"
+msgid "Fourth Users"
+msgstr ""
+
+msgctxt "#4036"
+msgid "Fifth Users"
+msgstr ""
+
+msgctxt "#4037"
+msgid "Enable 1st User"
+msgstr ""
+
+msgctxt "#4038"
+msgid "Enable 2nd User"
+msgstr ""
+
+msgctxt "#4039"
+msgid "Enable 3rd User"
+msgstr ""
+
+msgctxt "#4040"
+msgid "Enable 4th User"
+msgstr ""
+
+msgctxt "#4041"
+msgid "Enable 5th User"
+msgstr ""
+
+msgctxt "#4042"
+msgid "Addons"
+msgstr ""
+
+msgctxt "#4043"
+msgid "Addons Required"
+msgstr ""
+
+msgctxt "#4044"
+msgid "[COLOR chartreuse]Click to Install OSCam[/COLOR]"
+msgstr ""
+
+msgctxt "#4045"
+msgid "Config DVBApi Settings"
+msgstr ""
+
+msgctxt "#4046"
+msgid "Enable DVBApi"
+msgstr ""
+
+msgctxt "#4047"
+msgid "Mode"
+msgstr ""
+
+msgctxt "#4050"
+msgid "Port dvbapi"
+msgstr ""
+
+msgctxt "#4051"
+msgid "CCCam Config"
+msgstr ""
+
+msgctxt "#5000"
+msgid "Status"
+msgstr ""
+
+msgctxt "#5001"
+msgid "Config OSCam Settings"
+msgstr ""
+
+msgctxt "#5002"
+msgid "Config Tvheadend Settings"
+msgstr ""
+
+msgctxt "#5003"
+msgid "Addon Lock"
+msgstr ""
+
+msgctxt "#5004"
+msgid "Parental Control"
+msgstr ""
+
+msgctxt "#5005"
+msgid "Update Channels"
+msgstr ""
+
+msgctxt "#5006"
+msgid "Update IP automatic"
+msgstr ""
+
+msgctxt "#5007"
+msgid "[COLORred]unconfigured[/COLOR]"
+msgstr ""
+
+msgctxt "#5008"
+msgid "[COLORgreen]configured[/COLOR]"
+msgstr ""
+
+msgctxt "#5009"
+msgid "[COLORred]unlocked[/COLOR]"
+msgstr ""
+
+msgctxt "#5010"
+msgid "[COLORgreen]locked[/COLOR]"
+msgstr ""
+
+msgctxt "#5011"
+msgid "[COLORred]disabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5012"
+msgid "[COLORgreen]enabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5013"
+msgid "1. Config OSCam"
+msgstr ""
+
+msgctxt "#5014"
+msgid "2. Config Tvheadend"
+msgstr ""
+
+msgctxt "#5015"
+msgid "3. Reboot System"
+msgstr ""
+
+msgctxt "#5016"
+msgid "Parental Lock Menu"
+msgstr ""
+
+msgctxt "#5017"
+msgid "Manage Channels"
+msgstr ""
+
+msgctxt "#5018"
+msgid "Manage Groups"
+msgstr ""
+
+msgctxt "#5019"
+msgid "Update Channels / IP"
+msgstr ""
+
+msgctxt "#5020"
+msgid "Addon Lock"
+msgstr ""
+
+msgctxt "#5021"
+msgid "Channels Lock"
+msgstr ""
+
+msgctxt "#5022"
+msgid "Tvheadend set up and ready, please restart"
+msgstr ""
+
+msgctxt "#5023"
+msgid "Tvh Client set up and ready, please restart"
+msgstr ""
+
+msgctxt "#5024"
+msgid "[COLOR red]Information:[/COLOR] The update addon"
+msgstr ""
+
+msgctxt "#5025"
+msgid "only works if you have the addon"
+msgstr ""
+
+msgctxt "#5026"
+msgid "Tvheadend 4.2"
+msgstr ""
+
+msgctxt "#5027"
+msgid "Choose"
+msgstr ""
+
+msgctxt "#5028"
+msgid "Update: Check if have any update"
+msgstr ""
+
+msgctxt "#5029"
+msgid "Settings: Open Update Setings"
+msgstr ""
+
+msgctxt "#5030"
+msgid "Update"
+msgstr ""
+
+msgctxt "#5031"
+msgid "Settings"
+msgstr ""
+
+msgctxt "#5032"
+msgid "Open Update Settings and activate"
+msgstr ""
+
+msgctxt "#5033"
+msgid "OSCam set up and ready"
+msgstr ""
+
+msgctxt "#5034"
+msgid "Enter secret code to unlock addon"
+msgstr ""
+
+msgctxt "#5035"
+msgid "Wrong password try again"
+msgstr ""
+
+msgctxt "#5036"
+msgid "Choose what you want to set up on Tvheadend"
+msgstr ""
+
+msgctxt "#5037"
+msgid "Server: Config Server and Client"
+msgstr ""
+
+msgctxt "#5038"
+msgid "Client: Config only Client"
+msgstr ""
+
+msgctxt "#5039"
+msgid "Server"
+msgstr ""
+
+msgctxt "#5040"
+msgid "Client"
+msgstr ""
+
+msgctxt "#5041"
+msgid "IP was successfully updated, the box is restarting"
+msgstr ""
+
+msgctxt "#5042"
+msgid "PVR Config alredy created"
+msgstr ""
+
+msgctxt "#5043"
+msgid "Advanced Settings alredy created"
+msgstr ""
+
+msgctxt "#5044"
+msgid "Enter secret code to lock addon"
+msgstr ""
+
+msgctxt "#5045"
+msgid "ADDON IS [COLOR green]LOCKED[/COLOR]"
+msgstr ""
+
+msgctxt "#5046"
+msgid "Enter secret code to unlock addon"
+msgstr ""
+
+msgctxt "#5047"
+msgid "ADDON IS [COLOR red]UNLOCKED[/COLOR]"
+msgstr ""
+
+msgctxt "#5048"
+msgid "[COLOR red]Disabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5049"
+msgid "[COLOR green]Enabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5050"
+msgid "Enter Parental Pin Code"
+msgstr ""
+
+msgctxt "#5051"
+msgid "Parental Control [COLOR green]Enabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5052"
+msgid "Parental Control [COLOR red]Disabled[/COLOR]"
+msgstr ""
+
+msgctxt "#5053"
+msgid "OSCam Config it has already been set"
+msgstr ""
+
+msgctxt "#5054"
+msgid "Default user [COLOR white]oscam[/COLOR]"
+msgstr ""
+
+msgctxt "#5055"
+msgid "Default pass [COLOR white]oscam[/COLOR]"
+msgstr ""
+
+msgctxt "#5056"
+msgid "Default port [COLOR white]8888[/COLOR]"
+msgstr ""
+
+msgctxt "#5057"
+msgid "DVBApi it has already been set"
+msgstr ""
+
+msgctxt "#5058"
+msgid "CCCam it has already been set"
+msgstr ""
+
+msgctxt "#5059"
+msgid "Reader it has already been set"
+msgstr ""
+
+msgctxt "#5060"
+msgid "User it has already been set"
+msgstr ""
+
+msgctxt "#5061"
+msgid "Tvheadend Config alredy created"
+msgstr ""
+
+msgctxt "#5062"
+msgid "Softcam - dvbapi alredy created"
+msgstr ""
+
+msgctxt "#5063"
+msgid "Channels created"
+msgstr ""
+
+msgctxt "#5064"
+msgid "Piconpath alredy created"
+msgstr ""
+
+msgctxt "#5065"
+msgid "The tuner already enable"
+msgstr ""
+
+msgctxt "#5066"
+msgid "Choose the LNB you wish to activate"
+msgstr ""
+
+msgctxt "#5067"
+msgid "LNB2"
+msgstr ""
+
+msgctxt "#5068"
+msgid "LNB1"
+msgstr ""
+
+msgctxt "#5069"
+msgid "Default access is disable"
+msgstr ""
+
+msgctxt "#5070"
+msgid "Recording alredy modify"
+msgstr ""
+
+msgctxt "#5071"
+msgid "PVR Config alredy created"
+msgstr ""
+
+msgctxt "#5072"
+msgid "Advanced Settings alredy created"
+msgstr ""
+
+msgctxt "#5073"
+msgid "Timeshift alredy created"
+msgstr ""
+
+msgctxt "#5074"
+msgid "Download was canceled"
+msgstr ""
+
+msgctxt "#5075"
+msgid "Downloading"
+msgstr ""
+
+msgctxt "#5076"
+msgid "Extracting"
+msgstr ""
+
+msgctxt "#5077"
+msgid "New channels. Do you want to update?"
+msgstr ""
+
+msgctxt "#5078"
+msgid "Channels were successfully updated. System will restart"
+msgstr ""
+
+msgctxt "#5079"
+msgid "Your IP:"
+msgstr ""
+
+msgctxt "#5080"
+msgid "Please Wait..."
+msgstr ""
+
+msgctxt "#6000"
+msgid "Parental Control"
+msgstr ""
+
+msgctxt "#6001"
+msgid "Parental Control for Addon"
+msgstr ""
+
+msgctxt "#6002"
+msgid "Pin Code"
+msgstr ""
+
+msgctxt "#6003"
+msgid "Parental Config"
+msgstr ""
+
+msgctxt "#6004"
+msgid "Parental Control for Channels"
+msgstr ""
+
+msgctxt "#6005"
+msgid "Parental Control Information"
+msgstr ""

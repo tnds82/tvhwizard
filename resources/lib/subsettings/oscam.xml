@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="4042">
+	    <setting type="sep" />
+        <setting label="4043" type="lsep" />
+        <setting type="sep" />
+		<setting label="4044" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, oscam)" default="" />
+	</category>
+	<category label="4000">
+		<setting label="4001" type="lsep" />
+		<setting label="4002" type="bool" id="oscamenable" default="true"/>
+		<setting label="4003" type="text" id="useroscam" default="oscam" subsetting="true" option="writeable" enable="eq(-1,true)" visible="eq(-1,true)"/>
+		<setting label="4004" type="text" id="passoscam" default="oscam" subsetting="true" option="" enable="eq(-2,true)" visible="eq(-2,true)"/>
+		<setting label="4005" type="number" id="portoscam" default="8888" subsetting="true" enable="eq(-3,true)" visible="eq(-3,true)"/>
+	</category>
+	<category label="DVBApi">
+		<setting label="4045" type="lsep" />
+		<setting label="4046" type="bool" id="dvbapioscam" default="false"/>
+		<setting label="4047" type="select" id="boxtype" values="pc-nodmx|pc" default="" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)"/>
+		<setting label="4050" type="number" id="portdvbapipc" default="9000" subsetting="true" visible="eq(-1,pc)"/>	
+		<setting label="" type="lsep" visible="eq(-2,pc-nodmx)"/>
+		<setting label="" type="lsep" />
+		<setting label="" type="lsep" />
+		<setting label="" type="lsep" />
+		<setting label="" type="lsep" />
+		<setting label="1066" type="lsep" visible="eq(-8,true)+eq(-7,pc-nodmx)"/>
+		<setting label="1067" type="lsep" visible="eq(-9,true)+eq(-8,pc)"/>	</category>
+	<category label="CCCam">
+		<setting label="4051" type="lsep" />
+		<setting label="4006" type="bool" id="cccamenable" default="false"/>
+		<setting label="4007" type="number" id="portcccam" default="" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)"/>	
+	</category>
+	<category label="4008">
+		<setting label="4009" type="lsep" />
+		<setting label="4010" type="enum" id="readers" lvalues="4011|4012|4013|4014|4015" default="0" />
+		<setting label="4016" type="bool" id="firstreader" default="false" visible="eq(-1,0)"/>
+		<setting label="4017" type="enum" id="protocolfirstreader" lvalues="4018|4019|4020" subsetting="true" default="0" visible="eq(-2,0)+eq(-1,true)"/>
+		<setting label="4021" type="text" id="namefirstreader" default="" subsetting="true" visible="eq(-3,0)+eq(-2,true)"/>
+		<setting label="4022" type="text" id="ipfirstreader" default="" subsetting="true" visible="eq(-4,0)+eq(-3,true)+eq(-2,0)"/>
+		<setting label="4022" type="text" id="ipfirstreader1" default="" subsetting="true" visible="eq(-5,0)+eq(-4,true)+eq(-3,2)"/>
+		<setting label="4007" type="number" id="portfirstreader" default="" subsetting="true" visible="eq(-6,0)+eq(-5,true)+eq(-4,0)"/>
+		<setting label="4007" type="number" id="portfirstreader1" default="" subsetting="true" visible="eq(-7,0)+eq(-6,true)+eq(-5,2)"/>
+		<setting label="4023" type="text" id="userfirstreader" default="" option="writeable" subsetting="true" visible="eq(-8,0)+eq(-7,true)"/>
+		<setting label="4024" type="text" id="passfirstreader" default="" option="hidden" subsetting="true" visible="eq(-9,0)+eq(-8,true)"/>
+		<setting label="4025" type="bool" id="secondreader" default="false" visible="eq(-10,1)"/>
+		<setting label="4017" type="enum" id="protocolsecondreader" lvalues="4018|4019|4020" default="0" subsetting="true" visible="eq(-11,1)+eq(-1,true)"/>
+		<setting label="4021" type="text" id="namesecondreader" default="" subsetting="true" visible="eq(-12,1)+eq(-2,true)"/>
+		<setting label="4022" type="text" id="ipsecondreader" default="" subsetting="true" visible="eq(-13,1)+eq(-3,true)+eq(-2,0)"/>
+		<setting label="4022" type="text" id="ipsecondreader1" default="" subsetting="true" visible="eq(-14,1)+eq(-4,true)+eq(-3,2)"/>
+		<setting label="4007" type="number" id="portsecondreader" default="" subsetting="true" visible="eq(-15,1)+eq(-5,true)+eq(-4,0)"/>
+		<setting label="4007" type="number" id="portsecondreader1" default="" subsetting="true" visible="eq(-16,1)+eq(-6,true)+eq(-5,2)"/>
+		<setting label="4023" type="text" id="usersecondreader" default="" option="writeable" subsetting="true" visible="eq(-17,1)+eq(-7,true)"/>
+		<setting label="4024" type="text" id="passsecondreader" default="" option="hidden" subsetting="true" visible="eq(-18,1)+eq(-8,true)"/>		
+		<setting label="4026" type="bool" id="thirdreader" default="false" visible="eq(-19,2)"/>
+		<setting label="4017" type="enum" id="protocolthirdreader" lvalues="4018|4019|4020" default="0" subsetting="true" visible="eq(-20,2)+eq(-1,true)"/>
+		<setting label="4021" type="text" id="namethirdreader" default="" subsetting="true" visible="eq(-21,2)+eq(-2,true)"/>
+		<setting label="4022" type="text" id="ipthirdreader" default="" subsetting="true" visible="eq(-22,2)+eq(-3,true)+eq(-2,0)"/>
+		<setting label="4022" type="text" id="ipthirdreader1" default="" subsetting="true" visible="eq(-23,2)+eq(-4,true)+eq(-3,2)"/>
+		<setting label="4007" type="number" id="portthirdreader" default="" subsetting="true" visible="eq(-24,2)+eq(-5,true)+eq(-4,0)"/>
+		<setting label="4007" type="number" id="portthirdreader1" default="" subsetting="true" visible="eq(-25,2)+eq(-6,true)+eq(-5,2)"/>
+		<setting label="4023" type="text" id="userthirdreader" default="" option="writeable" subsetting="true" visible="eq(-26,2)+eq(-7,true)"/>
+		<setting label="4024" type="text" id="passthirdreader" default="" option="hidden" subsetting="true" visible="eq(-27,2)+eq(-8,true)"/>
+		<setting label="4027" type="bool" id="fourthreader" default="false" visible="eq(-28,3)"/>
+		<setting label="4017" type="enum" id="protocolfourthreader" lvalues="4018|4019|4020" default="0" subsetting="true" visible="eq(-29,3)+eq(-1,true)"/>
+		<setting label="4021" type="text" id="namefourthreader" default="" subsetting="true" visible="eq(-30,3)+eq(-2,true)"/>
+		<setting label="4022" type="text" id="ipfourthreader" default="" subsetting="true" visible="eq(-31,3)+eq(-3,true)+eq(-2,0)"/>
+		<setting label="4022" type="text" id="ipfourthreader1" default="" subsetting="true" visible="eq(-32,3)+eq(-4,true)+eq(-3,2)"/>
+		<setting label="4007" type="number" id="portfourthreader" default="" subsetting="true" visible="eq(-33,3)+eq(-5,true)+eq(-4,0)"/>
+		<setting label="4007" type="number" id="portfourthreader1" default="" subsetting="true" visible="eq(-34,3)+eq(-6,true)+eq(-5,2)"/>
+		<setting label="4023" type="text" id="userfourthreader" default="" option="writeable" subsetting="true" visible="eq(-35,3)+eq(-7,true)"/>
+		<setting label="4024" type="text" id="passfourthreader" default="" option="hidden" subsetting="true" visible="eq(-36,3)+eq(-8,true)"/>		
+		<setting label="4028" type="bool" id="fifthreader" default="false" visible="eq(-37,4)"/>
+		<setting label="4017" type="enum" id="protocolfifthreader" lvalues="4018|4019|4020" default="0" subsetting="true" visible="eq(-38,4)+eq(-1,true)"/>
+		<setting label="4021" type="text" id="namefifthreader" default="" subsetting="true" visible="eq(-39,4)+eq(-2,true)"/>
+		<setting label="4022" type="text" id="ipfifthreader" default="" subsetting="true" visible="eq(-40,4)+eq(-3,true)+eq(-2,0)"/>
+		<setting label="4022" type="text" id="ipfifthreader1" default="" subsetting="true" visible="eq(-41,4)+eq(-4,true)+eq(-3,2)"/>
+		<setting label="4007" type="number" id="portfifthreader" default="" subsetting="true" visible="eq(-42,4)+eq(-5,true)+eq(-4,0)"/>
+		<setting label="4007" type="number" id="portfifthreader1" default="" subsetting="true" visible="eq(-43,4)+eq(-6,true)+eq(-5,2)"/>
+		<setting label="4023" type="text" id="userfifthreader" default="" option="writeable" subsetting="true" visible="eq(-44,4)+eq(-7,true)"/>
+		<setting label="4024" type="text" id="passfifthreader" default="" option="hidden" subsetting="true" visible="eq(-45,4)+eq(-8,true)"/>		
+	</category>
+	<category label="4029">
+		<setting label="4030" type="lsep" />
+		<setting label="4031" type="enum" id="users" lvalues="4032|4033|4034|4035|4036" default="0" />
+		<setting label="4037" type="bool" id="firstuser" default="false" visible="eq(-1,0)"/>
+		<setting label="4023" type="text" id="userfirstuser" default="" option="writeable" subsetting="true" visible="eq(-1,true)+eq(-2,0)"/>
+		<setting label="4024" type="text" id="passfirstuser" default="" option="hidden" subsetting="true" visible="eq(-2,true)+eq(-3,0)"/>
+		<setting label="4038" type="bool" id="seconduser" default="false" visible="eq(-4,1)"/>
+		<setting label="4023" type="text" id="userseconduser" default="" option="writeable" subsetting="true" visible="eq(-1,true)+eq(-5,1)"/>
+		<setting label="4024" type="text" id="passseconduser" default="" option="hidden" subsetting="true" visible="eq(-2,true)+eq(-6,1)"/>
+		<setting label="4039" type="bool" id="thirduser" default="false" visible="eq(-7,2)"/>
+		<setting label="4023" type="text" id="userthirduser" default="" option="writeable" subsetting="true" visible="eq(-1,true)+eq(-8,2)"/>
+		<setting label="4024" type="text" id="passthirduser" default="" option="hidden" subsetting="true" visible="eq(-2,true)+eq(-9,2)"/>
+		<setting label="4040" type="bool" id="fourthuser" default="false" visible="eq(-10,3)"/>
+		<setting label="4023" type="text" id="userfourthuser" default="" option="writeable" subsetting="true" visible="eq(-1,true)+eq(-11,3)"/>
+		<setting label="4024" type="text" id="passfourthuser" default="" option="hidden" subsetting="true" visible="eq(-2,true)+eq(-12,3)"/>
+		<setting label="4041" type="bool" id="fifthuser" default="false" visible="eq(-13,4)"/>
+		<setting label="4023" type="text" id="userfifthuser" default="" option="writeable" subsetting="true" visible="eq(-1,true)+eq(-14,4)"/>
+		<setting label="4024" type="text" id="passfifthuser" default="" option="hidden" subsetting="true" visible="eq(-2,true)+eq(-15,4)"/>
+	</category>
+</settings>

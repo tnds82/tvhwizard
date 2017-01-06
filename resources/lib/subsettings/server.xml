@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="1000">
+	    <setting type="sep" />
+        <setting label="1001" type="lsep" />
+        <setting type="sep" />
+		<setting label="1002" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, pvr.tvh)" default="" />
+		<setting label="1003" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, tvheadend)" default="" />
+	</category>
+	<category label="1004">
+	    <setting type="sep" />
+        <setting label="1005" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1006" type="bool" id="tvhconfig"/>
+		<setting label="1007" type="bool" id="tvhexpert" visible="eq(-1,true)"/>
+		<setting label="1008" type="bool" id="langui" visible="eq(-2,true)"/>
+		<setting label="1009" type="bool" id="languipt" defaut="" subsetting="true" source="auto" option="writeable" enable="eq(1,false)+!eq(-3,false)" visible="eq(-1,true)"/>
+	    <setting label="1010" type="bool" id="languien" defaut="" subsetting="true" source="auto" option="writeable" enable="eq(-1,false)+!eq(-4,false)" visible="eq(-2,true)"/>
+		<setting label="1011" type="bool" id="langepg" visible="eq(-5,true)"/>
+		<setting label="1009" type="bool" id="langepgpt" defaut="" subsetting="true" source="auto" option="writeable" enable="eq(-1,true)+!eq(-6,false)" visible="eq(-1,true)"/>
+	    <setting label="1010" type="bool" id="langepgen" defaut="" subsetting="true" source="auto" option="writeable" enable="eq(-2,true)+!eq(-7,false)" visible="eq(-2,true)"/>
+	</category>
+	<category label="1012">
+	    <setting type="sep" />
+        <setting label="1013" type="lsep" />
+        <setting type="sep" />
+		<setting label="1014" type="bool" id="createusers"/>
+	    <setting label="1015" type="bool" id="logadmin" default="true" visible="eq(-1,true)"/>
+		<setting label="1017" type="text" id="useradmin" subsetting="true" source="auto" option="writeable" enable="eq(-1,true)+eq(-2,true)" visible="eq(-1,true)+eq(-2,true)"/>
+	    <setting label="1018" type="text" id="passadmin" subsetting="true" source="auto" option="hidden" enable="eq(-2,true)+eq(-3,true)" visible="eq(-2,true)+eq(-3,true)"/>
+		<setting label="1016" type="bool" id="logclient" default="true" visible="eq(-4,true)"/>
+		<setting label="1017" type="text" id="userclient" subsetting="true" source="auto" option="writeable" enable="eq(-1,true)+eq(-5,true)" visible="eq(-1,true)+eq(-5,true)"/>
+	    <setting label="1018" type="text" id="passclient" subsetting="true" source="auto" option="hidden" enable="eq(-2,true)+eq(-6,true)" visible="eq(-2,true)+eq(-6,true)"/>
+	</category>
+	<category label="1019">
+	    <setting type="sep" />
+        <setting label="1020" type="lsep" />
+        <setting type="sep" />
+		<setting label="1021" type="bool" id="channelson" default="false" />
+		<setting label="1022" type="enum" id="networkdvb" lvalues="1023|1024|" default="0" enable="eq(-1,true)" />
+		<setting label="1025" type="enum" id="countrydvbc" lvalues="1026|" default="0" enable="eq(-2,true)+eq(-1,0)" visible="eq(-1,0)"/>
+		<setting label="1027" type="bool" id="lisbon" default="false" visible="eq(-2,0)+eq(-1,0)" enable="eq(-3,true)+eq(1,false)+eq(2,false)+eq(3,false)+eq(4,false)+eq(5,false)" />
+		<setting label="1028" type="bool" id="porto" default="false" visible="eq(-3,0)+eq(-2,0)" enable="eq(-4,true)+eq(-1,false)+eq(1,false)+eq(2,false)+eq(3,false)+eq(4,false)" />
+		<setting label="1029" type="bool" id="hispasat" default="false" visible="eq(-4,1)" enable="eq(-5,true)+eq(1,false)+eq(-1,false)+eq(-2,false)+eq(2,false)+eq(3,false)"/>
+		<setting label="1030" type="bool" id="astra" default="false" visible="eq(-5,1)" enable="eq(-6,true)+eq(-6,false)+eq(-1,false)+eq(-2,false)+eq(-3,false)+eq(1,false)+eq(2,false)" />
+		<setting label="1031" type="bool" id="aveiro" default="false" visible="eq(-6,0)+eq(-5,0)" enable="eq(-7,true)+eq(-1,false)+eq(-2,false)+eq(-3,false)+eq(-4,false)+eq(1,false)" />
+		<setting label="1032" type="bool" id="leiria" default="false" visible="eq(-7,0)+eq(-6,0)" enable="eq(-8,true)+eq(-1,false)+eq(-2,false)+eq(-3,false)+eq(-4,false)+eq(-5,false)" />
+    </category>
+	<category label="1037">
+	    <setting type="sep" />
+        <setting label="1038" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1039" type="bool" id="picons"/>
+		<setting label="1040" type="bool" id="imagecache" subsetting="true" visible="eq(-1,true)"/>
+	</category>
+	<category label="1041">
+	    <setting type="sep" />
+        <setting label="1042" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1043" type="bool" id="dvbcards" default="false"/>
+		<setting label="1044" type="bool" id="wetekpenable" default="false" enable="eq(-1,true)+!eq(3,true)+!eq(6,true)+!eq(8,true)"/>
+		<setting label="1045" type="bool" id="wetekpdvbs" default="false" subsetting="true" enable="eq(-1,true)+eq(1,false)+!eq(-2,false)" visible="eq(-1,true)"/>
+		<setting label="1046" type="bool" id="wetekpdvbc" default="false" subsetting="true" enable="eq(-2,true)+eq(-1,false)+!eq(-3,false)" visible="eq(-2,true)"/>
+		<setting label="1047" type="bool" id="wetekp2enable" default="false" enable="eq(-4,true)+!eq(-3,true)+!eq(3,true)+!eq(5,true)"/>
+		<setting label="1045" type="bool" id="wetekp2dvbs" default="false" subsetting="true" enable="eq(-1,true)+eq(1,false)+!eq(-5,false)" visible="eq(-1,true)"/>
+		<setting label="1046" type="bool" id="wetekp2dvbc" default="false" subsetting="true" enable="eq(-2,true)+eq(-1,false)+!eq(-6,false)" visible="eq(-2,true)"/>
+		<setting label="1048" type="bool" id="rpigenable" default="false" enable="eq(-7,true)+!eq(-6,true)+!eq(-3,true)+!eq(2,true)"/>
+		<setting label="1049" type="enum" id="dvbnumber" lvalues="1050|1051|1052|1053|1054" default="0" subsetting="true" enable="eq(-1,true)+!eq(-8,false)" visible="eq(-1,true)"/>		
+		<setting label="1055" type="bool" id="k1plusenable" default="false" enable="eq(-9,true)+!eq(-8,true)+!eq(-5,true)+!eq(-2,true)"/>
+		<setting label="1045" type="bool" id="k1plusdvbs" default="false" subsetting="true" enable="eq(-1,true)+eq(-10,true)" visible="eq(-1,true)"/>
+	</category>
+	<category label="1056">
+        <setting label="1057" type="lsep" />
+        <setting type="sep" />
+		<setting label="1058" type="bool" id="dvbapienable" default="false"/>
+		<setting label="1059" type="select" id="dvbapichoose" values="pc-nodmx|pc" default="" enable="eq(-1,true)"/>
+	    <setting label="1063" type="text" id="ipdvbapi" default="" subsetting="true" enable="eq(-2,true)+eq(-1,pc)" visible="eq(-2,true)+eq(-1,pc)"/>
+	    <setting label="1064" type="number" id="portdvbapi" default="" subsetting="true" enable="eq(-3,true)+eq(-2,pc)" visible="eq(-3,true)+eq(-2,pc)"/>
+		<setting label="1065" type="action" id="camdsocket" default="[COLOR white]/tmp/camd.socket[/COLOR]" subsetting="true" enable="eq(-4,true)+eq(-3,pc-nodmx)" visible="eq(-4,true)+eq(-3,pc-nodmx)"/>
+		<setting label="" type="lsep" visible="eq(-5,true)+eq(-4,pc-nodmx)"/>
+		<setting label="" type="lsep" visible="eq(-6,true)+eq(-5,pc-nodmx)"/>
+		<setting label="" type="lsep" />
+		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, ip)" default="" visible="eq(-7,pc)"/>
+		<setting label="" type="lsep" />
+		<setting label="1066" type="lsep" visible="eq(-10,true)+eq(-9,pc-nodmx)"/>
+		<setting label="1067" type="lsep" visible="eq(-11,true)+eq(-10,pc)"/>
+	</category>
+	<category label="1068">
+	    <setting type="sep" />
+        <setting label="1069" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1070" type="bool" id="recording"/>
+		<setting label="1071" type="enum" id="recordprofile" lvalues="1095|1096|1097|1098" default="0" subsetting="true" enable="eq(-1,true)+!eq(-8,false)" visible="eq(-1,true)"/>		
+		<setting label="1072" type="folder" id="pathrecording" defaut="" subsetting="true" source="auto" option="writeable" enable="eq(-2,true)" visible="eq(-2,true)" />
+	</category>
+	<category label="1073">
+	    <setting type="sep" />
+        <setting label="1074" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1075" type="bool" id="pvrconfig"/>
+		<setting label="1076" type="text" id="ipbox" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)" />
+		<setting label="" type="lsep" />
+		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, ip)" default="" visible="eq(-3,true)"/>
+	</category>
+	<category label="1077">
+	    <setting type="sep" />
+        <setting label="1080" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1081" type="bool" id="kodiconfig"/>
+		<setting label="1082" type="bool" id="syncgroup" default="true" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)" />
+		<setting label="1099" type="bool" id="syncchannels" default="true" subsetting="true" enable="eq(-2,true)" visible="eq(-2,true)" />
+		<setting label="1083" type="bool" id="playmax" default="true" subsetting="true" enable="eq(-3,true)" visible="eq(-3,true)"/>
+		<setting label="1084" type="bool" id="video169" default="true" subsetting="true" enable="eq(-4,true)" visible="eq(-4,true)"/>
+		<setting label="1085" type="bool" id="optim" default="true" subsetting="true" enable="eq(-5,true)" visible="eq(-5,true)" />
+		<setting label="1086" type="bool" id="lastchannel" default="false" subsetting="true" enable="eq(-6,true)" visible="eq(-6,true)" />
+	</category>
+	<category label="1087">
+	    <setting type="sep" />
+        <setting label="1088" type="lsep" />
+        <setting type="sep" />
+		<setting label="1089" type="bool" id="enableguide"/>
+	    <setting label="1090" type="bool" id="disableup" default="true" enable="eq(-1,true)" visible="eq(-1,true)"/>
+		<setting label="1091" type="slider" id="upinterval" range="0,5,120" default="30" option="int" enable="eq(-2,true)" visible="eq(-2,true)"/>
+	</category>
+	<category label="1092">
+	    <setting type="sep" />
+        <setting label="1093" type="lsep" />
+        <setting type="sep" />
+	    <setting label="1094" type="bool" id="timeshift"/>
+	</category>
+</settings>

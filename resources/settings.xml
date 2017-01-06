@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="5000">
+	    <setting type="sep" />
+		<setting label="5001" type="action" id="oscaminfo" default="[COLORred]unconfigured[/COLOR]" /> 
+		<setting label="5002" type="action" id="tvhinfo" default="[COLORred]unconfigured[/COLOR]" /> 
+		<setting label="5003" type="action" id="lockinfo" default="[COLORred]unlocked[/COLOR]" /> 
+		<setting label="5004" type="action" id="parentalinfo" default="[COLORred]unlocked[/COLOR]" /> 
+		<setting label="5005" type="action" id="updateinfo" default="[COLORred]disable[/COLOR]" /> 
+		<setting label="5006" type="action" id="ipinfo" default="[COLORred]disable[/COLOR]" /> 
+		</category>
+</settings>
