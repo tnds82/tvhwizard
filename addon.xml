@@ -2,7 +2,7 @@
 <addon
     id="script.tvhwizard.tnds"
     name="Tvh Wizard by Tnds"
-    version="1.0.8"
+    version="1.0.9"
     provider-name="tnds82"
     >
   <requires>

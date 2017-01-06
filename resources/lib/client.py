@@ -41,7 +41,7 @@ def pvr_config():
 	else:
 		if not os.path.exists(addonpvrtvhdata):
 			os.makedirs(addonpvrtvhdata)
-			tools.pvrsettings(addonpvrtvhsettings, tvhip, tvhuser, thvpass)
+			tools.pvrsettings(addonpvrtvhsettings, tvhip, thvpass, tvhuser)
 		#Enable Live TV
 		xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.SetSettingValue", "params":{"setting":"pvrmanager.enabled","value":true},"id":1}')
 
