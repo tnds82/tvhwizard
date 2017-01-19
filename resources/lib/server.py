@@ -913,7 +913,7 @@ def tvh_recording():
 			if addon.getSetting('logclient') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				clientuser = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
-				tools.insert_words(clientuser, 22, recording)
+				tools.insert_words(clientuser, 23, recording)
 				
 		elif addon.getSetting('recordprofile') == '1':
 			if 'Generic' in open(release).read():
