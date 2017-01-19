@@ -4,21 +4,24 @@
 # email: tndsrepo@gmail.com
 # This program is free software: GNU General Public License
 #########################################################################################
-import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,base64,tools,time
+import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,base64,tools,time,subprocess
 
 dialog = xbmcgui.Dialog()
 dp = xbmcgui.DialogProgress()
 release = "/etc/os-release"
 
 	##### ADDON TVH WIZARD by Tnds #####
-addon             = xbmcaddon.Addon(id='script.tvhwizard.tnds')
-addonname         = addon.getAddonInfo('name')
-addonfolder       = addon.getAddonInfo('path')
+addon       = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addonname   = addon.getAddonInfo('name')
+addonfolder = addon.getAddonInfo('path')
+addondata   = xbmc.translatePath(addon.getAddonInfo('profile'))
+addonlog    = os.path.join(addondata, 'data/')
+addonchaver = os.path.join(addonlog, 'version')
 
 	##### ADDON SERVICE TVHEADEND #####
-addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
-addontvhname     = addontvh.getAddonInfo('name')
-addontvhfolder   = addontvh.getAddonInfo('path')
+addontvh       = xbmcaddon.Addon(id='service.tvheadend42')
+addontvhname   = addontvh.getAddonInfo('name')
+addontvhfolder = addontvh.getAddonInfo('path')
 
 	##### ADDON PVR TVHEADEND CLIENT #####
 addonpvrtvh         = xbmcaddon.Addon(id='pvr.hts')
@@ -26,9 +29,6 @@ addonpvrtvhname     = addonpvrtvh.getAddonInfo('name')
 addonpvrtvhfolder   = addonpvrtvh.getAddonInfo('path')
 addonpvrtvhdata     = xbmc.translatePath(addonpvrtvh.getAddonInfo('profile'))
 addonpvrtvhsettings = os.path.join(addonpvrtvhdata, 'settings.xml')
-
-	##### KODI TV CONFIG #####
-kodiguiset          = '/storage/.kodi/userdata/guisettings.xml'
 
 	##### DESTINATION #####
 addontvhdest       = xbmc.translatePath(addontvh.getAddonInfo('profile'))
@@ -49,35 +49,39 @@ addontvhtimeconf   = os.path.join(addontvhdest, 'timeshift/config')
 addontvhtime       = os.path.join(addontvhdest, 'timeshift/')
 
 	##### PICONS #####
-piconpath        = {"file:///storage/picons/vdr/":"file:///storage/.kodi/userdata/picons"}
+piconpath    = "/storage/.kodi/userdata/picons/*"
+piconsympath = "/storage/picons/vdr/"
 
 	##### DVBAPI #####
-dvbapifile       = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
-dvbapip          = addon.getSetting('ipdvbapi')
-dvbapiport       = addon.getSetting('portdvbapi')
+dvbapifile = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
+dvbapip    = addon.getSetting('ipdvbapi')
+dvbapiport = addon.getSetting('portdvbapi')
 
    ##### USERS #####
-adminuser        = addon.getSetting('useradmin')
-adminpass        = addon.getSetting('passadmin')
-clientuser       = addon.getSetting('userclient')
-clientpass       = addon.getSetting('passclient')
+adminuser  = addon.getSetting('useradmin')
+adminpass  = addon.getSetting('passadmin')
+clientuser = addon.getSetting('userclient')
+clientpass = addon.getSetting('passclient')
 
    ##### Recording #####
-recordingpath    = addon.getSetting('pathrecording')
+recordingpath = addon.getSetting('pathrecording')
 
    ##### PVR #####
-ipbox            = addon.getSetting('ipbox')
+ipbox = addon.getSetting('ipbox')
 
    ##### USERDATA #####
 userdata = os.path.join("/storage/.kodi/userdata/")
 advanced = os.path.join(userdata, 'advancedsettings.xml')
 
-kodiguisettings = os.path.join("/storage/.kodi/userdata/guisettings.xml")
-
 ######################### MENUS PLUGIN ###############################
 
 def langString(id):
 	return addon.getLocalizedString(id)
+
+def subprocess_cmd(command):
+    process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print proc_stdout
 
 ### SPECIAL Wetek Play Image ###
 def tvh_wetekspecial():
@@ -183,6 +187,7 @@ def tvh_channels():
 		### LISBON ###
 		if addon.getSetting('lisbon') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/lisbon.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/lisbonversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/lisbon', 'channel.zip')
@@ -192,10 +197,15 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/lisbon', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
+
 
 		### PORTO ###
 		if addon.getSetting('porto') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/porto.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/portoversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/porto', 'channel.zip')
@@ -205,10 +215,14 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/porto', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
 	
 		### HISPASAT ###
 		if addon.getSetting('hispasat') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbs/hispasat.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbs/hispasatversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/hispasat', 'channel.zip')
@@ -218,10 +232,14 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/hispasat', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
 	
 		### ASTRA ###
 		if addon.getSetting('astra') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbs/astra.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbs/astraversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/astra', 'channel.zip')
@@ -231,10 +249,14 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/astra', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
 			
 		### AVEIRO ###
 		if addon.getSetting('aveiro') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/aveiro.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/aveiroversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/aveiro', 'channel.zip')
@@ -244,10 +266,14 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/aveiro', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
 			
 		### LEIRIA ###
 		if addon.getSetting('leiria') == 'true':
 			url = "http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/leiria.zip"
+			url_version = '"http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/leiriaversion"'
 			tools.channels(url)
 			header = "Channels"
 			channelsFile = os.path.join('/storage/.kodi/tnds82/leiria', 'channel.zip')
@@ -257,11 +283,14 @@ def tvh_channels():
 				os.makedirs(addontvhdvb)
 			networkFile = os.path.join('/storage/.kodi/tnds82/leiria', 'networks.zip')
 			tools.extract(networkFile,addontvhdvb,dp,header1)
+			if not os.path.exists(addonlog):
+				os.makedirs(addonlog)
+			subprocess_cmd('%s %s %s' % ('wget -O', addonchaver, url_version))
 
 ##### PICONS #####
 
 def tvh_picons():
-	if '"piconpath": "file:///storage/.kodi/userdata/picons"' in open(addontvhconfig).read():
+	if os.path.exists(piconpath): #'"piconpath": "file:///storage/.kodi/userdata/picons"' in open(addontvhconfig).read():
 		dialog.notification(addonname, langString(5064), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 		### Download Picons ###
@@ -285,8 +314,11 @@ def tvh_picons():
 			tools.picons(url)
 		
 		### Picons Path ###
-		tools.change_words(addontvhconfig, piconpath)
-				
+		if not os.path.exists(piconsympath):
+			os.makedirs(piconsympath)
+		time.sleep( 1 )
+		subprocess_cmd("%s %s %s" % ("ln -s", piconpath, piconsympath))
+
 		### Image Cache ###
 		if addon.getSetting('imagecache') == 'true' :
 			imgcachepath = addontvhimgcache
@@ -343,8 +375,8 @@ def tvh_picons():
 def tvh_tunners():
 	enableinput = '			"enabled": true,\n'
 	dvbcnetwork = '				"2e3a376d8f26d0e7db2970d22f691ce3"\n' # Network Lisbon, Porto, Aveiro, Leiria
-	hispanetwork = '				"6ca264ee5e0509dfbc38c2fd847fa90c"\n' # Network Hispasat
-	hispanetwork1 = '							"6ca264ee5e0509dfbc38c2fd847fa90c"\n' #Network Hispasat
+	hispanetwork = '				"f9f86bd361cdb5c3349163346ac173f7"\n' # Network Hispasat
+	hispanetwork1 = '							"f9f86bd361cdb5c3349163346ac173f7"\n' #Network Hispasat
 	astranetwork = '				"b49667f409cd90d954431ce14ea69405"\n' # Network Astra
 	astranetwork1 = '							"b49667f409cd90d954431ce14ea69405"\n' #Network Astra
 	
@@ -696,22 +728,30 @@ def tvh_users():
 			filenameuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
 			createuser = open(filenameuser, 'a')
 			createuser.write("{\n")
-			createuser.write('	"index": 0,\n')
+			createuser.write('	"index": 1,\n')
 			createuser.write('	"enabled": true,\n')
 			createuser.write('	"username": "%s",\n' % adminuser)
-			createuser.write('	"prefix": "0.0.0.0/0",\n')
+			createuser.write('	"prefix": "0.0.0.0/0,::/0",\n')
+			createuser.write('	"change": [\n')
+			createuser.write('		"change_rights"\n')
+			createuser.write('	],\n')
 			createuser.write('	"uilevel": 2,\n')
 			createuser.write('	"uilevel_nochange": -1,\n')
-			createuser.write('	"streaming": true,\n')
-			createuser.write('	"adv_streaming": true,\n')
-			createuser.write('	"htsp_streaming": true,\n')
+			createuser.write('	"streaming": [\n')
+			createuser.write('		"basic",\n')
+			createuser.write('		"advanced",\n')
+			createuser.write('		"htsp"\n')
+			createuser.write('	],\n')
 			createuser.write('	"profile": [\n')
 			createuser.write('	],\n')
-			createuser.write('	"dvr": true,\n')
-			createuser.write('	"htsp_dvr": true,\n')
-			createuser.write('	"all_dvr": true,\n')
-			createuser.write('	"all_rw_dvr": true,\n')
-			createuser.write('	"failed_dvr": true,\n')
+			createuser.write('	"dvr": [\n')
+			createuser.write('		"basic",\n')
+			createuser.write('		"htsp",\n')
+			createuser.write('		"all",\n')
+			createuser.write('		"all_rw",\n')
+			createuser.write('		"failed"\n')
+			createuser.write('	],\n')
+			createuser.write('	"htsp_anonymize": false,\n')
 			createuser.write('	"dvr_config": [\n')
 			createuser.write('	],\n')
 			createuser.write('	"webui": true,\n')
@@ -783,22 +823,27 @@ def tvh_users():
 			filenameclient = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
 			createuser = open(filenameclient, 'a')
 			createuser.write("{\n")
-			createuser.write('	"index": 1,\n')
+			createuser.write('	"index": 2,\n')
 			createuser.write('	"enabled": true,\n')
 			createuser.write('	"username": "%s",\n' % userclient)
 			createuser.write('	"prefix": "0.0.0.0/0",\n')
+			createuser.write('	"change": [\n')
+			createuser.write('		"change_rights"\n')
+			createuser.write('	],\n')
 			createuser.write('	"uilevel": -1,\n')
 			createuser.write('	"uilevel_nochange": -1,\n')
-			createuser.write('	"streaming": false,\n')
-			createuser.write('	"adv_streaming": false,\n')
-			createuser.write('	"htsp_streaming": true,\n')
+			createuser.write('	"streaming": [\n')
+			createuser.write('		"htsp"\n')
+			createuser.write('	],\n')
 			createuser.write('	"profile": [\n')
 			createuser.write('	],\n')
-			createuser.write('	"dvr": false,\n')
-			createuser.write('	"htsp_dvr": true,\n')
-			createuser.write('	"all_dvr": true,\n')
-			createuser.write('	"all_rw_dvr": false,\n')
-			createuser.write('	"failed_dvr": true,\n')
+			createuser.write('	"dvr": [\n')
+			createuser.write('		"basic",\n')
+			createuser.write('		"htsp",\n')
+			createuser.write('		"all",\n')
+			createuser.write('		"failed"\n')
+			createuser.write('	],\n')
+			createuser.write('	"htsp_anonymize": false,\n')
 			createuser.write('	"dvr_config": [\n')
 			createuser.write('	],\n')
 			createuser.write('	"webui": false,\n')
@@ -864,11 +909,11 @@ def tvh_recording():
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
-				tools.insert_words(adminuser, 18, recording)
+				tools.insert_words(adminuser, 26, recording)
 			if addon.getSetting('logclient') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				clientuser = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
-				tools.insert_words(clientuser, 18, recording)
+				tools.insert_words(clientuser, 22, recording)
 				
 		elif addon.getSetting('recordprofile') == '1':
 			if 'Generic' in open(release).read():
@@ -911,11 +956,11 @@ def tvh_recording():
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
-				tools.insert_words(adminuser, 18, recording)
+				tools.insert_words(adminuser, 26, recording)
 			if addon.getSetting('logclient') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				clientuser = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
-				tools.insert_words(clientuser, 18, recording)
+				tools.insert_words(clientuser, 22, recording)
 					
 		elif addon.getSetting('recordprofile') == '2':
 			if 'Generic' in open(release).read():
@@ -958,11 +1003,11 @@ def tvh_recording():
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
-				tools.insert_words(adminuser, 18, recording)
+				tools.insert_words(adminuser, 26, recording)
 			if addon.getSetting('logclient') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				clientuser = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
-				tools.insert_words(clientuser, 18, recording)
+				tools.insert_words(clientuser, 22, recording)
 
 		elif addon.getSetting('recordprofile') == '3':
 			defaultline = {'/storage/recordings':recordingpath}

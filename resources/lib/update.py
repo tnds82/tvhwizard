@@ -4,21 +4,23 @@
 # email: tndsrepo@gmail.com
 # This program is free software: GNU General Public License
 ############# BIBLIOTECAS A IMPORTAR E DEFINICOES ###################
-import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,tools,urllib2,time
+import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,tools,urllib2,time,subprocess
 
 dialog = xbmcgui.Dialog()
 dp = xbmcgui.DialogProgress()
 
 	##### ADDON TVH WIZARD by Tnds #####
-addon             = xbmcaddon.Addon(id='script.tvhwizard.tnds')
-addonname         = addon.getAddonInfo('name')
-addonfolder       = addon.getAddonInfo('path')
-addonicon        = os.path.join(addonfolder, 'icon.png')
+addon       = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addonname   = addon.getAddonInfo('name')
+addonfolder = addon.getAddonInfo('path')
+addonicon   = os.path.join(addonfolder, 'icon.png')
+addondata   = xbmc.translatePath(addon.getAddonInfo('profile'))
+channelver  = os.path.join(addondata, 'data/version')
 
 	##### ADDON SERVICE TVHEADEND #####
-addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
-addontvhname     = addontvh.getAddonInfo('name')
-addontvhfolder   = addontvh.getAddonInfo('path')
+addontvh       = xbmcaddon.Addon(id='service.tvheadend42')
+addontvhname   = addontvh.getAddonInfo('name')
+addontvhfolder = addontvh.getAddonInfo('path')
 
 	##### DESTINATION #####
 addontvhdest     = xbmc.translatePath(addontvh.getAddonInfo('profile'))
@@ -35,10 +37,15 @@ zoneaveiro       = os.path.join(tndsdown, 'aveiro')
 zoneleiria       = os.path.join(tndsdown, 'leiria')
 
    ##### CHANNEL'S VERSION'S #####
-channelver = "%s%s" % (addontvhchannel, 'version')
+#channelver = "%s%s" % (addontvhchannel, 'version')
 
 def langString(id):
 	return addon.getLocalizedString(id)
+	
+def subprocess_cmd(command):
+    process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print proc_stdout
 	
 def zone_channels():
 	#Cabo Lisboa
@@ -58,6 +65,9 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zonelisbon, urlpicon)
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
+
 	#Cabo Porto
 	if addon.getSetting('upporto') == 'true':
 		version_url = "http://tnds82.xyz/tvhwizard/channels/dvbc/portugal/portoversion"
@@ -75,6 +85,9 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zoneporto, urlpicon)
+							time.sleep( 1 )
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
 
 	#Sat Hispasat
 	if addon.getSetting('uphispasat') == 'true':
@@ -93,6 +106,8 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zonehispasat, urlpicon)
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
 
 	#Sat Astra
 	if addon.getSetting('upastra') == 'true':
@@ -111,6 +126,8 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zoneastra, urlpicon)
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
 
 	#Cabo Aveiro
 	if addon.getSetting('upaveiro') == 'true':
@@ -129,6 +146,8 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zoneaveiro, urlpicon)
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
 
 	#Cabo Leiria
 	if addon.getSetting('upleiria') == 'true':
@@ -147,7 +166,8 @@ def zone_channels():
 							print "Your answer was no"
 						else:
 							update_channels(url, zoneleiria, urlpicon)
-						
+							subprocess_cmd('%s %s' % ('rm -r',  channelver))
+							subprocess_cmd('%s %s %s' % ('wget -O', channelver, version_url))
 
 def update_channels(url, zone, urlpicon):
 	os.system("systemctl stop service.tvheadend42")
@@ -177,7 +197,7 @@ def update_channels(url, zone, urlpicon):
 		os.makedirs(addontvhimgmeta)
 	tools.extract(imgcacheFile,addontvhimgcache,dp,header2)
 	os.system("systemctl stop service.tvheadend42")
-	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5078), 5000, addonicon))
+	xbmc.executebuiltin('Notification(%s, %s, %s, %s)'%(addonname, langString(5078), 5000, addonicon))
 	time.sleep(1)
 	os.system("reboot")
 
