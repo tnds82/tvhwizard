@@ -1042,6 +1042,14 @@ msgctxt "#5080"
 msgid "Please Wait..."
 msgstr "Por favor aguarde..."
 
+msgctxt "#5081"
+msgid "Install addon from Tnds repository first"
+msgstr "Instalar o addon pelo Repositório Tnds"
+
+msgctxt "#5082"
+msgid "Install addon from LibreELEC repository first"
+msgstr "Instalar o addon pelo Repositório LibreELEC"
+
 msgctxt "#6000"
 msgid "Parental Control"
 msgstr "Controlo Parental"

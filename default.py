@@ -61,6 +61,14 @@ def thumbnail():
 		xbmc.executebuiltin('Container.SetViewMode(500)')
 	elif skin_used == 'skin.estuary':
 		xbmc.executebuiltin('Container.SetViewMode(500)')	
+	elif skin_used == 'skin.amber':
+		xbmc.executebuiltin('Container.SetViewMode(53)')
+	elif skin_used == 'skin.arctic.zephyr':
+		xbmc.executebuiltin('Container.SetViewMode(500)')
+	elif skin_used == 'skin.mimic':
+		xbmc.executebuiltin('Container.SetViewMode(52)')
+	elif skin_used == 'skin.titan':
+		xbmc.executebuiltin('Container.SetViewMode(509)')
 
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)

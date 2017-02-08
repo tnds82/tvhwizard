@@ -1,0 +1,43 @@
+Version 1.1.2
+- Fix install addons for S905 and work with K1Plus
+
+Version 1.1.1
+- Fix create user client tvh server
+
+Version 1.1.0
+- Fix update, picons and channels version
+- Fix create users tvh server to work with iOS client
+
+Version 1.0.9
+- Fix user and pass in config tvh client
+
+Version 1.0.8
+- Fix show image Wetek Play DVS to choose LNB
+- Support to install addons to S905.aarch64 for K1Plus
+
+Version 1.0.7
+- Fiz autoupdate IP
+
+Version 1.0.6
+- Update addons install
+- Change menus alignment, change icons images
+- New funciont See our IP
+- Remove install secondary addons
+
+Version 1.0.5
+- Add suport WeTek Play 2 in LibreELEC 7.0 (Codesnake version)
+
+Version 1.0.4
+- Fix remove image on Wetek Play dvb-s when you choose tuner
+
+Version 1.0.3
+- Add Recording Tvheadend Config
+
+Version 1.0.2
+- Fix addon update
+
+Version 1.0.1
+- Add Parental Lock to PVR
+
+Version 1.0.0
+- First addon release

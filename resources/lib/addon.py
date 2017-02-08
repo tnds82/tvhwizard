@@ -60,77 +60,103 @@ def ip_box():
 
 def service_oscam():
 	if 'VERSION_ID="7.0"' in open(release).read():
-		if 'RPi2' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/service.softcam.oscam.zip'
-		elif 'WeTek_Play.arm' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/service.softcam.oscam.zip'
-		elif 'WeTek_Core' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/service.softcam.oscam.zip'
-		elif 'K1plus.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.softcam.oscam.zip'
-		elif 'S905.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.softcam.oscam.zip'
-		elif 'KI_Plus' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.softcam.oscam.zip'
-		elif 'Generic' in open(release).read():
+		if 'Generic' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/service.softcam.oscam.zip'
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
 		elif 'Virtual' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/service.softcam.oscam.zip'
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
+		elif 'RPi2' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/service.softcam.oscam.zip'
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
+		elif 'WeTek_Core' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/service.softcam.oscam.zip'
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
+		elif 'WeTek_Play.arm' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/service.softcam.oscam.zip'
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
 		elif 'WeTek_Play_2.aarch64' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay2/service.softcam.oscam.zip'		
-		install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
-		os.system('systemctl daemon-reload')
-		os.system('systemctl start service.softcam.oscam')
+			install_service('Addon Oscam', url, 'service.softcam.oscam', 'service.softcam.oscam.service', 'oscam')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.softcam.oscam')
+		else:
+			xbmcgui.Dialog().ok(addonname, langString(5081), "", "")
+
 	if 'VERSION_ID="8.0"' in open(release).read():
 		xbmc.executebuiltin("InstallAddon(service.softcam.oscam)")
 	
 def service_tvheadend():
 	if 'VERSION_ID="7.0"' in open(release).read():
-		if 'RPi2' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/service.tvheadend42.zip'
-		elif 'WeTek_Play.arm' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/service.tvheadend42.zip'
-		elif 'WeTek_Core' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/service.tvheadend42.zip'
-		elif 'K1plus.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.tvheadend42.zip'
-		elif 'S905.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.tvheadend42.zip'
-		elif 'KI_Plus' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/service.tvheadend42.zip'
-		elif 'Generic' in open(release).read():
+		if 'Generic' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/service.tvheadend42.zip'
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
 		elif 'Virtual' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/service.tvheadend42.zip'
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
+		elif 'RPi2' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/service.tvheadend42.zip'
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
+		elif 'WeTek_Core' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/service.tvheadend42.zip'
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
+		elif 'WeTek_Play.arm' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/service.tvheadend42.zip'
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
 		elif 'WeTek_Play_2.aarch64' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay2/service.tvheadend42.zip'		
-		install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
-		os.system('systemctl daemon-reload')
-		os.system('systemctl start service.tvheadend42')
+			install_service('Addon Tvheadend HTSP Client', url, 'service.tvheadend42', 'service.tvheadend42.service', 'Tvheadend 4.2')
+			os.system('systemctl daemon-reload')
+			os.system('systemctl start service.tvheadend42')
+		else:
+			xbmcgui.Dialog().ok(addonname, langString(5081), "", "")
+			
 	if 'VERSION_ID="8.0"' in open(release).read():
 		xbmc.executebuiltin("InstallAddon(service.tvheadend42)")
 
 def pvr_tvheadend():
 	if 'VERSION_ID="7.0"' in open(release).read():
-		if 'RPi2' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/pvr.hts.zip'
-		elif 'WeTek_Play.arm' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/pvr.hts.zip'
-		elif 'WeTek_Core' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/pvr.hts.zip'
-		elif 'K1plus.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/pvr.hts.zip'
-		elif 'S905.aarch64' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/pvr.hts.zip'
-		elif 'KI_Plus' in open(release).read():
-			url ='http://tnds82.xyz/tvhwizard/libreelec/k1plus/pvr.hts.zip'
-		elif 'Generic' in open(release).read():
+		if 'Generic' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/pvr.hts.zip'
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
 		elif 'Virtual' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/generic/pvr.hts.zip'
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
+		elif 'RPi2' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/rpi/pvr.hts.zip'
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
+		elif 'WeTek_Core' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekcore/pvr.hts.zip'
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
+		elif 'WeTek_Play.arm' in open(release).read():
+			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay/pvr.hts.zip'
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
 		elif 'WeTek_Play_2.aarch64' in open(release).read():
 			url ='http://tnds82.xyz/tvhwizard/libreelec/wetekplay2/pvr.hts.zip'		
-		install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
+			install_addon('Addon Tvheadend 4.2', url, 'pvr.hts', 'Tvheadend HTSP Client')
+		else:
+			xbmcgui.Dialog().ok(addonname, langString(5082), "", "")
+			
 	if 'VERSION_ID="8.0"' in open(release).read():
 		xbmc.executebuiltin("InstallAddon(pvr.hts)")
 
