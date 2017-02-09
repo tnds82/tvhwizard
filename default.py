@@ -8,7 +8,7 @@ import urllib,xbmcplugin,xbmcgui,xbmcaddon,os,time,subprocess
 
 from resources.lib import lock
 
-addon             = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon             = xbmcaddon.Addon(id='script.tvhwizard')
 addonname         = addon.getAddonInfo('name')
 addonfolder       = addon.getAddonInfo('path')
 addonicon         = os.path.join(addonfolder, 'icon.png')
