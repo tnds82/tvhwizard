@@ -9,7 +9,7 @@ import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,tools
 dialog = xbmcgui.Dialog()
 
 	##### ADDON TVH WIZARD by Tnds #####
-addon             = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon             = xbmcaddon.Addon(id='script.tvhwizard')
 addonname         = addon.getAddonInfo('name')
 addonfolder       = addon.getAddonInfo('path')
 
