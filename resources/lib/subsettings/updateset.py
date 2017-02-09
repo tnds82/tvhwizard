@@ -8,7 +8,7 @@ import xbmcaddon
 
 
 	##### ADDON CONFIG TVHEADEND #####
-addon            = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon            = xbmcaddon.Addon(id='script.tvhwizard')
 addonname        = addon.getAddonInfo('name')
 addonfolder      = addon.getAddonInfo('path')
 
