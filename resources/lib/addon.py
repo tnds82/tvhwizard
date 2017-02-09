@@ -6,7 +6,7 @@
 #########################################################################
 import xbmc, xbmcaddon, xbmcgui, os, tools, socket
 
-addon     = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon     = xbmcaddon.Addon(id='script.tvhwizard')
 addonname = addon.getAddonInfo('name')
 release   = "/etc/os-release"
 
