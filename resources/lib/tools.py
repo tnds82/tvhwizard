@@ -6,7 +6,7 @@
 ##############BIBLIOTECAS A IMPORTAR E DEFINICOES####################
 import urllib, os, re, urllib2, xbmc, xbmcgui, xbmcaddon, zipfile
 
-addon         = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon         = xbmcaddon.Addon(id='script.tvhwizard')
 addonname     = addon.getAddonInfo('name')
 
 dp = xbmcgui.DialogProgress()
