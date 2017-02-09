@@ -4,7 +4,7 @@
 	    <setting type="sep" />
         <setting label="3001" type="lsep" />
         <setting type="sep" />
-		<setting label="3002" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, pvr.tvh)" default="" />
+		<setting label="3002" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, pvr.tvh)" default="" />
 	</category>
 	<category label="3003">
 	    <setting type="sep" />
