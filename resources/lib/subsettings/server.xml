@@ -4,8 +4,8 @@
 	    <setting type="sep" />
         <setting label="1001" type="lsep" />
         <setting type="sep" />
-		<setting label="1002" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, pvr.tvh)" default="" />
-		<setting label="1003" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, tvheadend)" default="" />
+		<setting label="1002" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, pvr.tvh)" default="" />
+		<setting label="1003" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, tvheadend)" default="" />
 	</category>
 	<category label="1004">
 	    <setting type="sep" />
@@ -80,7 +80,7 @@
 		<setting label="" type="lsep" visible="eq(-5,true)+eq(-4,pc-nodmx)"/>
 		<setting label="" type="lsep" visible="eq(-6,true)+eq(-5,pc-nodmx)"/>
 		<setting label="" type="lsep" />
-		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, ip)" default="" visible="eq(-7,pc)"/>
+		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, ip)" default="" visible="eq(-7,pc)"/>
 		<setting label="" type="lsep" />
 		<setting label="1066" type="lsep" visible="eq(-10,true)+eq(-9,pc-nodmx)"/>
 		<setting label="1067" type="lsep" visible="eq(-11,true)+eq(-10,pc)"/>
@@ -100,7 +100,7 @@
 	    <setting label="1075" type="bool" id="pvrconfig"/>
 		<setting label="1076" type="text" id="ipbox" subsetting="true" enable="eq(-1,true)" visible="eq(-1,true)" />
 		<setting label="" type="lsep" />
-		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, ip)" default="" visible="eq(-3,true)"/>
+		<setting label="1060" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, ip)" default="" visible="eq(-3,true)"/>
 	</category>
 	<category label="1077">
 	    <setting type="sep" />
