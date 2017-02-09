@@ -6,7 +6,7 @@
 #########################################################################################
 import xbmc, xbmcgui, xbmcaddon, os, sys, json, hashlib
 
-addon             = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon             = xbmcaddon.Addon(id='script.tvhwizard')
 addonname         = addon.getAddonInfo('name')
 addonfolder       = addon.getAddonInfo('path')
 addonicon         = os.path.join(addonfolder, 'icon.png')
