@@ -11,7 +11,7 @@ dp = xbmcgui.DialogProgress()
 release = "/etc/os-release"
 
 	##### ADDON TVH WIZARD by Tnds #####
-addon       = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon       = xbmcaddon.Addon(id='script.tvhwizard')
 addonname   = addon.getAddonInfo('name')
 addonfolder = addon.getAddonInfo('path')
 addondata   = xbmc.translatePath(addon.getAddonInfo('profile'))
