@@ -4,7 +4,7 @@
 	    <setting type="sep" />
         <setting label="4043" type="lsep" />
         <setting type="sep" />
-		<setting label="4044" type="action" action="RunScript(special://home/addons/script.tvhwizard.tnds/resources/lib/addon.py, oscam)" default="" />
+		<setting label="4044" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/addon.py, oscam)" default="" />
 	</category>
 	<category label="4000">
 		<setting label="4001" type="lsep" />
