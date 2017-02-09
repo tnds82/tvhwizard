@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: Tvh Wizard by Tnds
-# Addon id: script.tvhwizard.tnds
-# Addon version: 1.0.0
+# Addon id: script.tvhwizard
+# Addon version: 1.1.2
 # Addon Provider: tnds82
 msgid ""
 msgstr ""
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgctxt "Addon Summary"
-msgid "Configuration of TvHeadend 4.2 and OSCam in LibreELEC"
+msgid "Tvh Wizard by Tnds: Configuration of TvHeadend 4.2 and OSCam in LibreELEC"
 msgstr ""
 
 msgctxt "Addon Description"
-msgid "Addon Description: Use this addon to configure TvHeadend 4.2 and OSCam only from LibreELEC interface with list of updated and organized channels (DVB-C, DVB-S "Hispasat") and the respective Picons. Create user administrator and / or client with password. Add DVBapi client"
+msgid "Tvh Wizard by Tnds: Use this addon to configure TvHeadend 4.2 and OSCam only from LibreELEC interface with list of updated and organized channels (DVB-C, DVB-S "Hispasat") and the respective Picons. Create user administrator and / or client with password. Add DVBapi client"
 msgstr ""
 
 msgctxt "#1000"
