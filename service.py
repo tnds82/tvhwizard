@@ -6,7 +6,7 @@
 ##############BIBLIOTECAS A IMPORTAR E DEFINICOES####################
 import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time
 
-addon            = xbmcaddon.Addon(id='script.tvhwizard.tnds')
+addon            = xbmcaddon.Addon(id='script.tvhwizard')
 addonname        = addon.getAddonInfo('name')
 addonfolder      = addon.getAddonInfo('path')
 addonicon        = os.path.join(addonfolder, 'icon.png')
