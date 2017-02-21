@@ -36,6 +36,11 @@ zoneastra        = os.path.join(tndsdown, 'astra')
 zoneaveiro       = os.path.join(tndsdown, 'aveiro')
 zoneleiria       = os.path.join(tndsdown, 'leiria')
 
+	##### PICONS #####
+piconpath    = "/storage/.kodi/userdata/picons/*"
+piconsympath = "/storage/picons/vdr/"
+
+
    ##### CHANNEL'S VERSION'S #####
 #channelver = "%s%s" % (addontvhchannel, 'version')
 
@@ -191,6 +196,12 @@ def update_channels(url, zone, urlpicon):
 	tools.extract(networkFile,addontvhdvb,dp,header1)
 	## Picons ##
 	tools.picons(urlpicon)
+	if os.path.exists(piconsympath):
+		shutil.rmtree(piconsympath)
+	if not os.path.exists(piconsympath):
+		os.makedirs(piconsympath)
+	time.sleep( 1 )
+	subprocess_cmd("%s %s %s" % ("ln -s", piconpath, piconsympath))
 	## Img Cache ##
 	if os.path.exists(addontvhimgmeta):
 		shutil.rmtree(addontvhimgmeta)
