@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# by Tnds
+# by Tnds82
 # email: tndsrepo@gmail.com
 # This program is free software: GNU General Public License
-############# BIBLIOTECAS A IMPORTAR E DEFINICOES ###################
+##############BIBLIOTECAS A IMPORTAR E DEFINICOES####################
 import xbmc,xbmcplugin,xbmcgui,xbmcaddon,os,shutil,xbmcvfs,re,tools,urllib2,time,subprocess
 
 dialog = xbmcgui.Dialog()
@@ -208,7 +208,7 @@ def update_channels(url, zone, urlpicon):
 		os.makedirs(addontvhimgmeta)
 	tools.extract(imgcacheFile,addontvhimgcache,dp,header2)
 	os.system("systemctl stop service.tvheadend42")
-	xbmc.executebuiltin('Notification(%s, %s, %s, %s)'%(addonname, langString(5078), 5000, addonicon))
+	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5078), 5000, addonicon))
 	time.sleep(1)
 	os.system("reboot")
 
