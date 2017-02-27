@@ -202,7 +202,7 @@ def update_channels(url, zone, urlpicon):
 		os.makedirs(piconsympath)
 	time.sleep( 1 )
 	subprocess_cmd("%s %s %s" % ("ln -s", piconpath, piconsympath))
-	## Img Cache ##
+	## Image Cache ##
 	if os.path.exists(addontvhimgmeta):
 		shutil.rmtree(addontvhimgmeta)
 		os.makedirs(addontvhimgmeta)
