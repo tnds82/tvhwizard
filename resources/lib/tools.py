@@ -193,12 +193,12 @@ def check_htspprofile(number, source):
 	else:
 		None
 			
-def recording_profile(profile, recordingpath, source):
+def recording_profile(profile, recordingpath, source, name):
 	filenamedvr = "%s%s" % (source, "42c91dae1ea94fbc2a46d456491b4179")
 	recordingprofile = open(filenamedvr, 'a')
 	recordingprofile.write('{\n')
 	recordingprofile.write('	"enabled": true,\n')
-	recordingprofile.write('	"name": "Matroska",\n')
+	recordingprofile.write('	"name": "%s",\n' % name)
 	recordingprofile.write('	"comment": "Recording Profile",\n')
 	recordingprofile.write('	"profile": "%s",\n' % profile)
 	recordingprofile.write('	"cache": 2,\n')

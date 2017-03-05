@@ -871,41 +871,41 @@ def tvh_recording():
 		if addon.getSetting('recordprofile') == '0':
 			if 'Generic' in open(release).read():
 				if tools.check_mkvprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)	
+					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 			elif 'Virtual' in open(release).read():
 				if tools.check_mkvprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)	
+					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 			else:
 				if tools.check_mkvprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 				elif tools.check_mkvprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Matroska")
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
@@ -918,41 +918,41 @@ def tvh_recording():
 		elif addon.getSetting('recordprofile') == '1':
 			if 'Generic' in open(release).read():
 				if tools.check_passprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 			elif 'Virtual' in open(release).read():
 				if tools.check_passprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 			else:
 				if tools.check_passprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 				elif tools.check_passprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_passprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "Pass-thru")
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
@@ -965,41 +965,41 @@ def tvh_recording():
 		elif addon.getSetting('recordprofile') == '2':
 			if 'Generic' in open(release).read():
 				if tools.check_htspprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 			if 'Virtual' in open(release).read():
 				if tools.check_htspprofile(6, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(6, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(6, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(5, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(5, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(5, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(4, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(4, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(4, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(3, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(3, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(3, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 			else:
 				if tools.check_htspprofile(2, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(2, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(2, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(1, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(1, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(1, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 				elif tools.check_htspprofile(0, addontvhprofile):
-					tools.recording_profile(tools.check_mkvprofile(0, addontvhprofile),recordingpath, addontvhdvrconf)
+					tools.recording_profile(tools.check_htspprofile(0, addontvhprofile),recordingpath, addontvhdvrconf, "HTSP")
 			if addon.getSetting('logadmin') == 'true':
 				recording = '		"42c91dae1ea94fbc2a46d456491b4179"\n'
 				adminuser = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")
