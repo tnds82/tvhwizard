@@ -417,6 +417,10 @@ msgctxt "#1099"
 msgid "Enable Use Channel Number from Tvheadend"
 msgstr ""
 
+msgctxt "#1100"
+msgid "Choose the LNB you wish to activate"
+msgstr ""
+
 msgctxt "#2000"
 msgid "Update Channels"
 msgstr ""
@@ -1057,6 +1061,9 @@ msgctxt "#5082"
 msgid "Install addon from LibreELEC repository first"
 msgstr ""
 
+msgctxt "#5083"
+msgid "Addon Instructions"
+msgstr ""
 
 msgctxt "#6000"
 msgid "Parental Control"
@@ -1080,4 +1087,56 @@ msgstr ""
 
 msgctxt "#6005"
 msgid "Parental Control Information"
+msgstr ""
+
+msgctxt "#6006"
+msgid "Instructions"
+msgstr ""
+
+msgctxt "#6007"
+msgid "Config OSCam Instructions"
+msgstr ""
+
+msgctxt "#6008"
+msgid "Click to see Instructions"
+msgstr ""
+
+msgctxt "#6009"
+msgid "Config Tvheadend Server Instructions"
+msgstr ""
+
+msgctxt "#6010"
+msgid "Tvhwizard by Tnds Instructions"
+msgstr ""
+
+msgctxt "#6011"
+msgid "Config OSCam"
+msgstr ""
+
+msgctxt "#6012"
+msgid "Config Tvheadend Server"
+msgstr ""
+
+msgctxt "#6013"
+msgid "Config Tvheadend Client"
+msgstr ""
+
+msgctxt "#6014"
+msgid "Config Tvheadend Client Instructions"
+msgstr ""
+
+msgctxt "#6015"
+msgid "Update Channels / IP"
+msgstr ""
+
+msgctxt "#6015"
+msgid "Update Channels / IP Instructions"
+msgstr ""
+
+msgctxt "#6016"
+msgid "Channel Manager Instructions"
+msgstr ""
+
+msgctxt "#6017"
+msgid "Group Manager Instructions"
 msgstr ""
