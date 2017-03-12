@@ -17,6 +17,7 @@ addondata         = xbmc.translatePath(addon.getAddonInfo('profile'))
 addonsettings     = os.path.join(addonfolder, 'resources/settings.xml')
 addonresources    = os.path.join(addonfolder, 'resources/')
 addonsubsettings  = os.path.join(addonfolder, 'resources/lib/subsettings/')
+addoninstructions = os.path.join(addonfolder, 'resources/lib/tutorials/')
 
 addondatasettings = os.path.join(addondata, 'settings.xml')
 
@@ -36,6 +37,7 @@ def CATEGORIES():
 	addDir(langString(5017),5,addonfolder+artsfolder+'/channels.png')
 	addDir(langString(5018),6,addonfolder+artsfolder+'/groups.png')
 	addDir(langString(5019),7,addonfolder+artsfolder+'/update.png')
+	addDir(langString(5083),10,addonfolder+artsfolder+'/instructions.png')
 	thumbnail()
 	
 def lock_menu():
@@ -131,6 +133,10 @@ def client():
 		client.tvh_guide()
 	
 	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5023), 5000, addonicon))
+
+def instructions():
+	from resources.lib.tutorials import instructions
+	instructions.Tvwpage1().doModal()
 
 def update():
 	if not os.path.exists(xbmcaddon.Addon(id='service.tvheadend42').getAddonInfo('path')):
@@ -308,5 +314,7 @@ elif mode==8:
 	adlock()
 elif mode==9:
 	channel_lock()
+elif mode==10:
+	instructions()
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
