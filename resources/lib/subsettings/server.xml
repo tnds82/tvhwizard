@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
+	<category label="6006">
+	    <setting type="sep" />
+        <setting label="6009" type="lsep" />
+        <setting type="sep" />
+		<setting label="6008" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/tutorials/tvh.py, page1)" default="" />		
+	</category>
 	<category label="1000">
 	    <setting type="sep" />
         <setting label="1001" type="lsep" />

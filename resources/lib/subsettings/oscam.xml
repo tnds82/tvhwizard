@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
+	<category label="6006">
+	    <setting type="sep" />
+        <setting label="6007" type="lsep" />
+        <setting type="sep" />
+		<setting label="6008" type="action" action="RunScript(special://home/addons/script.tvhwizard/resources/lib/tutorials/oscam.py, page1)" default="" />		
+	</category>
 	<category label="4042">
 	    <setting type="sep" />
         <setting label="4043" type="lsep" />
