@@ -719,15 +719,15 @@ msgstr "CCCam Configuração"
 
 msgctxt "#5000"
 msgid "Status"
-msgstr "Informacao"
+msgstr "Informação"
 
 msgctxt "#5001"
 msgid "Config OSCam Settings"
-msgstr "Configuracao das Definicoes do OSCam"
+msgstr "Configuração das Definições do OSCam"
 
 msgctxt "#5002"
 msgid "Config Tvheadend Settings"
-msgstr "Configuracao das Definicoes Tvheadend"
+msgstr "Configuração das Definições Tvheadend"
 
 msgctxt "#5003"
 msgid "Addon Lock"
@@ -743,7 +743,7 @@ msgstr "Actualizar Canais"
 
 msgctxt "#5006"
 msgid "Update IP automatic"
-msgstr "Actualizacao Automática IP"
+msgstr "Actualização Automática IP"
 
 msgctxt "#5007"
 msgid "[COLORred]unconfigured[/COLOR]"
@@ -815,7 +815,7 @@ msgstr "Tvh Cliente configurado e pronto, reinicie o sistema"
 
 msgctxt "#5024"
 msgid "[COLOR red]Information:[/COLOR] The update addon"
-msgstr "[COLOR red]Informação:[/COLOR] A actualizacao addon"
+msgstr "[COLOR red]Informação:[/COLOR] A actualização addon"
 
 msgctxt "#5025"
 msgid "only works if you have the addon"
@@ -831,11 +831,11 @@ msgstr "Escolha"
 
 msgctxt "#5028"
 msgid "Update: Check if have any update"
-msgstr "Actualizar: Verifique se tem alguma actualizacao"
+msgstr "Actualizar: Verifique se tem alguma actualização"
 
 msgctxt "#5029"
 msgid "Settings: Open Update Setings"
-msgstr "Definicoes: Abrir Configuracoes de Actualizacao"
+msgstr "Definições: Abrir Configurações de Actualização"
 
 msgctxt "#5030"
 msgid "Update"
@@ -843,11 +843,11 @@ msgstr "Actualizar"
 
 msgctxt "#5031"
 msgid "Settings"
-msgstr "Definicoes"
+msgstr "Definições"
 
 msgctxt "#5032"
 msgid "Open Update Settings and activate"
-msgstr "Abrir Configuracoes de Actualizacao e Activar"
+msgstr "Abrir Configurações de Actualização e Activar"
 
 msgctxt "#5033"
 msgid "OSCam set up and ready"
@@ -855,7 +855,7 @@ msgstr "OSCam configurado e pronto"
 
 msgctxt "#5034"
 msgid "Enter secret code to unlock addon"
-msgstr "Introduza codigo secreto para desbloquear o addon"
+msgstr "Introduza código secreto para desbloquear o addon"
 
 msgctxt "#5035"
 msgid "Wrong password try again"
@@ -867,7 +867,7 @@ msgstr "Escolha o que pretende definir no Tvheadend"
 
 msgctxt "#5037"
 msgid "Server: Config Server and Client"
-msgstr "Servidor: Configuracao Servidor e Cliente"
+msgstr "Servidor: Configuração Servidor e Cliente"
 
 msgctxt "#5038"
 msgid "Client: Config only Client"
@@ -887,27 +887,27 @@ msgstr "IP foi actualizado com sucesso, a caixa vai reiniciar"
 
 msgctxt "#5042"
 msgid "PVR Config alredy created"
-msgstr "PVR Configuracao ja criada"
+msgstr "PVR Configuração já criada"
 
 msgctxt "#5043"
 msgid "Advanced Settings alredy created"
-msgstr "Definicoes Avancadas ja criadas"
+msgstr "Definições Avançadas já criada"
 
 msgctxt "#5044"
 msgid "Enter secret code to lock addon"
-msgstr "Introduza codigo secreto para bloquear o addon"
+msgstr "Introduza código secreto para bloquear o addon"
 
 msgctxt "#5045"
 msgid "ADDON IS [COLOR green]LOCKED[/COLOR]"
-msgstr "ADDON ESTA [COLOR green]BLOQUEADO[/COLOR]"
+msgstr "ADDON ESTÁ [COLOR green]BLOQUEADO[/COLOR]"
 
 msgctxt "#5046"
 msgid "Enter secret code to unlock addon"
-msgstr "Introduza codigo secreto para desbloquear o addon"
+msgstr "Introduza código secreto para desbloquear o addon"
 
 msgctxt "#5047"
 msgid "ADDON IS [COLOR red]UNLOCKED[/COLOR]"
-msgstr "ADDON ESTA [COLOR red]DESBLOQUEADO[/COLOR]"
+msgstr "ADDON ESTÁ [COLOR red]DESBLOQUEADO[/COLOR]"
 
 msgctxt "#5048"
 msgid "[COLOR red]Disabled[/COLOR]"
@@ -919,7 +919,7 @@ msgstr "[COLOR green]Activado[/COLOR]"
 
 msgctxt "#5050"
 msgid "Enter Parental Pin Code"
-msgstr "Introduza o Codigo PIN do Controlo Parental"
+msgstr "Introduza o Código PIN do Controlo Parental"
 
 msgctxt "#5051"
 msgid "Parental Control [COLOR green]Enabled[/COLOR]"
@@ -931,11 +931,11 @@ msgstr "Controlo Parental [COLOR red]Desactivo[/COLOR]"
 
 msgctxt "#5053"
 msgid "OSCam Config it has already been set"
-msgstr "Configuracao OSCam ja foi criado"
+msgstr "Configuração OSCam já foi criado"
 
 msgctxt "#5054"
 msgid "Default user [COLOR white]oscam[/COLOR]"
-msgstr "Utilizador padrao [COLOR white]oscam[/COLOR]"
+msgstr "Utilizador padrão [COLOR white]oscam[/COLOR]"
 
 msgctxt "#5055"
 msgid "Default pass [COLOR white]oscam[/COLOR]"
@@ -943,31 +943,31 @@ msgstr "Palavra-Passe [COLOR white]oscam[/COLOR]"
 
 msgctxt "#5056"
 msgid "Default port [COLOR white]8888[/COLOR]"
-msgstr "Porta padrao [COLOR white]8888[/COLOR]"
+msgstr "Porta padrão [COLOR white]8888[/COLOR]"
 
 msgctxt "#5057"
 msgid "DVBApi it has already been set"
-msgstr "DVBapi ja foi criado"
+msgstr "DVBapi já foi criado"
 
 msgctxt "#5058"
 msgid "CCCam it has already been set"
-msgstr "CCCam ja foi criado"
+msgstr "CCCam já foi criado"
 
 msgctxt "#5059"
 msgid "Reader it has already been set"
-msgstr "Linha ja foi criada"
+msgstr "Linha já foi criada"
 
 msgctxt "#5060"
 msgid "User it has already been set"
-msgstr "Utilizador ja foi definido"
+msgstr "Utilizador já foi definido"
 
 msgctxt "#5061"
 msgid "Tvheadend Config alredy created"
-msgstr "Configuracao Tvheadend ja foi criada"
+msgstr "Configuração Tvheadend já foi criada"
 
 msgctxt "#5062"
 msgid "Softcam - dvbapi alredy created"
-msgstr "Softcam - dvbapi ja foi criado"
+msgstr "Softcam - dvbapi já foi criado"
 
 msgctxt "#5063"
 msgid "Channels created"
@@ -975,11 +975,11 @@ msgstr "Canais criados"
 
 msgctxt "#5064"
 msgid "Piconpath alredy created"
-msgstr "Piconpath ja foi criado"
+msgstr "Piconpath já foi criado"
 
 msgctxt "#5065"
 msgid "The tuner already enable"
-msgstr "O tuner ja se encontra activo"
+msgstr "O tuner já se encontra activo"
 
 msgctxt "#5066"
 msgid "Choose the LNB you wish to activate"
@@ -995,23 +995,23 @@ msgstr "LNB1"
 
 msgctxt "#5069"
 msgid "Default access is disable"
-msgstr "Acesso geral esta desabilitado"
+msgstr "Acesso geral está desabilitado"
 
 msgctxt "#5070"
 msgid "Recording alredy modify"
-msgstr "Gravacao ja foi modificada"
+msgstr "Gravação já foi modificada"
 
 msgctxt "#5071"
 msgid "PVR Config alredy created"
-msgstr "Configuração PVR ja foi criada"
+msgstr "Configuração PVR já foi criada"
 
 msgctxt "#5072"
 msgid "Advanced Settings alredy created"
-msgstr "Definicoes avancadas ja foram criadas"
+msgstr "Definições avançadas já foram criadas"
 
 msgctxt "#5073"
 msgid "Timeshift alredy created"
-msgstr "Timeshift ja foi criado"
+msgstr "Timeshift já foi criado"
 
 msgctxt "#5074"
 msgid "Download was canceled"
@@ -1031,7 +1031,7 @@ msgstr "Novos canais. Pretender actualizar?"
 
 msgctxt "#5078"
 msgid "Channels were successfully updated. System will restart"
-msgstr "Novos canais actualizados. Sistema vai reiniciar"
+msgstr "Novos canais actualizados. Sistema irá reiniciar"
 
 msgctxt "#5079"
 msgid "Your IP:"
@@ -1043,11 +1043,15 @@ msgstr "Por favor aguarde..."
 
 msgctxt "#5081"
 msgid "Install addon from Tnds repository first"
-msgstr "Instalar o addon pelo Repositorio Tnds"
+msgstr "Instalar o addon pelo Repositório Tnds"
 
 msgctxt "#5082"
 msgid "Install addon from LibreELEC repository first"
-msgstr "Instalar o addon pelo Repositorio LibreELEC"
+msgstr "Instalar o addon pelo Repositório LibreELEC"
+
+msgctxt "#5083"
+msgid "Addon Instructions"
+msgstr "Instruções do Addon"
 
 msgctxt "#6000"
 msgid "Parental Control"
@@ -1072,3 +1076,56 @@ msgstr "Controlo Parental dos Canais"
 msgctxt "#6005"
 msgid "Parental Control Information"
 msgstr "Informação do Controlo Parental"
+
+msgctxt "#6006"
+msgid "Instructions"
+msgstr "Instruções"
+
+msgctxt "#6007"
+msgid "Config OSCam Config Instructions"
+msgstr "Instruções da Configuração do OSCam"
+
+msgctxt "#6008"
+msgid "Click to see Instructions"
+msgstr "Clica para ver as Instruções"
+
+msgctxt "#6009"
+msgid "Config Tvheadend Server Instructions"
+msgstr "Instruções da Configuração do Tvheadend Server"
+
+msgctxt "#6010"
+msgid "Tvhwizard by Tnds Addon Instructions"
+msgstr "Instruções do Addon Tvhwizard by Tnds"
+
+msgctxt "#6011"
+msgid "Config OSCam"
+msgstr "Configurar OSCam"
+
+msgctxt "#6012"
+msgid "Config Tvheadend Server"
+msgstr "Configurar Tvheadend Server"
+
+msgctxt "#6013"
+msgid "Config Tvheadend Client"
+msgstr "Configurar Tvheadend Cliente"
+
+msgctxt "#6014"
+msgid "Config Tvheadend Client Instructions"
+msgstr "Instruções da Configuração do Tvheadend Cliente"
+
+msgctxt "#6015"
+msgid "Update Channels / IP"
+msgstr "Actualização Canais / IP"
+
+msgctxt "#6015"
+msgid "Update Channels / IP Instructions"
+msgstr "Instruções da Actualização Canais / IP"
+
+msgctxt "#6016"
+msgid "Channel Manager Instructions"
+msgstr "Instruções de Gerenciar Canais"
+
+msgctxt "#6017"
+msgid "Group Manager Instructions"
+msgstr "Instruções de Gerenciar Grupos"
+
