@@ -13,7 +13,7 @@ dp = xbmcgui.DialogProgress()
 addon       = xbmcaddon.Addon(id='script.tvhwizard')
 addonname   = addon.getAddonInfo('name')
 addonfolder = addon.getAddonInfo('path')
-addonicon   = os.path.join(addonfolder, 'icon.png')
+addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 addondata   = xbmc.translatePath(addon.getAddonInfo('profile'))
 channelver  = os.path.join(addondata, 'data/version')
 
