@@ -106,30 +106,30 @@ def tvh_config():
 		#web language
 		if addon.getSetting('languipt') == 'true':
 			uilangpt = '    "language_ui": "por",\n'
-			tools.insert_words(addontvhconfig, 22, uilangpt)
+			tools.insert_words(addontvhconfig, 24, uilangpt)
 		
 		if addon.getSetting('languien') == 'true':
 			uilangen = '    "language_ui": "eng",\n'
-			tools.insert_words(addontvhconfig, 22, uilangen)
+			tools.insert_words(addontvhconfig, 24, uilangen)
 
 		#epg language
 		if addon.getSetting('langepg') == 'true':
 			#en
 			epglangen = '    	"eng"\n'
-			tools.insert_words(addontvhconfig, 14, epglangen)
+			tools.insert_words(addontvhconfig, 15, epglangen)
 
 			#pt
 			epglangpt = '    	"por",\n'
-			tools.insert_words(addontvhconfig, 14, epglangpt)
+			tools.insert_words(addontvhconfig, 15, epglangpt)
 
 			if addon.getSetting('langepgen') == 'false':
 				#pt
 				epglangp = '    	"por"\n'
-				tools.removeinsert_2words(addontvhconfig, 14, 14, 14, epglangp)
+				tools.removeinsert_2words(addontvhconfig, 15, 15, 15, epglangp)
 			if addon.getSetting('langepgpt') == 'false':
 				#en
 				epglange = '    	"eng"\n'
-				tools.removeinsert_2words(addontvhconfig, 14, 14, 14, epglange)
+				tools.removeinsert_2words(addontvhconfig, 15, 15, 15, epglange)
 
 ##### DVBAPI #####
 
@@ -396,7 +396,7 @@ def tvh_tunners():
 		if addon.getSetting('wetekp2dvbs') == 'true':
 			wetek2tuner = os.listdir(addontvhtuners)[0]
 			w2dvbs = "%s%s" % (addontvhtuners, wetek2tuner)
-			if '"enabled": true' in open(w2dvbs).read():
+			if not '"enabled": false,' in open(w2dvbs).read():
 				dialog.notification(addonname, langString(5065), xbmcgui.NOTIFICATION_WARNING, 2000)
 			else:
 				if addon.getSetting('astra') == 'true':
@@ -422,9 +422,9 @@ def tvh_tunners():
 			wdvbs1 = "%s%s" % (addontvhtuners, wetektuners1)
 			wetektuners2 = os.listdir(addontvhtuners)[1]
 			wdvbs2 = "%s%s" % (addontvhtuners, wetektuners2)
-			if '"enabled": true' in open(wdvbs1).read():
+			if not '"enabled": false,' in open(wdvbs1).read():
 				dialog.notification(addonname, langString(5065), xbmcgui.NOTIFICATION_WARNING, 2000)
-			if '"enabled": true' in open(wdvbs2).read():
+			if not '"enabled": false,' in open(wdvbs2).read():
 				dialog.notification(addonname, langString(5065), xbmcgui.NOTIFICATION_WARNING, 2000)
 			else:
 				wetekdvbs = dialog.yesno(addonname, langString(5066), "", "", langString(5067), langString(5068))

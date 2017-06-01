@@ -83,7 +83,7 @@ def wetek2cable(tuner, enable, cable):
 	wdvbcinput.close()
 	del contents[11]
 	contents.insert(11, enable)
-	contents.insert(20, cable)
+	contents.insert(21, cable)
 	wdvbcinput = open(tuner, 'w')
 	contents = "".join(contents)
 	wdvbcinput.write(contents)
@@ -95,8 +95,8 @@ def wetek2sat(tuner, enable, sat, sat1):
 	wdvbsinput.close()
 	del contents[11]
 	contents.insert(11, enable)
-	contents.insert(20, sat)
-	contents.insert(36, sat1)
+	contents.insert(21, sat)
+	contents.insert(37, sat1)
 	wdvbsinput = open(tuner, 'w')
 	contents = "".join(contents)
 	wdvbsinput.write(contents)
@@ -106,9 +106,9 @@ def wetekcable(tuner, enable, cable):
 	wdvbcinput = open(tuner, 'r')
 	contents = wdvbcinput.readlines()
 	wdvbcinput.close()
-	del contents[34]
-	contents.insert(34, enable)
-	contents.insert(43, cable)
+	del contents[35]
+	contents.insert(35, enable)
+	contents.insert(45, cable)
 	wdvbcinput = open(tuner, 'w')
 	contents = "".join(contents)
 	wdvbcinput.write(contents)
@@ -120,8 +120,8 @@ def weteksat(tuner, enable, sat, sat1):
 	wdvbsinput.close()
 	del contents[11]
 	contents.insert(11, enable)
-	contents.insert(20, sat)
-	contents.insert(36, sat1)
+	contents.insert(21, sat)
+	contents.insert(37, sat1)
 	wdvbsinput = open(tuner, 'w')
 	contents = "".join(contents)
 	wdvbsinput.write(contents)
@@ -151,7 +151,7 @@ def generic(tuner, enable, cable, sat, sat1):
 			input.close()
 			del contents[11]
 			contents.insert(11, enable)
-			contents.insert(20, cable)
+			contents.insert(21, cable)
 			input = open(tuner, 'w')
 			contents = "".join(contents)
 			input.write(contents)
@@ -162,8 +162,8 @@ def generic(tuner, enable, cable, sat, sat1):
 			input.close()
 			del contents[11]
 			contents.insert(11, enable)
-			contents.insert(20, sat)
-			contents.insert(36, sat1)
+			contents.insert(21, sat)
+			contents.insert(37, sat1)
 			input = open(tuner, 'w')
 			contents = "".join(contents)
 			input.write(contents)
