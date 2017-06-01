@@ -9,7 +9,7 @@ import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time
 addon            = xbmcaddon.Addon(id='script.tvhwizard')
 addonname        = addon.getAddonInfo('name')
 addonfolder      = addon.getAddonInfo('path')
-addonicon        = os.path.join(addonfolder, 'icon.png')
+addonicon        = os.path.join(addonfolder, 'resources/icon.png')
 
 def langString(id):
 	return addon.getLocalizedString(id)
