@@ -9,7 +9,7 @@ import xbmc, xbmcgui, xbmcaddon, os, sys, json, hashlib
 addon             = xbmcaddon.Addon(id='script.tvhwizard')
 addonname         = addon.getAddonInfo('name')
 addonfolder       = addon.getAddonInfo('path')
-addonicon         = os.path.join(addonfolder, 'icon.png')
+addonicon         = os.path.join(addonfolder, 'resources/icon.png')
 
 addondata         = xbmc.translatePath(addon.getAddonInfo('profile'))
 addonsettings     = os.path.join(addonfolder, 'resources/settings.xml')
