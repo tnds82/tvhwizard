@@ -1,15 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# by Tnds82
-# email: tndsrepo@gmail.com
-# This program is free software: GNU General Public License
-##############BIBLIOTECAS A IMPORTAR E DEFINICOES####################
-import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time
+################################################################################
+#      This file is part of LibreELEC - https://libreelec.tv
+#      Copyright (C) 2016-2017 Team LibreELEC
+#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
+#
+#  LibreELEC is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  LibreELEC is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################
 
-addon            = xbmcaddon.Addon(id='script.tvhwizard')
-addonname        = addon.getAddonInfo('name')
-addonfolder      = addon.getAddonInfo('path')
-addonicon        = os.path.join(addonfolder, 'resources/icon.png')
+import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time,xbmc
+from lib import status
+
+addon       = xbmcaddon.Addon(id='script.tvhwizard')
+addonname   = addon.getAddonInfo('name')
+addonfolder = addon.getAddonInfo('path')
+addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 
 def langString(id):
 	return addon.getLocalizedString(id)
@@ -29,7 +45,8 @@ def checkip_andchange():
 	ipdvbapi = addon.getSetting('ipdvbapi')
 	changeip = {ipdvbapi:newip}
 	if newip == oldip:
-		print "Same IP, nothing needed to be done." 
+		addon.setSetting(id='tvhip', value=newip)
+		print newip
 	else:
 		if addon.getSetting('dvbapichoose') == 'pc':
 			addontvh     = xbmcaddon.Addon(id='service.tvheadend42')
@@ -41,14 +58,13 @@ def checkip_andchange():
 				tools.change_words(dvbapifile, changeip)
 		addon.setSetting(id='ipbox', value=newip)
 		addonpvr.setSetting(id='host', value=newip)
-		
+		addon.setSetting(id='tvhip', value=newip)
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
 		time.sleep(1)
-		os.system("reboot")
-	
-if addon.getSetting('updatetvh') == 'true':
-	from resources.lib import update
-	update.zone_channels()
+		xbmc.executebuiltin('RestartApp')
 
 if addon.getSetting('changeip') == 'true':
+	time.sleep(3)
 	checkip_andchange()
+	status.status()
+

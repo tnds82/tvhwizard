@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-	<category label="5000">
-	    <setting type="sep" />
-		<setting label="5001" type="action" id="oscaminfo" default="[COLORred]unconfigured[/COLOR]" /> 
-		<setting label="5002" type="action" id="tvhinfo" default="[COLORred]unconfigured[/COLOR]" /> 
-		<setting label="5003" type="action" id="lockinfo" default="[COLORred]unlocked[/COLOR]" /> 
-		<setting label="5004" type="action" id="parentalinfo" default="[COLORred]unlocked[/COLOR]" /> 
-		<setting label="5005" type="action" id="updateinfo" default="[COLORred]disable[/COLOR]" /> 
-		<setting label="5006" type="action" id="ipinfo" default="[COLORred]disable[/COLOR]" /> 
-		</category>
+   <category   label="30000">
+      <setting label="30000" type="text" id="tvhstatus" enable="false" default="Not Configured"/>
+      <setting label="" type="lsep" />
+      <setting label="30002" type="text" id="tvh" enable="false" default="Not Configured"/>
+      <setting label="30003" type="text" id="oscam" enable="false" default="Not Configured"/>
+      <setting label="" type="lsep" />
+      <setting label="30004" type="text" id="tvhip" enable="false" />
+   </category>
+   <category   label="30005">
+      <setting label="30000" type="text" id="tvh" enable="false" default="Not Configured"/>
+      <setting type="sep" />
+      <setting label="30001" type="text" id="useradmin" enable="false" />
+      <setting label="30007" type="text" id="box" enable="false" />
+      <setting label="30008" type="text" id="tuner" enable="false" subsetting='true' />
+      <setting label="30009" type="text" id="channels" enable="false" subsetting='true' />
+      <setting label="30010" type="text" id="pathrecording" enable="false" />
+      <setting label="30011" type="text" id="softcam" enable="false" />
+      <setting label="30012" type="text" id="portdvbapi" enable="false" subsetting='true' />
+   </category>
+   <category   label="30006">
+      <setting label="30000" type="text" id="oscam" enable="false" default="Not Configured"/>
+      <setting type="sep" />
+      <setting label="30001" type="text" id="useroscam" enable="false" />
+      <setting label="30011" type="text" id="softcam" enable="false" />
+      <setting label="30013" type="text" id="readertype" enable="false" />
+      <setting label="30014" type="text" id="readerfirst" enable="false" subsetting='true' />
+      <setting label="30015" type="text" id="readersecond" enable="false" subsetting='true' />
+      <setting label="30016" type="text" id="readerthird" enable="false" subsetting='true' />
+      <setting label="30017" type="text" id="readerfourth" enable="false" subsetting='true' />
+      <setting label="30018" type="text" id="readerfifth" enable="false" subsetting='true' />
+   </category>
+
 </settings>
