@@ -540,10 +540,10 @@ class DVBT(pyxbmct.AddonFullWindow):
         self.meo_button = pyxbmct.RadioButton('')
         self.placeControl(self.meo_button, 11, 6, rowspan=1, columnspan=4)
         self.connect(self.meo_button, self.meo_button_update)
-#        if (addon.getSetting('meo') == 'true'):
-#            self.meo_button.setSelected(True)
-#        else:
-#            self.meo_button.setSelected(False)
+        if (addon.getSetting('meo') == 'true'):
+            self.meo_button.setSelected(True)
+        else:
+            self.meo_button.setSelected(False)
         meo = pyxbmct.Image(addonfolder+artsfolder+'/meo.png')
         self.placeControl(meo, 11, 6, rowspan=1, columnspan=4)
 
@@ -586,12 +586,11 @@ class DVBT(pyxbmct.AddonFullWindow):
 
     def meo_button_update(self):
         if self.meo_button.isSelected():
-#            self.close()
-#            addon.setSetting(id='meo', value='true')
-#            Finish().doModal()
-            xbmcgui.Dialog().ok(addonname, "Comming Soon", "", "")
-#        else:
-#            addon.setSetting(id='meo', value='false')
+            self.close()
+            addon.setSetting(id='meo', value='true')
+            Finish().doModal()
+        else:
+            addon.setSetting(id='meo', value='false')
 
     def vodafone_button_update(self):
         if self.vodafone_button.isSelected():

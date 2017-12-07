@@ -260,6 +260,8 @@ def tvh_tunners():
 	dvbcnetwork  = "2e3a376d8f26d0e7db2970d22f691ce3"
 	hispanetwork = "f9f86bd361cdb5c3349163346ac173f7"
 	astranetwork = "b49667f409cd90d954431ce14ea69405"
+	tdtnetwork   = "3b71a44c08543bd024fad8630f745d60"
+	meonetwork   = "f7fcf1c68e088087ed89c5214264e876"
 
 	if addon.getSetting('wetek') == 'true':
 		if addon.getSetting('wetekplay') == 'true':
@@ -267,13 +269,23 @@ def tvh_tunners():
 				wetektuner = os.listdir(addontvhtuners)[0]
 				wdvbc = "%s%s" % (addontvhtuners, wetektuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					tools.dvbc(wdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(wdvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(wdvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
-					tvh_channels('porto')
-					tvh_picons('noscabo')
-					tools.dvbc(wdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('porto')
+						tvh_picons('noscabo')
+						tools.dvbc(wdvbc, dvbcnetwork)
+					else:
+						tvh_channels('portofree')
+						tvh_picons('noscabofree')
+						tools.dvbc(wdvbc, dvbcnetwork)
 				elif addon.getSetting('coimbra') == 'true':
 					tvh_channels('coimbra')
 					tvh_picons('noscabo')
@@ -392,71 +404,56 @@ def tvh_tunners():
 					tools.dvbt(wdvbt, vodafonenetwork)
 		elif addon.getSetting('wetekplay2') == 'true':
 			if addon.getSetting('wdvbc') == 'true':
+				wetek2tuner = os.listdir(addontvhtuners)[0]
+				w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
-					tools.dvbc(w2dvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(w2dvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
 					tvh_channels('porto')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('coimbra') == 'true':
 					tvh_channels('coimbra')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('leiria') == 'true':
 					tvh_channels('leiria')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('madeira') == 'true':
 					tvh_channels('madeira')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('acores') == 'true':
 					tvh_channels('acores')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('mirandela') == 'true':
 					tvh_channels('mirandela')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('santarem') == 'true':
 					tvh_channels('santarem')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('stejo') == 'true':
 					tvh_channels('stejo')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('evora') == 'true':
 					tvh_channels('evora')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 				elif addon.getSetting('algarve') == 'true':
 					tvh_channels('algarve')
 					tvh_picons('noscabo')
-					wetek2tuner = os.listdir(addontvhtuners)[0]
-					w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 					tools.dvbc(w2dvbc, dvbcnetwork)
 			elif addon.getSetting('wdvbs') == 'true':
 				wetek2tuners = os.listdir(addontvhtuners)[0]
@@ -495,9 +492,14 @@ def tvh_tunners():
 				ktuner = os.listdir(addontvhtuners)[0]
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					tools.dvbc(kdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(kdvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(kdvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
 					tvh_channels('porto')
 					tvh_picons('noscabo')
@@ -575,9 +577,14 @@ def tvh_tunners():
 				ktuner = os.listdir(addontvhtuners)[0]
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					tools.dvbc(kdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(kdvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(kdvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
 					tvh_channels('porto')
 					tvh_picons('noscabo')
@@ -655,9 +662,14 @@ def tvh_tunners():
 				ktuner = os.listdir(addontvhtuners)[0]
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					tools.dvbc(kdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(kdvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(kdvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
 					tvh_channels('porto')
 					tvh_picons('noscabo')
@@ -735,9 +747,14 @@ def tvh_tunners():
 				ktuner = os.listdir(addontvhtuners)[0]
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('lisboa') == 'true':
-					tvh_channels('lisboa')
-					tvh_picons('noscabo')
-					tools.dvbc(kdvbc, dvbcnetwork)
+					if addon.getSetting('start') == 'tvhwosc':
+						tvh_channels('lisboa')
+						tvh_picons('noscabo')
+						tools.dvbc(kdvbc, dvbcnetwork)
+					else:
+						tvh_channels('lisboafree')
+						tvh_picons('noscabofree')
+						tools.dvbc(kdvbc, dvbcnetwork)
 				elif addon.getSetting('porto') == 'true':
 					tvh_channels('porto')
 					tvh_picons('noscabo')
@@ -816,9 +833,14 @@ def tvh_tunners():
 			if addon.getSetting('usb') == 'true':
 				if addon.getSetting('gdvbc') == 'true':
 					if addon.getSetting('lisboa') == 'true':
-						tvh_channels('lisboa')
-						tvh_picons('noscabo')
-						tools.dvbc(tuners, dvbcnetwork)
+						if addon.getSetting('start') == 'tvhwosc':
+							tvh_channels('lisboa')
+							tvh_picons('noscabo')
+							tools.dvbc(tuners, dvbcnetwork)
+						else:
+							tvh_channels('lisboafree')
+							tvh_picons('noscabofree')
+							tools.dvbc(tuners, dvbcnetwork)
 					elif addon.getSetting('porto') == 'true':
 						tvh_channels('porto')
 						tvh_picons('noscabo')
@@ -888,9 +910,14 @@ def tvh_tunners():
 			elif addon.getSetting('pcix') == 'true':
 				if addon.getSetting('gdvbc') == 'true':
 					if addon.getSetting('lisboa') == 'true':
-						tvh_channels('lisboa')
-						tvh_picons('noscabo')
-						tools.dvbc(tuners, dvbcnetwork)
+						if addon.getSetting('start') == 'tvhwosc':
+							tvh_channels('lisboa')
+							tvh_picons('noscabo')
+							tools.dvbc(tuners, dvbcnetwork)
+						else:
+							tvh_channels('lisboafree')
+							tvh_picons('noscabofree')
+							tools.dvbc(tuners, dvbcnetwork)
 					elif addon.getSetting('porto') == 'true':
 						tvh_channels('porto')
 						tvh_picons('noscabo')
