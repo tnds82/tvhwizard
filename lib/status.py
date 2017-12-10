@@ -78,28 +78,10 @@ def status():
 			addon.setSetting(id='tuner', value='DVB-S')
 		elif addon.getSetting('gdvbt') == 'true':
 			addon.setSetting(id='tuner', value='DVB-T')
-		if addon.getSetting('porto') == 'true':
-			addon.setSetting(id='channels', value='NOS Porto')
-		elif addon.getSetting('coimbra') == 'true':
-			addon.setSetting(id='channels', value='NOS Coimbra')
-		elif addon.getSetting('leiria') == 'true':
-			addon.setSetting(id='channels', value='NOS Leiria')
-		elif addon.getSetting('lisboa') == 'true':
-			addon.setSetting(id='channels', value='NOS Lisboa')
-		elif addon.getSetting('madeira') == 'true':
-			addon.setSetting(id='channels', value='NOS Madeira')
-		elif addon.getSetting('acores') == 'true':
-			addon.setSetting(id='channels', value='NOS Açores')
-		elif addon.getSetting('mirandela') == 'true':
-			addon.setSetting(id='channels', value='NOS Mirandela')
-		elif addon.getSetting('santarem') == 'true':
-			addon.setSetting(id='channels', value='NOS Santarem')
-		elif addon.getSetting('stejo') == 'true':
-			addon.setSetting(id='channels', value='NOS Sul Tejo')
-		elif addon.getSetting('evora') == 'true':
-			addon.setSetting(id='channels', value='NOS Évora')
-		elif addon.getSetting('algarve') == 'true':
-			addon.setSetting(id='channels', value='NOS Algarve')
+		if addon.getSetting('nos') == 'true':
+			addon.setSetting(id='channels', value='NOS')
+		elif addon.getSetting('nowo') == 'true':
+			addon.setSetting(id='channels', value='Nowo')
 		elif addon.getSetting('hispasat') == 'true':
 			addon.setSetting(id='channels', value='Hispasat')
 		elif addon.getSetting('astra') == 'true':
@@ -109,9 +91,9 @@ def status():
 		elif addon.getSetting('tdt') == 'true':
 			addon.setSetting(id='channels', value='TDT Portugal')
 		elif addon.getSetting('meo') == 'true':
-			addon.setSetting(id='channels', value='TDT Meo')
+			addon.setSetting(id='channels', value='Meo')
 		elif addon.getSetting('vodafone') == 'true':
-			addon.setSetting(id='channels', value='TDT Vodafone')		
+			addon.setSetting(id='channels', value='Vodafone')		
 	else:
 		if addon.getSetting('wetekplay') == 'true':
 			addon.setSetting(id='box', value='Wetek Play')
@@ -153,28 +135,10 @@ def status():
 			addon.setSetting(id='tuner', value='DVB-S')
 		elif addon.getSetting('gdvbt') == 'true':
 			addon.setSetting(id='tuner', value='DVB-T')
-		if addon.getSetting('porto') == 'true':
-			addon.setSetting(id='channels', value='NOS Porto')
-		elif addon.getSetting('coimbra') == 'true':
-			addon.setSetting(id='channels', value='NOS Coimbra')
-		elif addon.getSetting('leiria') == 'true':
-			addon.setSetting(id='channels', value='NOS Leiria')
-		elif addon.getSetting('lisboa') == 'true':
-			addon.setSetting(id='channels', value='NOS Lisboa')
-		elif addon.getSetting('madeira') == 'true':
-			addon.setSetting(id='channels', value='NOS Madeira')
-		elif addon.getSetting('acores') == 'true':
-			addon.setSetting(id='channels', value='NOS Açores')
-		elif addon.getSetting('mirandela') == 'true':
-			addon.setSetting(id='channels', value='NOS Mirandela')
-		elif addon.getSetting('santarem') == 'true':
-			addon.setSetting(id='channels', value='NOS Santarem')
-		elif addon.getSetting('stejo') == 'true':
-			addon.setSetting(id='channels', value='NOS Sul Tejo')
-		elif addon.getSetting('evora') == 'true':
-			addon.setSetting(id='channels', value='NOS Évora')
-		elif addon.getSetting('algarve') == 'true':
-			addon.setSetting(id='channels', value='NOS Algarve')
+		if addon.getSetting('nos') == 'true':
+			addon.setSetting(id='channels', value='NOS')
+		elif addon.getSetting('nowo') == 'true':
+			addon.setSetting(id='channels', value='Nowo')
 		elif addon.getSetting('hispasat') == 'true':
 			addon.setSetting(id='channels', value='Hispasat')
 		elif addon.getSetting('astra') == 'true':
@@ -184,7 +148,7 @@ def status():
 		elif addon.getSetting('tdt') == 'true':
 			addon.setSetting(id='channels', value='TDT Portugal')
 		elif addon.getSetting('meo') == 'true':
-			addon.setSetting(id='channels', value='TDT Meo')
+			addon.setSetting(id='channels', value='Meo')
 		elif addon.getSetting('vodafone') == 'true':
-			addon.setSetting(id='channels', value='TDT Vodafone')		
+			addon.setSetting(id='channels', value='Vodafone')		
 

@@ -551,10 +551,10 @@ class DVBT(pyxbmct.AddonFullWindow):
         self.vodafone_button = pyxbmct.RadioButton('')
         self.placeControl(self.vodafone_button, 11, 11, rowspan=1, columnspan=4)
         self.connect(self.vodafone_button, self.vodafone_button_update)
-#        if (addon.getSetting('vodafone') == 'true'):
-#            self.vodafone_button.setSelected(True)
-#        else:
-#            self.vodafone_button.setSelected(False)
+        if (addon.getSetting('vodafone') == 'true'):
+            self.vodafone_button.setSelected(True)
+        else:
+            self.vodafone_button.setSelected(False)
         vodafone = pyxbmct.Image(addonfolder+artsfolder+'/vodafone.png')
         self.placeControl(vodafone, 11, 11, rowspan=1, columnspan=4)
 
@@ -594,12 +594,11 @@ class DVBT(pyxbmct.AddonFullWindow):
 
     def vodafone_button_update(self):
         if self.vodafone_button.isSelected():
-#            self.close()
-#            addon.setSetting(id='vodafone', value='true')
-#            Finish().doModal()
-            xbmcgui.Dialog().ok(addonname, "Comming Soon", "", "")
-#        else:
-#            addon.setSetting(id='vodafone', value='false')
+            self.close()
+            addon.setSetting(id='vodafone', value='true')
+            Finish().doModal()
+        else:
+            addon.setSetting(id='vodafone', value='false')
 
 class DVBS(pyxbmct.AddonFullWindow):
 
@@ -699,6 +698,76 @@ class DVBC(pyxbmct.AddonFullWindow):
     def __init__(self, title=''):
         """Class constructor"""
         super(DVBC, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/mapdvbc.png')
+        self.placeControl(image, 0, 0, rowspan=10, columnspan=16)
+
+		# Nos
+        self.nos_button = pyxbmct.RadioButton('')
+        self.placeControl(self.nos_button, 11, 3, rowspan=1, columnspan=4)
+        self.connect(self.nos_button, self.nos_button_update)
+        if (addon.getSetting('nos') == 'true'):
+            self.nos_button.setSelected(True)
+        else:
+            self.nos_button.setSelected(False)
+        nos = pyxbmct.Image(addonfolder+artsfolder+'/nos.png')
+        self.placeControl(nos, 11, 3, rowspan=1, columnspan=4)
+        
+		# Nowo
+        self.nowo_button = pyxbmct.RadioButton('')
+        self.placeControl(self.nowo_button, 11, 9, rowspan=1, columnspan=4)
+        self.connect(self.nowo_button, self.nowo_button_update)
+        if (addon.getSetting('nowo') == 'true'):
+            self.nowo_button.setSelected(True)
+        else:
+            self.nowo_button.setSelected(False)
+        nowo = pyxbmct.Image(addonfolder+artsfolder+'/nowo.png')
+        self.placeControl(nowo, 11, 9, rowspan=1, columnspan=4)
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.nos_button)
+        self.nos_button.controlDown(self.close_button)
+        self.nos_button.controlRight(self.nowo_button)
+        self.nowo_button.controlDown(self.close_button)
+        self.nowo_button.controlLeft(self.nos_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def nos_button_update(self):
+        if self.nos_button.isSelected():
+            self.close()
+            addon.setSetting(id='nos', value='true')
+            Finish().doModal()
+        else:
+            addon.setSetting(id='nos', value='false')
+
+
+    def nowo_button_update(self):
+        if self.nowo_button.isSelected():
+            self.close()
+            addon.setSetting(id='nowo', value='true')
+            Finish().doModal()
+        else:
+            addon.setSetting(id='nowo', value='false')
+
+class DVBCold(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(DVBCold, self).__init__(title)
         self.setGeometry(1200, 680, 14, 16)
         self.set_controls()
         self.set_navigation()
