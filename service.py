@@ -53,7 +53,7 @@ def checkip_andchange():
 			addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
 			dvbapifile   = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
 			if oldip == ipdvbapi:
-				from resources.lib import tools
+				from lib import tools
 				addon.setSetting(id='ipdvbapi', value=newip)
 				tools.change_words(dvbapifile, changeip)
 		addon.setSetting(id='ipbox', value=newip)
