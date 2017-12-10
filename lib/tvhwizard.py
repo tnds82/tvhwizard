@@ -2018,12 +2018,12 @@ class Tvheadend(pyxbmct.AddonFullWindow):
 
 		# Tvheadend button
         self.tvh_button = pyxbmct.Button('TVHEADEND')
-        self.placeControl(self.tvh_button, 10, 2, rowspan=1, columnspan=3)
+        self.placeControl(self.tvh_button, 10, 11, rowspan=1, columnspan=3)
         self.connect(self.tvh_button, lambda: self.installaddons('service.tvheadend42'))
 
 		# Tvheadend HTSP Client button
         self.htsp_button = pyxbmct.Button('HTSP CLIENT')
-        self.placeControl(self.htsp_button, 10, 11, rowspan=1, columnspan=3)
+        self.placeControl(self.htsp_button, 10, 2, rowspan=1, columnspan=3)
         self.connect(self.htsp_button, lambda: self.installaddons('pvr.hts'))
 
 		# Start button
@@ -2040,10 +2040,10 @@ class Tvheadend(pyxbmct.AddonFullWindow):
     def set_navigation(self):
         """Set up keyboard/remote navigation between controls."""
         self.start_button.controlRight(self.close_button)
-        self.start_button.controlLeft(self.tvh_button)
-        self.start_button.controlUp(self.tvh_button)
-        self.tvh_button.controlRight(self.htsp_button)
-        self.htsp_button.controlLeft(self.tvh_button)
+        self.start_button.controlLeft(self.htsp_button)
+        self.start_button.controlUp(self.htsp_button)
+        self.tvh_button.controlRight(self.tvh_button)
+        self.htsp_button.controlLeft(self.htsp_button)
         self.htsp_button.controlDown(self.start_button)
         self.tvh_button.controlDown(self.start_button)
         self.close_button.controlLeft(self.start_button)
