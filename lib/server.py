@@ -262,7 +262,7 @@ def tvh_tunners():
 	tdtnetwork      = "3b71a44c08543bd024fad8630f745d60"
 	meonetwork      = "f7fcf1c68e088087ed89c5214264e876"
 	vodafonenetwork = "fd3e986178c77d3687b337718c332a39"
-	hispanetwork    = "f9f86bd361cdb5c3349163346ac173f7"
+	hispanetwork    = "6ca264ee5e0509dfbc38c2fd847fa90c"
 #	astranetwork    = "b49667f409cd90d954431ce14ea69405"
 #	hotbirdnetwork  = ""
 	
