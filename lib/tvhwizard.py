@@ -166,7 +166,7 @@ class Finish(pyxbmct.AddonFullWindow):
         self.close()
         time.sleep(1)
         xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
-        xbmc.executebuiltin('RestartApp')
+        xbmc.executebuiltin('Reboot')
 
 class DVBGeneric(pyxbmct.AddonFullWindow):
 
