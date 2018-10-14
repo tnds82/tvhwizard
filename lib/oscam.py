@@ -108,8 +108,8 @@ def oscam_enable():
 		# create oscam.dvbapi
 		readers = open(addonoscamdvbapi, 'a')
 		readers.write("############### Meo Mapping ################\n")
-		readers.write("M: 1814 0100:005221 #MEO Mapping\n")
-		readers.write("I: 1814 #MEO Mapping\n")
+		readers.write("#M: 1814 0100:005221 #MEO Mapping\n")
+		readers.write("#I: 1814 #MEO Mapping\n")
 		readers.write("\n")
 		readers.close()
 
