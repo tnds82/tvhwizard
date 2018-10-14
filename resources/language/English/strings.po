@@ -34,7 +34,7 @@ msgid "Username"
 msgstr ""
 
 msgctxt "#30002"
-msgid "Tvheadend 4.2"
+msgid "Tvheadend 4.3"
 msgstr ""
 
 msgctxt "#30003"
