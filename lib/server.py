@@ -223,8 +223,8 @@ def tvh_dvbapi():
 ##### ADD CHANNELS #####
 def tvh_channels(path):
 
-	url = '%s%s%s' % ("http://tnds82.xyz/tvhwizard/channels/", path, ".zip")
-	url_version = '%s%s%s' % ("http://tnds82.xyz/tvhwizard/channels/", path, "version")
+	url = '%s%s%s' % ("https://addons.tnds82.xyz/tvhwizard/channels/", path, ".zip")
+	url_version = '%s%s%s' % ("https://addons.tnds82.xyz/tvhwizard/channels/", path, "version")
 	tools.channels(url)
 	header = "Channels"
 	channelsFile = os.path.join('/tmp/tnds82', path, 'channel.zip')
@@ -244,7 +244,7 @@ def tvh_channels(path):
 ##### PICONS #####
 def tvh_picons(path):
 
-	url = '%s%s%s' % ("http://tnds82.xyz/tvhwizard/picons/", path, ".zip")
+	url = '%s%s%s' % ("https://addons.tnds82.xyz/tvhwizard/picons/", path, ".zip")
 	tools.picons(url, path)
 
 	### Image Cache ###
