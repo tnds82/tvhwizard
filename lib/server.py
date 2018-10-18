@@ -55,7 +55,7 @@ addontvhchannel    = os.path.join(addontvhdest, 'channel')
 addontvhdvb        = os.path.join(addontvhdest, 'input/dvb')
 addontvhconfig     = os.path.join(addontvhdest, 'config')
 addontvhsettings   = os.path.join(addontvhdest, 'settings.xml')
-addontvhdvbapi     = os.path.join(addontvhdest, 'caclient')
+addontvhdvbapi     = os.path.join(addontvhdest, 'caclient/')
 addontvhtuners     = os.path.join(addontvhdest, 'input/linuxdvb/adapters/')
 addontvhacontrol   = os.path.join(addontvhdest, 'accesscontrol/')
 addontvhpass       = os.path.join(addontvhdest, 'passwd/')
@@ -200,12 +200,16 @@ def tvh_dvbapi():
 	if os.path.exists(dvbapifile):
 		dialog.notification(addonname, langString(5062), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
+		defaultdvbapi = os.listdir(addontvhdvbapi)[0]
+		dvbapidefault = "%s%s" % (addontvhdvbapi, defaultdvbapi)
+		tools.updateJsonFile(dvbapidefault, 'enabled', False)
+
 #		addontvh.setSetting(id='PRELOAD_CAPMT_CA', value='true')
 		
 		#oscam pc-nodmx
 		if addon.getSetting('dvbapichoose') == 'pc-nodmx':
-			if not os.path.exists(addontvhdvbapi):
-				os.makedirs(addontvhdvbapi)
+#			if not os.path.exists(addontvhdvbapi):
+#				os.makedirs(addontvhdvbapi)
 
 			with open(dvbapifile, "w") as outfile:
 				json.dump({'mode':4, 'camdfilename':'/tmp/camd.socket', 'port':0, 'class':'caclient_capmt', 
@@ -213,8 +217,8 @@ def tvh_dvbapi():
 		
 		#oscam pc
 		if addon.getSetting('dvbapichoose') == 'pc':
-			if not os.path.exists(addontvhdvbapi):
-				os.makedirs(addontvhdvbapi)
+#			if not os.path.exists(addontvhdvbapi):
+#				os.makedirs(addontvhdvbapi)
 
 			with open(dvbapifile, "w") as outfile:
 				json.dump({'mode':5, 'camdfilename':dvbapip, 'port':dvbapiport, 'class':'caclient_capmt', 
@@ -907,4 +911,3 @@ def tvh_guide():
 		xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.SetSettingValue", "params":{"setting":"epg.preventupdateswhileplayingtv","value":true},"id":1}')
 	upinterval = addon.getSetting('upinterval')
 	xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.SetSettingValue", "params":{"setting":"epg.epgupdate","value":'+ upinterval +'},"id":1}')
-
