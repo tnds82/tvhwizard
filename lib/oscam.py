@@ -59,10 +59,11 @@ def oscam_enable():
 		webifpass   = {"httppwd                       = oscam":"%s%s" %("httppwd                       = ", passoscam)}
 		
 		#config oscam
-		tools.remove_words(addonoscamconfig, 23)
-		tools.remove_words(addonoscamconfig, 23)
-		tools.remove_words(addonoscamconfig, 23)
-		tools.remove_words(addonoscamconfig, 23)
+		tools.remove_words(addonoscamconfig, 2)
+		tools.remove_words(addonoscamconfig, 25)
+		tools.remove_words(addonoscamconfig, 25)
+		tools.remove_words(addonoscamconfig, 25)
+		tools.remove_words(addonoscamconfig, 25)
 		tools.insert_words(addonoscamconfig, 2, tndscfg)
 		
 		#activate restart_on_resume 
@@ -209,4 +210,3 @@ def oscam_user(user, number):
 		username = addon.getSetting('%s%s%s' % ('user',number,'user'))
 		passw = addon.getSetting('%s%s%s' % ('pass',number,'user'))
 		tools.usercccam(addonoscamuser, username, passw, user)
-
