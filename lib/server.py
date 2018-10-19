@@ -192,8 +192,8 @@ def tvh_users():
 			clientpath = "%s%s" % (addontvhacontrol, "95275ba5e99a33a72b5081c870e179d8")
 			with open(clientpath, "w") as outfile:
 				json.dump({'enabled':True, 'username':userclient, 
-					'change':['change_rights'], 'streaming':['htsp'], 
-					'dvr':['basic','htsp','all','all_rw','failed'], 
+					'change':['change_rights'], 'streaming':['basic', 'advanced', 'htsp'], 
+					'dvr':['basic','htsp','all','all_rw','failed'], 'webui':True,
 					'comment':'Client access entry'}, outfile, indent=4)
 
 ##### DVBAPI #####
