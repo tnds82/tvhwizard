@@ -140,6 +140,7 @@ def tvh_users():
 		if addon.getSetting('logadmin') == 'true':
 			# Disable Default access entry
 			tools.updateJsonFile(defaultuser, 'enabled', False)
+			tools.updateJsonFile(addontvhconfig, 'digest', 2)
 			
 			adminpath = "%s%s" % (addontvhacontrol, "90989e141bf7c77bcaecaef8da1e0054")			
 			with open(adminpath, "w") as outfile:
