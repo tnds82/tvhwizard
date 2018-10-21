@@ -262,12 +262,12 @@ def tvh_picons(path):
 				
 ##### DVB INPUTS #####
 def tvh_tunners():
-	nosnetwork      = "2e3a376d8f26d0e7db2970d22f691ce3"
+	nosnetwork      = "d2e2dd7ba943289f15a46ee502e13b12"
 	nowonetwork     = "00e7faf22eece16481b49486b74d81e2"
 	tdtnetwork      = "3b71a44c08543bd024fad8630f745d60"
 	meonetwork      = "f7fcf1c68e088087ed89c5214264e876"
 	vodafonenetwork = "fd3e986178c77d3687b337718c332a39"
-	hispanetwork    = "6ca264ee5e0509dfbc38c2fd847fa90c"
+	hispanetwork    = "1c2f2758a410776103317afc11abbc8e"
 #	astranetwork    = "b49667f409cd90d954431ce14ea69405"
 #	hotbirdnetwork  = ""
 	
