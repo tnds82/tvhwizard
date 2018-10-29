@@ -43,19 +43,20 @@ def checkip_andchange():
 	newip = get_ip_address()
 	oldip = addon.getSetting('ipbox')
 	ipdvbapi = addon.getSetting('ipdvbapi')
-	changeip = {ipdvbapi:newip}
+#	changeip = {ipdvbapi:newip}
 	if newip == oldip:
 		addon.setSetting(id='tvhip', value=newip)
 		print newip
 	else:
 		if addon.getSetting('dvbapichoose') == 'pc':
-			addontvh     = xbmcaddon.Addon(id='service.tvheadend42')
+			addontvh = xbmcaddon.Addon(id='service.tvheadend42')
 			addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
-			dvbapifile   = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
+			dvbapifile = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
 			if oldip == ipdvbapi:
 				from lib import tools
 				addon.setSetting(id='ipdvbapi', value=newip)
-				tools.change_words(dvbapifile, changeip)
+#				tools.change_words(dvbapifile, changeip)
+				tools.updateJsonfile(dvbapifile, 'camdfilename'. newip)
 		addon.setSetting(id='ipbox', value=newip)
 		addonpvr.setSetting(id='host', value=newip)
 		addon.setSetting(id='tvhip', value=newip)
