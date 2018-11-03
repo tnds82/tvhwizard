@@ -19,7 +19,7 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time,xbmc
+import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time,xbmc,json
 from lib import status
 
 addon       = xbmcaddon.Addon(id='script.tvhwizard')
