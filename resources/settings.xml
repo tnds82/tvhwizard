@@ -17,6 +17,7 @@
       <setting label="30009" type="text" id="channels" enable="false" subsetting='true' />
       <setting label="30010" type="text" id="pathrecording" enable="false" />
       <setting label="30011" type="text" id="softcam" enable="false" />
+      <setting label="30019" type="text" id="ipdvbapi" enable="false" subsetting='true' />
       <setting label="30012" type="text" id="portdvbapi" enable="false" subsetting='true' />
    </category>
    <category   label="30006">
