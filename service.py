@@ -34,16 +34,16 @@ def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
-	
+
 def checkip_andchange():
 	addonpvr         = xbmcaddon.Addon(id='pvr.hts')
 	addonpvrdata     = xbmc.translatePath(addonpvr.getAddonInfo('profile'))
 	addonpvrsettings = os.path.join(addonpvrdata, 'settings.xml')
 
 	newip = get_ip_address()
-	oldip = addon.getSetting('ipbox')
+	oldip = addon.getSetting('tvhip')
 	ipdvbapi = addon.getSetting('ipdvbapi')
-#	changeip = {ipdvbapi:newip}
+	changeip = {ipdvbapi:newip}
 	if newip == oldip:
 		addon.setSetting(id='tvhip', value=newip)
 		print newip
@@ -54,10 +54,10 @@ def checkip_andchange():
 			dvbapifile = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
 			if oldip == ipdvbapi:
 				from lib import tools
+				os.system('systemctl stop service.tvheadend42')
 				addon.setSetting(id='ipdvbapi', value=newip)
-#				tools.change_words(dvbapifile, changeip)
-				tools.updateJsonfile(dvbapifile, 'camdfilename'. newip)
-		addon.setSetting(id='ipbox', value=newip)
+				tools.change_words(dvbapifile, changeip)
+				os.system('systemctl start service.tvheadend42')
 		addonpvr.setSetting(id='host', value=newip)
 		addon.setSetting(id='tvhip', value=newip)
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
