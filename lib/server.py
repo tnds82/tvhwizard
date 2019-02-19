@@ -273,16 +273,16 @@ def tvh_tunners():
 				wdvbc = "%s%s" % (addontvhtuners, wetektuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(wdvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(wdvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(wdvbc, nowonetwork)
 			elif addon.getSetting('wdvbs') == 'true':
 				wetektuners1 = os.listdir(addontvhtuners)[0]
@@ -370,16 +370,16 @@ def tvh_tunners():
 				w2dvbc = "%s%s" % (addontvhtuners, wetek2tuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(w2dvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(w2dvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(w2dvbc, nowonetwork)
 			elif addon.getSetting('wdvbs') == 'true':
 				wetek2tuners = os.listdir(addontvhtuners)[0]
@@ -419,16 +419,16 @@ def tvh_tunners():
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(kdvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(kdvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(kdvbc, nowonetwork)
 			elif addon.getSetting('kdvbs') == 'true':
 				ktuner = os.listdir(addontvhtuners)[0]
@@ -468,16 +468,16 @@ def tvh_tunners():
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(kdvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(kdvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(kdvbc, nowonetwork)
 			elif addon.getSetting('kdvbs') == 'true':
 				ktuner = os.listdir(addontvhtuners)[0]
@@ -517,16 +517,16 @@ def tvh_tunners():
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(kdvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(kdvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(kdvbc, nowonetwork)
 			elif addon.getSetting('kdvbs') == 'true':
 				ktuner = os.listdir(addontvhtuners)[0]
@@ -566,16 +566,16 @@ def tvh_tunners():
 				kdvbc = "%s%s" % (addontvhtuners, ktuner)
 				if addon.getSetting('nos') == 'true':
 					if addon.getSetting('start') == 'tvhwosc':
-						tvh_channels('nos')
-						tvh_picons('nos')
+						tvh_channels('nos_old')
+						tvh_picons('nos_old')
 						tools.dvbc(kdvbc, nosnetwork)
 					else:
 						tvh_channels('nosfree')
 						tvh_picons('nosfree')
 						tools.dvbc(kdvbc, nosnetwork)
 				elif addon.getSetting('nowo') == 'true':
-					tvh_channels('nowo')
-					tvh_picons('nowo')
+					tvh_channels('nowo_old')
+					tvh_picons('nowo_old')
 					tools.dvbc(kdvbc, nowonetwork)
 			elif addon.getSetting('kdvbs') == 'true':
 				ktuner = os.listdir(addontvhtuners)[0]
@@ -616,16 +616,16 @@ def tvh_tunners():
 				if addon.getSetting('gdvbc') == 'true':
 					if addon.getSetting('nos') == 'true':
 						if addon.getSetting('start') == 'tvhwosc':
-							tvh_channels('nos')
-							tvh_picons('nos')
+							tvh_channels('nos_old')
+							tvh_picons('nos_old')
 							tools.dvbc(tuners, nosnetwork)
 						else:
 							tvh_channels('nosfree')
 							tvh_picons('nosfree')
 							tools.dvbc(tuners, nosnetwork)
 					elif addon.getSetting('nowo') == 'true':
-						tvh_channels('nowo')
-						tvh_picons('nowo')
+						tvh_channels('nowo_old')
+						tvh_picons('nowo_old')
 						tools.dvbc(tuners, nowonetwork)
 				elif addon.getSetting('gdvbs') == 'true':
 					if addon.getSetting('hispasat') == 'true':
@@ -657,16 +657,16 @@ def tvh_tunners():
 				if addon.getSetting('gdvbc') == 'true':
 					if addon.getSetting('nos') == 'true':
 						if addon.getSetting('start') == 'tvhwosc':
-							tvh_channels('nos')
-							tvh_picons('nos')
+							tvh_channels('nos_old')
+							tvh_picons('nos_old')
 							tools.dvbc(tuners, nosnetwork)
 						else:
 							tvh_channels('nosfree')
 							tvh_picons('nosfree')
 							tools.dvbc(tuners, nosnetwork)
 					elif addon.getSetting('nowo') == 'true':
-						tvh_channels('nowo')
-						tvh_picons('nowo')
+						tvh_channels('nowo_old')
+						tvh_picons('nowo_old')
 						tools.dvbc(tuners, nowonetwork)
 				elif addon.getSetting('gdvbs') == 'true':
 					if addon.getSetting('hispasat') == 'true':
