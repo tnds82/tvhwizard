@@ -1,35 +1,39 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import urllib, os, re, urllib2, xbmc, xbmcgui, xbmcaddon, zipfile
-import json, shutil
+import json, shutil, subprocess
+import platform
 from collections import OrderedDict
 
 addon         = xbmcaddon.Addon(id='script.tvhwizard')
 addonname     = addon.getAddonInfo('name')
 
+# Constants
+
+STRING = 0
+BOOL = 1
+NUM = 2
+
 dp = xbmcgui.DialogProgress()
+
+def writeLog(message, level=xbmc.LOGDEBUG):
+    xbmc.log('[%s %s] %s' % (xbmcaddon.Addon().getAddonInfo('id'),
+                             xbmcaddon.Addon().getAddonInfo('version'),
+                             message.encode('utf-8')), level)
 
 def langString(id):
 	return addon.getLocalizedString(id)
+
+def subprocess_cmd(command):
+    process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print proc_stdout
+
+def fixpicons():
+	subprocess_cmd("rm $HOME/.kodi/userdata/Thumbnails/*/*.png")
+	subprocess_cmd("rm $HOME/.kodi/userdata/Database/Textures13.db")
+
 
 def downloader(url,dest, header):
     
@@ -69,6 +73,16 @@ def extract(_in, _out, dp, header):
         return False
 
     return True
+
+def jsonrpc(query):
+    querystring = {"jsonrpc": "2.0", "id": 1}
+    querystring.update(query)
+    try:
+        response = json.loads(xbmc.executeJSONRPC(json.dumps(querystring, encoding='utf-8')))
+        if 'result' in response: return response['result']
+    except TypeError, e:
+        writeLog('Error executing JSON RPC: %s' % (e.message), xbmc.LOGFATAL)
+    return None
 
 def changekeyjson(path, stringold, stringnew):
 	jsonFile = open(path, "r")
@@ -152,7 +166,6 @@ def channels(url):
 		os.makedirs(tndsDir)
 	downloader(url,packageFile,header)
 	extract(packageFile,tndsDir,dp,header)
-
 	
 def picons(url, path):
 	piconspath = os.path.join('/storage/picons/')
@@ -372,3 +385,13 @@ def insert_words(file, line, words):
 	insert.write(contents)
 	insert.close()
 
+def set_addon(module, enabled):
+    query = {"method": "Addons.SetAddonEnabled",
+             "params": {"addonid": module, "enabled": enabled}}
+    response = jsonrpc(query)
+    if response == 'OK':
+        writeLog('driver module \'%s\' %s' % (module, 'enabled' if enabled else 'disabled'), xbmc.LOGNOTICE)
+        return True
+    else:
+        writeLog('could not %s driver module \'%s\'' % ('enable' if enabled else 'disable', module), xbmc.LOGERROR)
+    return False

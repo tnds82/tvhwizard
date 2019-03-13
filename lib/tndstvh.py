@@ -1,23 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import xbmcaddon
 import xbmcgui
@@ -30,6 +12,10 @@ addonfolder = addon.getAddonInfo('path')
 addondata   = xbmc.translatePath(addon.getAddonInfo('profile'))
 addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 artsfolder  = '/resources/img/tvhwizard'
+
+dialog      = xbmcgui.Dialog()
+dialogyesno = dialog.yesno
+
 
 pyxbmct.skin.estuary = True
 
@@ -51,18 +37,25 @@ class TndsTvh(pyxbmct.AddonFullWindow):
 
 		# Channel Manager
         self.cmanager_button = pyxbmct.Button('')
-        self.placeControl(self.cmanager_button, 8, 2, rowspan=3, columnspan=3)
+        self.placeControl(self.cmanager_button, 6, 1, rowspan=3, columnspan=3)
         self.connect(self.cmanager_button, self.cmanager_button_update)
         cmanager = pyxbmct.Image(addonfolder+artsfolder+'/cmanager.png')
-        self.placeControl(cmanager, 8, 2, rowspan=3, columnspan=3)
+        self.placeControl(cmanager, 6, 1, rowspan=3, columnspan=3)
 
 		# Group Manager
         self.gmanager_button = pyxbmct.Button('')
-        self.placeControl(self.gmanager_button, 8, 11, rowspan=3, columnspan=3)
+        self.placeControl(self.gmanager_button, 6, 12, rowspan=3, columnspan=3)
         self.connect(self.gmanager_button, self.gmanager_button_update)
         gmanager = pyxbmct.Image(addonfolder+artsfolder+'/gmanager.png')
-        self.placeControl(gmanager, 8, 11, rowspan=3, columnspan=3)
+        self.placeControl(gmanager, 6, 12, rowspan=3, columnspan=3)
 		
+		# Fix Picons
+        self.fixpicons_button = pyxbmct.Button('')
+        self.placeControl(self.fixpicons_button, 9, 6, rowspan=4, columnspan=4)
+        self.connect(self.fixpicons_button, self.fixpicons_button_update)
+        gmanager = pyxbmct.Image(addonfolder+artsfolder+'/fixpicons.png')
+        self.placeControl(gmanager, 9, 6, rowspan=4, columnspan=4)
+
 		# Close button
         self.close_button = pyxbmct.Button('Exit')
         self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
@@ -74,8 +67,10 @@ class TndsTvh(pyxbmct.AddonFullWindow):
         self.close_button.controlUp(self.cmanager_button)
         self.cmanager_button.controlRight(self.gmanager_button)
         self.gmanager_button.controlLeft(self.cmanager_button)
-        self.cmanager_button.controlDown(self.close_button)
-        self.gmanager_button.controlDown(self.close_button)
+        self.cmanager_button.controlDown(self.fixpicons_button)
+        self.gmanager_button.controlDown(self.fixpicons_button)
+        self.fixpicons_button.controlDown(self.close_button)
+        self.fixpicons_button.controlUp(self.cmanager_button)
 	    # Set initial focus.
         self.setFocus(self.close_button)
 
@@ -83,7 +78,21 @@ class TndsTvh(pyxbmct.AddonFullWindow):
         xbmc.executebuiltin('ActivateWindow(pvrgroupmanager)')
 		
     def cmanager_button_update(self):
-        xbmc.executebuiltin('ActivateWindow(pvrchannelmanager)')		
+        xbmc.executebuiltin('ActivateWindow(pvrchannelmanager)')
+
+    def fixpicons_button_update(self):
+        fp = dialogyesno(addonname, "Attention:", "If skin backgrounds are * .png files, they may need to be replaced","Do you want to continue?")
+        if fp :
+            self.close()
+            import tools
+            tools.fixpicons()
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Fix picons OK', 2000, addonicon))
+            time.sleep(2)
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
+            xbmc.executebuiltin('Reboot')
+            
+        else :
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'You chose No', 2000, addonicon))		
 
 if __name__ == '__main__':
     tndstvh = TndsTvh('TvhWizard')

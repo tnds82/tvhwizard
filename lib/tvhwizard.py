@@ -1,23 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import xbmcaddon
 import xbmcgui
@@ -33,8 +15,91 @@ artsfolder  = '/resources/img/tvhwizard'
 
 pyxbmct.skin.estuary = True
 
-def langString(id):
-	return addon.getLocalizedString(id)
+class FinishBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(FinishBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image tnds
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tnds82.png')
+        self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
+
+		# Image Welcome
+        image = pyxbmct.Image(addonfolder+artsfolder+'/finish.png')
+        self.placeControl(image, 8, 4, rowspan=2, columnspan=8)
+		
+		# Finish button
+        self.start_button = pyxbmct.Button('FINISH')
+        self.placeControl(self.start_button, 11, 7, rowspan=1, columnspan=2)
+        self.connect(self.start_button, lambda: self.page())
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.start_button.controlRight(self.close_button)
+        self.close_button.controlLeft(self.start_button)
+	    # Set initial focus.
+        self.setFocus(self.start_button)
+
+    def get_ip_address(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+
+    def page(self):
+        addon.setSetting(id='pvrconfig', value='true')
+        ip_box = self.get_ip_address()
+        addon.setSetting(id='ipbox', value=ip_box)
+        addon.setSetting(id='kodiconfig', value='true')
+        addon.setSetting(id='syncgroup', value='true')
+        addon.setSetting(id='syncchannels', value='true')
+        addon.setSetting(id='playmax', value='true')
+        addon.setSetting(id='video169', value='true')
+        addon.setSetting(id='optim', value='true')
+        addon.setSetting(id='enableguide', value='true')
+        addon.setSetting(id='disableup', value='true')
+        addon.setSetting(id='upinterval', value='30')
+        import server
+        os.system('systemctl stop service.tvheadend42')
+        if addon.getSetting('tvhconfig') == 'true':
+            server.tvh_config()
+        if addon.getSetting('dvbapienable') == 'true':
+            server.tvh_dvbapi()
+        if addon.getSetting('createusers') == 'true':
+            server.tvh_users()
+        if addon.getSetting('recording') == 'true':
+            server.tvh_recording()
+        if addon.getSetting('pvrconfig') == 'true':
+            server.tvh_pvr()
+        if addon.getSetting('kodiconfig') == 'true':		
+            server.kodi_config()
+        if addon.getSetting('enableguide') == 'true':
+            server.tvh_guide()
+        if addon.getSetting('dvbcards') == 'true':
+            server.tvh_tunners()
+        if addon.getSetting('channelson') == 'true':
+            server.tvh_channels()
+        os.system('systemctl start service.tvheadend42')
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5022), 2000, addonicon))
+        addon.setSetting(id='tvhstatus', value='Configured')
+        addon.setSetting(id='tvh', value='Configured')
+        addon.setSetting(id='changeip', value='true')			
+        self.close()
+        time.sleep(1)
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
+        xbmc.executebuiltin('Reboot')
 
 class Finish(pyxbmct.AddonFullWindow):
 
@@ -263,6 +328,80 @@ class DVBGeneric(pyxbmct.AddonFullWindow):
         else:
             addon.setSetting(id='picons', value='false')
             addon.setSetting(id='gdvbt', value='false')
+
+class DVBKBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(DVBKBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/kbox.png')
+        self.placeControl(image, 0, 0, rowspan=10, columnspan=16)
+
+        # DVBC
+        self.kdvbc_button = pyxbmct.RadioButton('')
+        self.placeControl(self.kdvbc_button, 11, 3, rowspan=1, columnspan=3)
+        self.connect(self.kdvbc_button, self.kdvbc_button_update)
+        if (addon.getSetting('kdvbc') == 'true'):
+            self.kdvbc_button.setSelected(True)
+        else:
+            self.kdvbc_button.setSelected(False)
+        lnb1 = pyxbmct.Image(addonfolder+artsfolder+'/dvbc.png')
+        self.placeControl(lnb1, 11, 3, rowspan=1, columnspan=3)
+
+        # DVBS2
+        self.kdvbs_button = pyxbmct.RadioButton('')
+        self.placeControl(self.kdvbs_button, 11, 10, rowspan=1, columnspan=3)
+        self.connect(self.kdvbs_button, self.kdvbs_button_update)
+        if (addon.getSetting('kdvbs') == 'true'):
+            self.kdvbs_button.setSelected(True)
+        else:
+            self.kdvbs_button.setSelected(False)
+        lnb2 = pyxbmct.Image(addonfolder+artsfolder+'/dvbs2.png')
+        self.placeControl(lnb2, 11, 10, rowspan=1, columnspan=3)
+
+        # Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.kdvbc_button)
+        self.kdvbc_button.controlRight(self.kdvbs_button)
+        self.kdvbs_button.controlLeft(self.kdvbc_button)
+        self.kdvbc_button.controlDown(self.close_button)
+        self.kdvbs_button.controlDown(self.close_button)
+
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def kdvbc_button_update(self):
+        if self.kdvbc_button.isSelected():
+            self.close()
+            addon.setSetting(id='picons', value='true')
+            addon.setSetting(id='kdvbc', value='true')
+            DVBCBR().doModal()
+        else:
+            addon.setSetting(id='picons', value='false')
+            addon.setSetting(id='kdvbc', value='false')
+
+    def kdvbs_button_update(self):
+        if self.kdvbs_button.isSelected():
+            self.close()
+            addon.setSetting(id='picons', value='true')
+            addon.setSetting(id='kdvbs', value='true')
+            DVBSBR().doModal()
+        else:
+            addon.setSetting(id='picons', value='false')
+            addon.setSetting(id='kdvbs', value='false')
 
 class DVBK(pyxbmct.AddonFullWindow):
 
@@ -599,6 +738,220 @@ class DVBT(pyxbmct.AddonFullWindow):
             Finish().doModal()
         else:
             addon.setSetting(id='vodafone', value='false')
+
+class Newcamd(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(Newcamd, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tvh.png')
+        self.placeControl(image, 0, 0, rowspan=7, columnspan=16)
+
+		# Label information
+        image = pyxbmct.Image(addonfolder+artsfolder+'/newcamd.png')
+        self.placeControl(image, 7, 1, rowspan=1, columnspan=14)
+		
+		# Hostname input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/hostname.png')
+        self.placeControl(image, 9, 0, rowspan=1, columnspan=4)
+        self.hostname_input = pyxbmct.Edit('')
+        self.placeControl(self.hostname_input, 9, 4, rowspan=1, columnspan=4)
+
+		# Port input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/port.png')
+        self.placeControl(image, 12, 1, rowspan=1, columnspan=3)
+        self.port_input = pyxbmct.Edit('')
+        self.placeControl(self.port_input, 12, 4, rowspan=1, columnspan=2)
+
+		# Username input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/username.png')
+        self.placeControl(image, 10, 1, rowspan=1, columnspan=3)
+        self.username_input = pyxbmct.Edit('')
+        self.placeControl(self.username_input, 10, 4, rowspan=1, columnspan=4)
+		
+		# Password input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/password.png')
+        self.placeControl(image, 11, 1, rowspan=1, columnspan=3)
+        self.password_input = pyxbmct.Edit('', isPassword=True)
+        self.placeControl(self.password_input, 11, 4, rowspan=1, columnspan=4)
+
+		# DES Key
+        image = pyxbmct.Image(addonfolder+artsfolder+'/deskey.png')
+        self.placeControl(image, 9, 9, rowspan=1, columnspan=3)
+
+		# DESKey1
+        self.deskey1_button = pyxbmct.RadioButton('')
+        self.placeControl(self.deskey1_button, 10, 9, rowspan=1, columnspan=6)
+        self.connect(self.deskey1_button, self.deskey1_button_update)
+        if (addon.getSetting('deskey1') == 'true'):
+            self.deskey1_button.setSelected(True)
+        else:
+            self.deskey1_button.setSelected(False)
+        deskey1 = pyxbmct.Image(addonfolder+artsfolder+'/deskey1.png')
+        self.placeControl(deskey1, 10, 9, rowspan=1, columnspan=6)
+
+		# DESKey2
+        self.deskey2_button = pyxbmct.RadioButton('')
+        self.placeControl(self.deskey2_button, 11, 9, rowspan=1, columnspan=6)
+        self.connect(self.deskey2_button, self.deskey2_button_update)
+        if (addon.getSetting('deskey2') == 'true'):
+            self.deskey2_button.setSelected(True)
+        else:
+            self.deskey2_button.setSelected(False)
+        deskey2 = pyxbmct.Image(addonfolder+artsfolder+'/deskey2.png')
+        self.placeControl(deskey2, 11, 9, rowspan=1, columnspan=6)
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        self.connect(self.close_button, self.close)
+        
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlLeft(self.hostname_input)
+        self.hostname_input.controlDown(self.username_input)
+        self.username_input.controlUp(self.hostname_input)
+        self.username_input.controlDown(self.password_input)
+        self.password_input.controlUp(self.username_input)
+        self.password_input.controlDown(self.port_input)
+        self.port_input.controlUp(self.password_input)
+        self.port_input.controlDown(self.deskey1_button)
+        self.deskey1_button.controlUp(self.port_input)
+        self.deskey1_button.controlDown(self.deskey2_button)
+        self.deskey2_button.controlUp(self.deskey1_button)
+        self.deskey2_button.controlDown(self.close_button)
+        # Set initial focus
+        self.setFocus(self.close_button)
+
+    def deskey1_button_update(self):
+        if self.deskey1_button.isSelected():
+            addon.setSetting(id='dvbapienable', value='true')
+            addon.setSetting(id='dvbapichoose', value='newcamd')
+            addon.setSetting(id='newcamduser', value=self.username_input.getText())
+            addon.setSetting(id='newcamdhost', value=self.hostname_input.getText())
+            addon.setSetting(id='newcamdport', value=self.port_input.getText())
+            addon.setSetting(id='newcamdpass', value=self.password_input.getText())			
+            addon.setSetting(id='deskey1', value='true')
+            self.close()
+            FinishBR().doModal()
+        else:
+            addon.setSetting(id='deskey1', value='false')
+
+    def deskey2_button_update(self):
+        if self.deskey2_button.isSelected():
+            addon.setSetting(id='dvbapienable', value='true')
+            addon.setSetting(id='dvbapichoose', value='newcamd')
+            addon.setSetting(id='newcamduser', value=self.username_input.getText())
+            addon.setSetting(id='newcamdhost', value=self.hostname_input.getText())
+            addon.setSetting(id='newcamdport', value=self.port_input.getText())
+            addon.setSetting(id='newcamdpass', value=self.password_input.getText())			
+            addon.setSetting(id='deskey2', value='true')
+            self.close()
+            FinishBR().doModal()
+        else:
+            addon.setSetting(id='deskey2', value='false')
+
+class DVBCBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(DVBCBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/mapdvbc.png')
+        self.placeControl(image, 0, 0, rowspan=10, columnspan=16)
+
+		# NET
+        self.net_button = pyxbmct.RadioButton('')
+        self.placeControl(self.net_button, 11, 6, rowspan=1, columnspan=4)
+        self.connect(self.net_button, self.net_button_update)
+        if (addon.getSetting('net') == 'true'):
+            self.net_button.setSelected(True)
+        else:
+            self.net_button.setSelected(False)
+        net = pyxbmct.Image(addonfolder+artsfolder+'/net.png')
+        self.placeControl(net, 11, 6, rowspan=1, columnspan=4)
+        
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.net_button)
+        self.net_button.controlDown(self.close_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def net_button_update(self):
+        if self.net_button.isSelected():
+            self.close()
+            addon.setSetting(id='net', value='true')
+            Newcamd().doModal()
+        else:
+            addon.setSetting(id='net', value='false')
+
+class DVBSBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(DVBSBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/mapdvbs.png')
+        self.placeControl(image, 0, 0, rowspan=10, columnspan=16)
+
+		# ClaroTV
+        self.clarotv_button = pyxbmct.RadioButton('')
+        self.placeControl(self.clarotv_button, 11, 6, rowspan=1, columnspan=4)
+        self.connect(self.clarotv_button, self.clarotv_button_update)
+        if (addon.getSetting('clarotv') == 'true'):
+            self.clarotv_button.setSelected(True)
+        else:
+            self.clarotv_button.setSelected(False)
+        clarotv = pyxbmct.Image(addonfolder+artsfolder+'/clarotv.png')
+        self.placeControl(clarotv, 11, 6, rowspan=1, columnspan=4)
+        
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.clarotv_button)
+        self.clarotv_button.controlDown(self.close_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def clarotv_button_update(self):
+        if self.clarotv_button.isSelected():
+            self.close()
+            addon.setSetting(id='clarotv', value='true')
+            Newcamd().doModal()
+        else:
+            addon.setSetting(id='clarotv', value='false')
 
 class DVBS(pyxbmct.AddonFullWindow):
 
@@ -1188,6 +1541,128 @@ class Generic(pyxbmct.AddonFullWindow):
         else:
             addon.setSetting(id='pcix', value='false')
 
+class KBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(KBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/k.png')
+        self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
+
+		# KI Plus
+        self.k1plus_button = pyxbmct.RadioButton('')
+        self.placeControl(self.k1plus_button, 8, 1, rowspan=2, columnspan=4)
+        self.connect(self.k1plus_button, self.k1plus_button_update)
+        if (addon.getSetting('k1plus') == 'true'):
+            self.k1plus_button.setSelected(True)
+        else:
+            self.k1plus_button.setSelected(False)
+        k1plus = pyxbmct.Image(addonfolder+artsfolder+'/k1plus.png')
+        self.placeControl(k1plus, 8, 1, rowspan=2, columnspan=4)
+
+		# KI Pro
+        self.k1pro_button = pyxbmct.RadioButton('')
+        self.placeControl(self.k1pro_button, 11, 6, rowspan=2, columnspan=4)
+        self.connect(self.k1pro_button, self.k1pro_button_update)
+        if (addon.getSetting('k1pro') == 'true'):
+            self.k1pro_button.setSelected(True)
+        else:
+            self.k1pro_button.setSelected(False)
+        k1pro = pyxbmct.Image(addonfolder+artsfolder+'/k1pro.png')
+        self.placeControl(k1pro, 11, 6, rowspan=2, columnspan=4)
+
+		# KII Pro
+        self.k2pro_button = pyxbmct.RadioButton('')
+        self.placeControl(self.k2pro_button, 8, 6, rowspan=2, columnspan=4)
+        self.connect(self.k2pro_button, self.k2pro_button_update)
+        if (addon.getSetting('k2pro') == 'true'):
+            self.k2pro_button.setSelected(True)
+        else:
+            self.k2pro_button.setSelected(False)
+        k2pro = pyxbmct.Image(addonfolder+artsfolder+'/k2pro.png')
+        self.placeControl(k2pro, 8, 6, rowspan=2, columnspan=4)
+
+		# KIII Pro
+        self.k3pro_button = pyxbmct.RadioButton('')
+        self.placeControl(self.k3pro_button, 8, 11, rowspan=2, columnspan=4)
+        self.connect(self.k3pro_button, self.k3pro_button_update)
+        if (addon.getSetting('k3pro') == 'true'):
+            self.k3pro_button.setSelected(True)
+        else:
+            self.k3pro_button.setSelected(False)
+        k3pro = pyxbmct.Image(addonfolder+artsfolder+'/k3pro.png')
+        self.placeControl(k3pro, 8, 11, rowspan=2, columnspan=4)
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.k1plus_button)
+        self.k1plus_button.controlDown(self.k1pro_button)
+        self.k1pro_button.controlDown(self.close_button)
+        self.k2pro_button.controlDown(self.k1pro_button)
+        self.k3pro_button.controlDown(self.k1pro_button)
+        self.k1pro_button.controlUp(self.k2pro_button)
+        self.k1plus_button.controlRight(self.k2pro_button)
+        self.k2pro_button.controlRight(self.k3pro_button)
+        self.k3pro_button.controlLeft(self.k2pro_button)
+        self.k3pro_button.controlRight(self.k1pro_button)
+        self.k2pro_button.controlLeft(self.k1plus_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+		
+    def k1plus_button_update(self):
+        if self.k1plus_button.isSelected():
+            self.close()
+            addon.setSetting(id='dvbcards', value='true')
+            addon.setSetting(id='k1plus', value='true')
+            tools.set_addon('driver.dvb.crazycat', True)
+            DVBKBR().doModal()
+        else:
+            addon.setSetting(id='k1plus', value='false')
+
+    def k1pro_button_update(self):
+        if self.k1pro_button.isSelected():
+            self.close()
+            addon.setSetting(id='dvbcards', value='true')
+            addon.setSetting(id='k1pro', value='true')
+            tools.set_addon('driver.dvb.crazycat', True)
+            DVBKBR().doModal()
+        else:
+            addon.setSetting(id='k1pro', value='false')
+
+    def k2pro_button_update(self):
+        if self.k2pro_button.isSelected():
+            self.close()
+            addon.setSetting(id='dvbcards', value='true')
+            addon.setSetting(id='k2pro', value='true')
+            tools.set_addon('driver.dvb.crazycat', True)
+            DVBKBR().doModal()
+        else:
+            addon.setSetting(id='k2pro', value='false')
+
+    def k3pro_button_update(self):
+        if self.k3pro_button.isSelected():
+            self.close()
+            addon.setSetting(id='dvbcards', value='true')
+            addon.setSetting(id='k3pro', value='true')
+            tools.set_addon('driver.dvb.crazycat', True)
+            DVBKBR().doModal()
+        else:
+            addon.setSetting(id='k3pro', value='false')
+
 class K(pyxbmct.AddonFullWindow):
 
     def __init__(self, title=''):
@@ -1477,6 +1952,7 @@ class Inputs(pyxbmct.AddonFullWindow):
             self.close()
             addon.setSetting(id='dvbcards', value='true')			
             addon.setSetting(id='k', value='true')
+            tools.set_addon('driver.dvb.crazycat', True)
             K().doModal()
         else:
             addon.setSetting(id='dvbcards', value='false')
@@ -1789,6 +2265,80 @@ class UsersOscam(pyxbmct.AddonFullWindow):
         self.close()
         Readers().doModal()
 
+class RecordingBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(RecordingBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tvh.png')
+        self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
+
+		# Label information
+        image = pyxbmct.Image(addonfolder+artsfolder+'/recording.png')
+        self.placeControl(image, 8, 1, rowspan=1, columnspan=14)
+		
+		# Browse information
+        self.browse_label = pyxbmct.Edit('')
+        self.placeControl(self.browse_label, 11, 2, rowspan=1, columnspan=6)
+        if addon.getSetting('pathrecording') == '':
+            self.browse_label.setText('')
+        else:
+            path = addon.getSetting('pathrecording')
+            self.browse_label.setText(path)
+			
+		# Browse input
+        self.browse_button = pyxbmct.Button('Browse')
+        self.placeControl(self.browse_button, 11, 6, rowspan=1, columnspan=2)
+        # Connect close button
+        self.connect(self.browse_button, lambda: self.browse())
+
+		# Next button
+        self.next_button = pyxbmct.Button('Next')
+        self.placeControl(self.next_button, 13, 14, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.next_button, lambda: self.page())
+		
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.browse_button)
+        self.browse_button.controlDown(self.next_button)
+        self.browse_button.controlRight(self.next_button)
+        self.next_button.controlRight(self.close_button)
+        self.next_button.controlLeft(self.browse_button)
+        self.close_button.controlLeft(self.next_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def browse(self):
+        browsepath = xbmcgui.Dialog().browse(3, 'Recording path', 'files', '', False, False, '/storage')
+        addon.setSetting(id='pathrecording', value=browsepath)
+        self.close()
+        RecordingBR().doModal()
+
+    def page(self):
+        if addon.getSetting('pathrecording') == '':
+            self.close()
+            KBR().doModal()
+        else:
+            addon.setSetting(id='recording', value='true')
+            addon.setSetting(id='recordprofile', value='0')
+            self.close()
+            KBR().doModal()
+
 class Recording(pyxbmct.AddonFullWindow):
 
     def __init__(self, title=''):
@@ -1862,6 +2412,78 @@ class Recording(pyxbmct.AddonFullWindow):
             addon.setSetting(id='recordprofile', value='0')
             self.close()
             Inputs().doModal()
+
+class UsersBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(UsersBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tvh.png')
+        self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
+
+		# Label information
+        image = pyxbmct.Image(addonfolder+artsfolder+'/users.png')
+        self.placeControl(image, 8, 1, rowspan=1, columnspan=14)
+		
+		# Username input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/username.png')
+        self.placeControl(image, 10, 1, rowspan=1, columnspan=3)
+        self.username_input = pyxbmct.Edit('')
+        self.placeControl(self.username_input, 10, 4, rowspan=1, columnspan=4)
+
+		# Password input
+        image = pyxbmct.Image(addonfolder+artsfolder+'/password.png')
+        self.placeControl(image, 11, 1, rowspan=1, columnspan=3)
+        self.password_input = pyxbmct.Edit('', isPassword=True)
+        self.placeControl(self.password_input, 11, 4, rowspan=1, columnspan=4)
+
+		# Next button
+        self.next_button = pyxbmct.Button('Next')
+        self.placeControl(self.next_button, 13, 14, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.next_button, lambda: self.page())
+		
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.username_input)
+        self.close_button.controlLeft(self.next_button)
+        self.next_button.controlLeft(self.username_input)
+        self.username_input.controlDown(self.password_input)
+        self.password_input.controlUp(self.username_input)
+        self.password_input.controlRight(self.next_button)
+        self.next_button.controlRight(self.close_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+
+    def page(self):
+        if self.username_input.getText() == '' :
+            self.close()
+            RecordingBR().doModal()
+        else:
+            addon.setSetting(id='createusers', value='true')
+            addon.setSetting(id='logadmin', value='true')
+            addon.setSetting(id='useradmin', value=self.username_input.getText())
+            addon.setSetting(id='passadmin', value=self.password_input.getText())
+            addon.setSetting(id='logclient', value='true')
+            addon.setSetting(id='userclient', value='tvh')
+            addon.setSetting(id='passclient', value='tvh')
+            addon.setSetting(id='recordingpath', value='')
+            self.close()
+            RecordingBR().doModal()
 		
 class Users(pyxbmct.AddonFullWindow):
 
@@ -1995,6 +2617,85 @@ class OSCam(pyxbmct.AddonFullWindow):
             self.close()
             addon.setSetting(id='oscamenable', value='true')
             UsersOscam().doModal()
+
+class TvheadendBR(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(TvheadendBR, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tvh.png')
+        self.placeControl(image, 0, 0, rowspan=9, columnspan=16)
+
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/installaddons.png')
+        self.placeControl(image, 8, 6, rowspan=4, columnspan=4)
+
+		# Tvheadend button
+        self.tvh_button = pyxbmct.Button('TVHEADEND')
+        self.placeControl(self.tvh_button, 10, 11, rowspan=1, columnspan=3)
+        self.connect(self.tvh_button, lambda: self.installaddons('service.tvheadend42'))
+
+		# Tvheadend HTSP Client button
+        self.htsp_button = pyxbmct.Button('HTSP CLIENT')
+        self.placeControl(self.htsp_button, 10, 2, rowspan=1, columnspan=3)
+        self.connect(self.htsp_button, lambda: self.installaddons('pvr.hts'))
+
+		# Start button
+        self.start_button = pyxbmct.Button('START')
+        self.placeControl(self.start_button, 12, 7, rowspan=1, columnspan=2)
+        self.connect(self.start_button, lambda: self.page('service.tvheadend42', 'pvr.hts'))
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.start_button.controlRight(self.close_button)
+        self.start_button.controlLeft(self.htsp_button)
+        self.start_button.controlUp(self.htsp_button)
+        self.htsp_button.controlRight(self.tvh_button)
+        self.tvh_button.controlLeft(self.htsp_button)
+        self.htsp_button.controlDown(self.start_button)
+        self.tvh_button.controlDown(self.start_button)
+        self.close_button.controlLeft(self.start_button)
+	    # Set initial focus.
+        self.setFocus(self.start_button)
+
+    def installaddons(self, id):
+        if os.path.exists(xbmc.translatePath('special://home/addons/') + id):
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Addon was alredy installed', 2000, addonicon))
+        else:
+            xbmc.executebuiltin('InstallAddon(%s)'%(id))
+    def get_ip_address(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+
+    def page(self, id1, id2):
+        if not os.path.exists(xbmc.translatePath('special://home/addons/') + id1):
+            xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
+        elif not os.path.exists(xbmc.translatePath('special://home/addons/') + id2):
+            xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
+        else:
+            addon.setSetting(id='tvhconfig', value='true')
+            addon.setSetting(id='tvhexpert', value='true')
+            addon.setSetting(id='languien', value='true')
+            addon.setSetting(id='langepg', value='true')
+            addon.setSetting(id='langepgen', value='true')
+            addon.setSetting(id='langepgpt', value='true')
+            self.close()
+            UsersBR().doModal()
 
 class Tvheadend(pyxbmct.AddonFullWindow):
 
@@ -2137,6 +2838,76 @@ class Start(pyxbmct.AddonFullWindow):
         self.close()
         page().doModal()
 
+class Country(pyxbmct.AddonFullWindow):
+
+    def __init__(self, title=''):
+        """Class constructor"""
+        super(Country, self).__init__(title)
+        self.setGeometry(1200, 680, 14, 16)
+        self.set_controls()
+        self.set_navigation()
+        self.connect(pyxbmct.ACTION_NAV_BACK, self.close)
+		
+    def set_controls(self):
+        """Set up UI controls"""
+        # Image control
+        image = pyxbmct.Image(addonfolder+artsfolder+'/tnds82.png')
+        self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
+
+		# Portugal
+        self.portugal_button = pyxbmct.RadioButton('')
+        self.placeControl(self.portugal_button, 9, 3, rowspan=2, columnspan=4)
+        self.connect(self.portugal_button, self.portugal_button_update)
+        if (addon.getSetting('portugal') == 'true'):
+            self.portugal_button.setSelected(True)
+        else:
+            self.portugal_button.setSelected(False)
+        portugal = pyxbmct.Image(addonfolder+artsfolder+'/portugal.png')
+        self.placeControl(portugal, 9, 3, rowspan=2, columnspan=4)
+
+		# Brasil
+        self.brasil_button = pyxbmct.RadioButton('')
+        self.placeControl(self.brasil_button, 9, 9, rowspan=2, columnspan=4)
+        self.connect(self.brasil_button, self.brasil_button_update)
+        if (addon.getSetting('brasil') == 'true'):
+            self.brasil_button.setSelected(True)
+        else:
+            self.brasil_button.setSelected(False)
+        brasil = pyxbmct.Image(addonfolder+artsfolder+'/brasil.png')
+        self.placeControl(brasil, 9, 9, rowspan=2, columnspan=4)
+
+		# Close button
+        self.close_button = pyxbmct.Button('Exit')
+        self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
+        # Connect close button
+        self.connect(self.close_button, self.close)
+
+    def set_navigation(self):
+        """Set up keyboard/remote navigation between controls."""
+        self.close_button.controlUp(self.portugal_button)
+        self.portugal_button.controlDown(self.close_button)
+        self.portugal_button.controlRight(self.brasil_button)
+        self.brasil_button.controlDown(self.close_button)
+        self.brasil_button.controlLeft(self.portugal_button)
+	    # Set initial focus.
+        self.setFocus(self.close_button)
+		
+    def portugal_button_update(self):
+        if self.portugal_button.isSelected():
+            self.close()
+            addon.setSetting(id='portugal', value='true')
+            Start().doModal()
+        else:
+            addon.setSetting(id='portugal', value='false')
+
+    def brasil_button_update(self):
+        if self.brasil_button.isSelected():
+            self.close()
+            addon.setSetting(id='brasil', value='true')
+            TvheadendBR().doModal()
+        else:
+            addon.setSetting(id='brasil', value='false')
+
 class TvhWizard(pyxbmct.AddonFullWindow):
 
     def __init__(self, title=''):
@@ -2177,7 +2948,8 @@ class TvhWizard(pyxbmct.AddonFullWindow):
 
     def page(self):
         self.close()
-        Start().doModal()
+        import tools
+        Country().doModal()
 		
 if __name__ == '__main__':
     tvhwizard = TvhWizard('TvhWizard')

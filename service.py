@@ -1,23 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import xbmcplugin,xbmcgui,xbmcaddon,os,socket,time,xbmc,json
 from lib import status
@@ -30,10 +12,37 @@ addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 def langString(id):
 	return addon.getLocalizedString(id)
 
+def writeLog(message, level=xbmc.LOGDEBUG):
+    xbmc.log('[%s %s] %s' % (xbmcaddon.Addon().getAddonInfo('id'),
+                             xbmcaddon.Addon().getAddonInfo('version'),
+                             message.encode('utf-8')), level)
+
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
+
+def changeippvr():
+	addonpvr         = xbmcaddon.Addon(id='pvr.hts')
+	addonpvrdata     = xbmc.translatePath(addonpvr.getAddonInfo('profile'))
+	addonpvrsettings = os.path.join(addonpvrdata, 'settings.xml')
+	
+	new_ip = get_ip_address()
+	old_ip = addon.getSetting('ipbox')
+	
+	if new_ip == old_ip:
+		addon.setSetting(id='tvhip', value=newip)
+		writeLog("The ip of the config's is the same as the current ip", xbmc.LOGNOTICE)
+	else:
+		addonpvr.setSetting(id='host', value=newip)
+		addon.setSetting(id='ipbox', value=newip)
+		addon.setSetting(id='tvhip', value=newip)
+		writeLog("The ip of config's has been updated", xbmc.LOGNOTICE)
+		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
+		time.sleep(1)
+		xbmc.executebuiltin('RestartApp')
+		
+		
 
 def checkip_andchange():
 	addonpvr         = xbmcaddon.Addon(id='pvr.hts')
@@ -64,8 +73,13 @@ def checkip_andchange():
 		time.sleep(1)
 		xbmc.executebuiltin('RestartApp')
 
-if addon.getSetting('changeip') == 'true':
-	time.sleep(3)
-	checkip_andchange()
-	status.status()
-
+if addon.getSetting('portugal') == 'true':
+	if addon.getSetting('changeip') == 'true':
+		time.sleep(3)
+		checkip_andchange()
+		status.status()
+elif addon.getSetting('brasil') == 'true':
+	if addon.getSetting('changeip') == 'true':
+		time.sleep(3)
+		changeippvr()
+		status.statusbr()

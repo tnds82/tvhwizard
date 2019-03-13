@@ -1,23 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import xbmc, xbmcplugin, xbmcgui, xbmcaddon, os, shutil
 import xbmcvfs, re, base64, tools, time, subprocess, json
@@ -75,6 +57,13 @@ piconsympath = "/storage/picons/vdr/"
 dvbapifile = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
 dvbapip    = addon.getSetting('ipdvbapi')
 dvbapiport = addon.getSetting('portdvbapi')
+
+	##### NEWCAMD #####
+newcamdhost = addon.getSetting('newcamdhost')
+newcamdpass = addon.getSetting('newcamdpass')
+newcamdport = addon.getSetting('newcamdport')
+newcamduser = addon.getSetting('newcamduser')
+
 
    ##### USERS #####
 adminuser  = addon.getSetting('useradmin')
@@ -206,6 +195,17 @@ def tvh_dvbapi():
 		tools.updateJsonFile(dvbapidefault, 'enabled', False)
 
 #		addontvh.setSetting(id='PRELOAD_CAPMT_CA', value='true')
+
+		if addon.getSetting('dvbapichoose') == 'newcamd':
+			if addon.getSetting('deskey1') == 'true':
+				with open(dvbapifile, "w") as outfile:
+					json.dump({'deskey':'01:02:03:04:05:06:07:08:09:10:11:12:13:14', 'username':newcamduser, 'password':newcamdpass, 'hostname':newcamdhost, 'port':newcamdport,
+						'emm':True, 'emmex':True, 'keepalive_interval':30, 'class':'caclient_cwc', 'index':1, 'enabled':True, 'name':'tvh'}, outfile, sort_keys=True, indent=4)
+			if addon.getSetting('deskey2') == 'true':
+				with open(dvbapifile, "w") as outfile:
+					json.dump({'deskey':'10:10:10:10:10:10:10:10:10:10:11:12:13:14', 'username':newcamduser, 'password':newcamdpass, 'hostname':newcamdhost, 'port':newcamdport,
+						'emm':True, 'emmex':True, 'keepalive_interval':30, 'class':'caclient_cwc', 'index':1, 'enabled':True, 'name':'tvh'}, outfile, sort_keys=True, indent=4)
+
 		
 		#oscam pc-nodmx
 		if addon.getSetting('dvbapichoose') == 'pc-nodmx':
@@ -268,8 +268,11 @@ def tvh_tunners():
 	meonetwork      = "f7fcf1c68e088087ed89c5214264e876"
 	vodafonenetwork = "fd3e986178c77d3687b337718c332a39"
 	hispanetwork    = "1c2f2758a410776103317afc11abbc8e"
+	claronetwork    = "87f9a21e2b1b98c057c424d7ab4cd9c9"
+	netnetwork      = "099f5b5ce2a8edb9f41b63481fdaf52b"
 #	astranetwork    = "b49667f409cd90d954431ce14ea69405"
 #	hotbirdnetwork  = ""
+
 	
 	if addon.getSetting('wetek') == 'true':
 		if addon.getSetting('wetekplay') == 'true':
@@ -699,6 +702,67 @@ def tvh_tunners():
 						tvh_channels('vodafone')
 						tvh_picons('vodafone')
 						tools.dvbt(tuners, vodafonenetwork)
+	elif addon.getSetting('brasil') == 'true':
+		if addon.getSetting('k1plus') == 'true':
+			if addon.getSetting('kdvbc') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbc = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('net') == 'true':
+					tvh_channels('net')
+					tvh_picons('net')
+					tools.dvbc(kdvbc, netnetwork)
+			elif addon.getSetting('kdvbs') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbs = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('clarotv') == 'true':
+					tvh_channels('clarotv')
+					tvh_picons('clarotv')
+					tools.dvbs(kdvbs, claronetwork)
+		if addon.getSetting('k1pro') == 'true':
+			if addon.getSetting('kdvbc') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbc = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('net') == 'true':
+					tvh_channels('net')
+					tvh_picons('net')
+					tools.dvbc(kdvbc, netnetwork)
+			elif addon.getSetting('kdvbs') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbs = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('clarotv') == 'true':
+					tvh_channels('clarotv')
+					tvh_picons('clarotv')
+					tools.dvbs(kdvbs, claronetwork)
+		if addon.getSetting('k2pro') == 'true':
+			if addon.getSetting('kdvbc') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbc = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('net') == 'true':
+					tvh_channels('net')
+					tvh_picons('net')
+					tools.dvbc(kdvbc, netnetwork)
+			elif addon.getSetting('kdvbs') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbs = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('clarotv') == 'true':
+					tvh_channels('clarotv')
+					tvh_picons('clarotv')
+					tools.dvbs(kdvbs, claronetwork)
+		if addon.getSetting('k3pro') == 'true':
+			if addon.getSetting('kdvbc') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbc = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('net') == 'true':
+					tvh_channels('net')
+					tvh_picons('net')
+					tools.dvbc(kdvbc, netnetwork)
+			elif addon.getSetting('kdvbs') == 'true':
+				ktuner = os.listdir(addontvhtuners)[0]
+				kdvbs = "%s%s" % (addontvhtuners, ktuner)
+				if addon.getSetting('clarotv') == 'true':
+					tvh_channels('clarotv')
+					tvh_picons('clarotv')
+					tools.dvbs(kdvbs, claronetwork)
 
 ##### Recording #####
 def tvh_recording():

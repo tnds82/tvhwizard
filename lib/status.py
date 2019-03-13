@@ -1,28 +1,40 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-################################################################################
-#      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016-2017 Team LibreELEC
-#      Copyright (C) 2017 Tnds82 (tndsrepo@gmail.com)
-#
-#  LibreELEC is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 2 of the License, or
-#  (at your option) any later version.
-#
-#  LibreELEC is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
-################################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import xbmcaddon
 
 addon       = xbmcaddon.Addon(id='script.tvhwizard')
 addonname   = addon.getAddonInfo('name')
+
+newcamdhost = addon.getSetting('newcamdhost')
+newcamdport = addon.getSetting('newcamdport')
+
+
+def statusbr():
+	else:
+		if addon.getSetting('wetekplay2') == 'true':
+			addon.setSetting(id='box', value='Wetek Play 2')
+		elif addon.getSetting('k1plus') == 'true':
+			addon.setSetting(id='box', value='KI Plus')
+		elif addon.getSetting('k1pro') == 'true':
+			addon.setSetting(id='box', value='KI Pro')
+		elif addon.getSetting('k2pro') == 'true':
+			addon.setSetting(id='box', value='KII Pro')
+		elif addon.getSetting('k3pro') == 'true':
+			addon.setSetting(id='box', value='KIII Pro')
+		if addon.getSetting('kdvbc') == 'true':
+			addon.setSetting(id='tuner', value='DVB-C')
+		elif addon.getSetting('kdvbs') == 'true':
+			addon.setSetting(id='tuner', value='DVB-S')
+		if addon.getSetting('net') == 'true':
+			addon.setSetting(id='channels', value='NET')
+		elif addon.getSetting('clarotv') == 'true':
+			addon.setSetting(id='channels', value='Claro TV')
+		if addon.getSetting('dvbapichoose') == 'newcamd':
+			addon.setSetting(id='softcam', value='NewCamd')
+			addon.setSetting(id='ipdvbapi', value=newcamdhost)
+			addon.setSetting(id='portdvbapi', value=newcamdport)
+					
 
 def status():
 	if addon.getSetting('start') == 'tvhwosc':
