@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
@@ -11,29 +13,28 @@ newcamdport = addon.getSetting('newcamdport')
 
 
 def statusbr():
-	else:
-		if addon.getSetting('wetekplay2') == 'true':
-			addon.setSetting(id='box', value='Wetek Play 2')
-		elif addon.getSetting('k1plus') == 'true':
-			addon.setSetting(id='box', value='KI Plus')
-		elif addon.getSetting('k1pro') == 'true':
-			addon.setSetting(id='box', value='KI Pro')
-		elif addon.getSetting('k2pro') == 'true':
-			addon.setSetting(id='box', value='KII Pro')
-		elif addon.getSetting('k3pro') == 'true':
-			addon.setSetting(id='box', value='KIII Pro')
-		if addon.getSetting('kdvbc') == 'true':
-			addon.setSetting(id='tuner', value='DVB-C')
-		elif addon.getSetting('kdvbs') == 'true':
-			addon.setSetting(id='tuner', value='DVB-S')
-		if addon.getSetting('net') == 'true':
-			addon.setSetting(id='channels', value='NET')
-		elif addon.getSetting('clarotv') == 'true':
-			addon.setSetting(id='channels', value='Claro TV')
-		if addon.getSetting('dvbapichoose') == 'newcamd':
-			addon.setSetting(id='softcam', value='NewCamd')
-			addon.setSetting(id='ipdvbapi', value=newcamdhost)
-			addon.setSetting(id='portdvbapi', value=newcamdport)
+	if addon.getSetting('wetekplay2') == 'true':
+		addon.setSetting(id='box', value='Wetek Play 2')
+	elif addon.getSetting('k1plus') == 'true':
+		addon.setSetting(id='box', value='KI Plus')
+	elif addon.getSetting('k1pro') == 'true':
+		addon.setSetting(id='box', value='KI Pro')
+	elif addon.getSetting('k2pro') == 'true':
+		addon.setSetting(id='box', value='KII Pro')
+	elif addon.getSetting('k3pro') == 'true':
+		addon.setSetting(id='box', value='KIII Pro')
+	if addon.getSetting('kdvbc') == 'true':
+		addon.setSetting(id='tuner', value='DVB-C')
+	elif addon.getSetting('kdvbs') == 'true':
+		addon.setSetting(id='tuner', value='DVB-S')
+	if addon.getSetting('net') == 'true':
+		addon.setSetting(id='channels', value='NET')
+	elif addon.getSetting('clarotv') == 'true':
+		addon.setSetting(id='channels', value='Claro TV')
+	if addon.getSetting('dvbapichoose') == 'newcamd':
+		addon.setSetting(id='softcam', value='NewCamd')
+		addon.setSetting(id='ipdvbapi', value=newcamdhost)
+		addon.setSetting(id='portdvbapi', value=newcamdport)
 					
 
 def status():

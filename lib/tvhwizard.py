@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
@@ -14,6 +16,9 @@ addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 artsfolder  = '/resources/img/tvhwizard'
 
 pyxbmct.skin.estuary = True
+
+def langString(id):
+	return addon.getLocalizedString(id)
 
 class FinishBR(pyxbmct.AddonFullWindow):
 
@@ -1107,7 +1112,6 @@ class DVBC(pyxbmct.AddonFullWindow):
         else:
             addon.setSetting(id='nos', value='false')
 
-
     def nowo_button_update(self):
         if self.nowo_button.isSelected():
             self.close()
@@ -1626,6 +1630,7 @@ class KBR(pyxbmct.AddonFullWindow):
     def k1plus_button_update(self):
         if self.k1plus_button.isSelected():
             self.close()
+            import tools
             addon.setSetting(id='dvbcards', value='true')
             addon.setSetting(id='k1plus', value='true')
             tools.set_addon('driver.dvb.crazycat', True)
@@ -1636,6 +1641,7 @@ class KBR(pyxbmct.AddonFullWindow):
     def k1pro_button_update(self):
         if self.k1pro_button.isSelected():
             self.close()
+            import tools
             addon.setSetting(id='dvbcards', value='true')
             addon.setSetting(id='k1pro', value='true')
             tools.set_addon('driver.dvb.crazycat', True)
@@ -1646,6 +1652,7 @@ class KBR(pyxbmct.AddonFullWindow):
     def k2pro_button_update(self):
         if self.k2pro_button.isSelected():
             self.close()
+            import tools
             addon.setSetting(id='dvbcards', value='true')
             addon.setSetting(id='k2pro', value='true')
             tools.set_addon('driver.dvb.crazycat', True)
@@ -1656,6 +1663,7 @@ class KBR(pyxbmct.AddonFullWindow):
     def k3pro_button_update(self):
         if self.k3pro_button.isSelected():
             self.close()
+            import tools
             addon.setSetting(id='dvbcards', value='true')
             addon.setSetting(id='k3pro', value='true')
             tools.set_addon('driver.dvb.crazycat', True)
@@ -1950,6 +1958,7 @@ class Inputs(pyxbmct.AddonFullWindow):
     def k_button_update(self):
         if self.k_button.isSelected():
             self.close()
+            import tools
             addon.setSetting(id='dvbcards', value='true')			
             addon.setSetting(id='k', value='true')
             tools.set_addon('driver.dvb.crazycat', True)

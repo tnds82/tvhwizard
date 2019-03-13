@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
