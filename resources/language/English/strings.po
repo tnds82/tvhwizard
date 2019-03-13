@@ -102,5 +102,5 @@ msgid "Reader 5"
 msgstr ""
 
 msgctxt "#30019"
-msgid "Addons"	msgid "IP"
+msgid "Hostname"
 msgstr ""
