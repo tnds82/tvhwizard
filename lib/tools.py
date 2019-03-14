@@ -39,7 +39,7 @@ def fixpicons():
 
 def downloader(url,dest, header):
     
-    dp.create(header, langString(5075), langString(5080))
+    dp.create(header, langString(50075), langString(50080))
     urllib.urlretrieve(url,dest,lambda nb, bs, fs, url=url: _pbhook(nb,bs,fs,url,dp))
  
 def _pbhook(numblocks, blocksize, filesize, url=None,dp=None):
@@ -57,7 +57,7 @@ def _pbhook(numblocks, blocksize, filesize, url=None,dp=None):
         sys.exit()
 		
 def extract(_in, _out, dp, header):
-    dp.create(header, langString(5076), langString(5080))
+    dp.create(header, langString(50076), langString(50080))
 
     zin = zipfile.ZipFile(_in,  'r')
 

@@ -97,13 +97,13 @@ class FinishBR(pyxbmct.AddonFullWindow):
         if addon.getSetting('channelson') == 'true':
             server.tvh_channels()
         os.system('systemctl start service.tvheadend42')
-        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5022), 2000, addonicon))
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50022), 2000, addonicon))
         addon.setSetting(id='tvhstatus', value='Configured')
         addon.setSetting(id='tvh', value='Configured')
         addon.setSetting(id='changeip', value='true')			
         self.close()
         time.sleep(1)
-        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50023), 2000, addonicon))
         xbmc.executebuiltin('Reboot')
 
 class Finish(pyxbmct.AddonFullWindow):
@@ -180,7 +180,7 @@ class Finish(pyxbmct.AddonFullWindow):
             if addon.getSetting('fifthreader') == 'true':
                 oscam.oscam_reader('server5', 'fifth')
             os.system('systemctl start service.softcam.oscam')
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5033), 2000, addonicon))
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50033), 2000, addonicon))
             import server
             os.system('systemctl stop service.tvheadend42')
             if addon.getSetting('tvhconfig') == 'true':
@@ -202,7 +202,7 @@ class Finish(pyxbmct.AddonFullWindow):
             if addon.getSetting('channelson') == 'true':
                 server.tvh_channels()
             os.system('systemctl start service.tvheadend42')
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5022), 2000, addonicon))
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50022), 2000, addonicon))
             addon.setSetting(id='tvhstatus', value='Configured')
             addon.setSetting(id='tvh', value='Configured')
             addon.setSetting(id='oscam', value='Configured')
@@ -229,13 +229,13 @@ class Finish(pyxbmct.AddonFullWindow):
             if addon.getSetting('channelson') == 'true':
                 server.tvh_channels()
             os.system('systemctl start service.tvheadend42')
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5022), 2000, addonicon))
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50022), 2000, addonicon))
             addon.setSetting(id='tvhstatus', value='Configured')
             addon.setSetting(id='tvh', value='Configured')
             addon.setSetting(id='changeip', value='true')			
         self.close()
         time.sleep(1)
-        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50023), 2000, addonicon))
         xbmc.executebuiltin('Reboot')
 
 class DVBGeneric(pyxbmct.AddonFullWindow):

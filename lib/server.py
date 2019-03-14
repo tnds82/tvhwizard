@@ -96,7 +96,7 @@ def subprocess_cmd(command):
 ##### CONFIGURATION #####
 def tvh_config():
 	if '"tndsconfig":' in open(addontvhconfig).read():
-		dialog.notification(addonname, langString(5061), xbmcgui.NOTIFICATION_WARNING, 2000)
+		dialog.notification(addonname, langString(50061), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 
 			tools.changekeyjson(addontvhconfig, 'wizard', 'tndsconfig')
@@ -125,7 +125,7 @@ def tvh_users():
 	userdefault = os.listdir(addontvhacontrol)[0]
 	defaultuser = "%s%s" % (addontvhacontrol, userdefault)
 	if not 'Default access entry' in open(defaultuser).read():
-		dialog.notification(addonname, langString(5069), xbmcgui.NOTIFICATION_WARNING, 5000)
+		dialog.notification(addonname, langString(50069), xbmcgui.NOTIFICATION_WARNING, 5000)
 	else:
 		# Create administrator user with password
 		if addon.getSetting('logadmin') == 'true':
@@ -190,7 +190,7 @@ def tvh_users():
 ##### DVBAPI #####
 def tvh_dvbapi():
 	if os.path.exists(dvbapifile):
-		dialog.notification(addonname, langString(5062), xbmcgui.NOTIFICATION_WARNING, 2000)
+		dialog.notification(addonname, langString(50062), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 		defaultdvbapi = os.listdir(addontvhdvbapi)[0]
 		dvbapidefault = "%s%s" % (addontvhdvbapi, defaultdvbapi)
@@ -769,7 +769,7 @@ def tvh_tunners():
 ##### Recording #####
 def tvh_recording():
 	if 'tndsdvr' in open(addontvhdefaultdvr).read():
-		dialog.notification(addonname, langString(5070), xbmcgui.NOTIFICATION_WARNING, 2000)
+		dialog.notification(addonname, langString(50070), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 		tools.addkeyjson(addontvhdefaultdvr, 'tndsdvr', 'true')
 		if addon.getSetting('recordprofile') == '0':
@@ -915,7 +915,7 @@ def tvh_recording():
 def tvh_pvr():
 	if os.path.exists(addonpvrtvhdata):
 		if ipbox in open(addonpvrtvhsettings).read():
-			dialog.notification(addonname, langString(5071), xbmcgui.NOTIFICATION_WARNING, 2000)
+			dialog.notification(addonname, langString(50071), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 		if not os.path.exists(addonpvrtvhdata):
 			os.makedirs(addonpvrtvhdata)
@@ -929,7 +929,7 @@ def tvh_pvr():
 ##### Kodi Config #####		
 def kodi_config():
 	if os.path.exists(advanced):
-		dialog.notification(addonname, langString(5072), xbmcgui.NOTIFICATION_WARNING, 2000)
+		dialog.notification(addonname, langString(50072), xbmcgui.NOTIFICATION_WARNING, 2000)
 	else:
 		#Optimization
 		if addon.getSetting('optim') == 'true':

@@ -31,7 +31,7 @@ def langString(id):
 
 def oscam_enable():  
 	if 'Configuration of dvbapi throught Addon Config OSCam by tnds82' in open(addonoscamconfig).read():
-		dialog.notification(addonname, langString(5053), xbmcgui.NOTIFICATION_INFO, 100)
+		dialog.notification(addonname, langString(50053), xbmcgui.NOTIFICATION_INFO, 100)
 	else:
 		#strings
 		tndscfg     ='# Configuration of dvbapi throught Addon Config OSCam by tnds82\n' 
@@ -55,19 +55,19 @@ def oscam_enable():
 		
 		#user oscam
 		if addon.getSetting('useroscam') == '':
-			dialog.notification(addonname, langString(5054), xbmcgui.NOTIFICATION_INFO, 2000)
+			dialog.notification(addonname, langString(50054), xbmcgui.NOTIFICATION_INFO, 2000)
 		else :
 			tools.change_words(addonoscamconfig, webifuser)
 		
 		#pass oscam
 		if addon.getSetting('passoscam') == '':
-			dialog.notification(addonname, langString(5055), xbmcgui.NOTIFICATION_INFO, 2000)
+			dialog.notification(addonname, langString(50055), xbmcgui.NOTIFICATION_INFO, 2000)
 		else :
 			tools.change_words(addonoscamconfig, webifpass)
 
 		#port oscam
 		if addon.getSetting('portoscam') == '':
-			dialog.notification(addonname, langString(5056), xbmcgui.NOTIFICATION_INFO, 2000)
+			dialog.notification(addonname, langString(50056), xbmcgui.NOTIFICATION_INFO, 2000)
 		else :
 			tools.change_words(addonoscamconfig, webifport)			
 		
@@ -101,7 +101,7 @@ def oscam_enable():
 		
 def dvbapi_enable():
 	if 'user                          = tvh' in open(addonoscamconfig).read():
-		dialog.notification(addonname, langString(5057), xbmcgui.NOTIFICATION_INFO, 1000)
+		dialog.notification(addonname, langString(50057), xbmcgui.NOTIFICATION_INFO, 1000)
 
 	else:
 		portdvbapipc = addon.getSetting('portdvbapipc')
@@ -140,7 +140,7 @@ def dvbapi_enable():
 
 def cccam_enable():
 	if 'nodeid                        = 6509F85610781478' in open(addonoscamconfig).read():
-		dialog.notification(addonname, langString(5058), xbmcgui.NOTIFICATION_INFO, 1000)
+		dialog.notification(addonname, langString(50058), xbmcgui.NOTIFICATION_INFO, 1000)
 	else:
 		portcccam = addon.getSetting('portcccam')
 		
@@ -163,7 +163,7 @@ def cccam_enable():
 
 def oscam_reader(server, number):	
 	if server in open(addonoscamreader).read():
-		dialog.notification(addonname, langString(5059), xbmcgui.NOTIFICATION_INFO, 1500)
+		dialog.notification(addonname, langString(50059), xbmcgui.NOTIFICATION_INFO, 1500)
 	else:
 		label     = addon.getSetting('%s%s%s' % ('name',number,'reader'))
 		hostname  = addon.getSetting('%s%s%s' % ('ip',number,'reader'))
@@ -189,7 +189,7 @@ def oscam_reader(server, number):
 
 def oscam_user(user, number):
 	if user in open(addonoscamuser).read():
-		dialog.notification(addonname, langString(5060), xbmcgui.NOTIFICATION_INFO, 2000)
+		dialog.notification(addonname, langString(50060), xbmcgui.NOTIFICATION_INFO, 2000)
 	else:
 		username = addon.getSetting('%s%s%s' % ('user',number,'user'))
 		passw = addon.getSetting('%s%s%s' % ('pass',number,'user'))

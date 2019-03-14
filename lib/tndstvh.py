@@ -21,6 +21,9 @@ dialogyesno = dialog.yesno
 
 pyxbmct.skin.estuary = True
 
+def langString(id):
+	return addon.getLocalizedString(id)
+
 class TndsTvh(pyxbmct.AddonFullWindow):
 
     def __init__(self, title=''):
@@ -88,13 +91,13 @@ class TndsTvh(pyxbmct.AddonFullWindow):
             self.close()
             import tools
             tools.fixpicons()
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Fix picons OK', 2000, addonicon))
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50020), 2000, addonicon))
             time.sleep(2)
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'KODI is restart', 2000, addonicon))
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50023), 2000, addonicon))
             xbmc.executebuiltin('Reboot')
             
         else :
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'You chose No', 2000, addonicon))		
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50021), 2000, addonicon))		
 
 if __name__ == '__main__':
     tndstvh = TndsTvh('TvhWizard')

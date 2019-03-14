@@ -104,3 +104,106 @@ msgstr ""
 msgctxt "#30019"
 msgid "Hostname"
 msgstr ""
+
+msgctxt "#50020"
+msgid "Fix picons OK"
+msgstr ""
+
+msgctxt "#50021"
+msgid "You chose No"
+msgstr ""
+
+msgctxt "#50022"
+msgid "Tvheadend set up and ready"
+msgstr ""
+
+msgctxt "#50023"
+msgid "KODI is restart"
+msgstr ""
+
+msgctxt "#50033"
+msgid "OSCam set up and ready"
+msgstr ""
+
+msgctxt "#50041"
+msgid "IP was successfully updated, the box is restarting"
+msgstr ""
+
+msgctxt "#50053"
+msgid "OSCam Config it has already been set"
+msgstr
+
+msgctxt "#50054"
+msgid "Default user [COLOR white]oscam[/COLOR]"
+msgstr ""
+
+msgctxt "#50055"
+msgid "Default pass [COLOR white]oscam[/COLOR]"
+msgstr ""
+
+msgctxt "#50056"
+msgid "Default port [COLOR white]8888[/COLOR]"
+msgstr ""
+
+msgctxt "#50057"
+msgid "DVBApi it has already been set"
+msgstr ""
+
+msgctxt "#50058"
+msgid "CCCam it has already been set"
+msgstr ""
+
+msgctxt "#50059"
+msgid "Reader it has already been set"
+msgstr ""
+
+msgctxt "#50060"
+msgid "User it has already been set"
+msgstr ""
+
+msgctxt "#50061"
+msgid "Tvheadend Config alredy created"
+msgstr ""
+
+msgctxt "#50062"
+msgid "Softcam - dvbapi alredy created"
+msgstr ""
+
+
+msgctxt "#50069"
+msgid "Default access is disable"
+msgstr ""
+
+msgctxt "#50070"
+msgid "Recording alredy modify"
+msgstr ""
+
+msgctxt "#50071"
+msgid "PVR Config alredy created"
+msgstr ""
+
+msgctxt "#50072"
+msgid "Advanced Settings alredy created"
+msgstr ""
+
+msgctxt "#50075"
+msgid "Downloading"
+msgstr ""
+
+msgctxt "#50076"
+msgid "Extracting"
+msgstr ""
+
+msgctxt "#50080"
+msgid "Please Wait..."
+msgstr ""
+
+
+
+
+
+
+
+
+
+

@@ -40,7 +40,7 @@ def changeippvr():
 		addon.setSetting(id='ipbox', value=new_ip)
 		addon.setSetting(id='tvhip', value=new_ip)
 		writeLog("The ip of config's has been updated", xbmc.LOGNOTICE)
-		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
+		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50041), 5000, addonicon))
 		time.sleep(1)
 		xbmc.executebuiltin('RestartApp')
 		
@@ -71,7 +71,7 @@ def checkip_andchange():
 				os.system('systemctl start service.tvheadend42')
 		addonpvr.setSetting(id='host', value=newip)
 		addon.setSetting(id='tvhip', value=newip)
-		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
+		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50041), 5000, addonicon))
 		time.sleep(1)
 		xbmc.executebuiltin('RestartApp')
 
