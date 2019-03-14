@@ -105,6 +105,10 @@ msgctxt "#30019"
 msgid "Hostname"
 msgstr ""
 
+msgctxt "#30020"
+msgid "Country"
+msgstr ""
+
 msgctxt "#50020"
 msgid "Fix picons OK"
 msgstr ""

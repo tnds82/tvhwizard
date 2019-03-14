@@ -13,6 +13,8 @@ newcamdport = addon.getSetting('newcamdport')
 
 
 def statusbr():
+	if addon.getSetting('brasil') == 'true':
+		addon.setSetting(id='country', value='Brasil')
 	if addon.getSetting('wetekplay2') == 'true':
 		addon.setSetting(id='box', value='Wetek Play 2')
 	elif addon.getSetting('k1plus') == 'true':
@@ -38,6 +40,8 @@ def statusbr():
 					
 
 def status():
+	if addon.getSetting('portugal') == 'true':
+		addon.setSetting(id='country', value='Portugal')
 	if addon.getSetting('start') == 'tvhwosc':
 		addon.setSetting(id='softcam', value='dvbapi')
 		addon.setSetting(id='readertype', value='cccam')

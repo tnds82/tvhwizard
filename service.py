@@ -41,7 +41,6 @@ def changeippvr():
 		addon.setSetting(id='tvhip', value=new_ip)
 		writeLog("The ip of config's has been updated", xbmc.LOGNOTICE)
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50041), 5000, addonicon))
-		time.sleep(1)
 		xbmc.executebuiltin('RestartApp')
 		
 		
