@@ -33,12 +33,12 @@ def changeippvr():
 	old_ip = addon.getSetting('ipbox')
 	
 	if new_ip == old_ip:
-		addon.setSetting(id='tvhip', value=newip)
+		addon.setSetting(id='tvhip', value=new_ip)
 		writeLog("The ip of the config's is the same as the current ip", xbmc.LOGNOTICE)
 	else:
-		addonpvr.setSetting(id='host', value=newip)
-		addon.setSetting(id='ipbox', value=newip)
-		addon.setSetting(id='tvhip', value=newip)
+		addonpvr.setSetting(id='host', value=new_ip)
+		addon.setSetting(id='ipbox', value=new_ip)
+		addon.setSetting(id='tvhip', value=new_ip)
 		writeLog("The ip of config's has been updated", xbmc.LOGNOTICE)
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(5041), 5000, addonicon))
 		time.sleep(1)
