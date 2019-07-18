@@ -4,39 +4,179 @@
 # Copyright (C) 2018-present Tnds82 (https://addons.tnds82.xyz)
 
 import urllib, os, re, urllib2, xbmc, xbmcgui, xbmcaddon, zipfile
-import json, shutil, subprocess
+import json, shutil, subprocess, sqlite3
 import platform
 from collections import OrderedDict
+import datetime
+import time
 
-addon         = xbmcaddon.Addon(id='script.tvhwizard')
-addonname     = addon.getAddonInfo('name')
+
+addon      = xbmcaddon.Addon(id='script.tvhwizard')
+addonname  = addon.getAddonInfo('name')
+addondata  = xbmc.translatePath(addon.getAddonInfo('profile'))
+database   = os.path.join(addondata, 'tvhwizard.db')
+tempfolder = os.path.join('/tmp/tnds82')
+channelver = os.path.join(addondata, 'version')
 
 # Constants
-
 STRING = 0
 BOOL = 1
 NUM = 2
 
 dp = xbmcgui.DialogProgress()
 
+def channelversion():
+	version = open(channelver, "r")
+	for line in version:
+		return line
+		
+def version_channels():
+  string_date = channelversion()  
+  format = "%d%m%Y"
+  try:
+      date = datetime.datetime.strptime(string_date, format)
+  except TypeError:
+      date = datetime.datetime(*(time.strptime(string_date, format)[0:6]))
+  
+  return '{}/{}/{}'.format(date.day, date.month, date.year)
+
+# Create database
+def create_database():
+	if not os.path.exists(addondata):
+		os.makedirs(addondata)
+
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+	c.execute('''CREATE TABLE "TVHWIZARD" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "STRING" TEXT NOT NULL UNIQUE, "CHOICES" INTEGER NOT NULL);''')
+	c.execute('''CREATE TABLE "USERS" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "PROGRAM" TEXT NOT NULL UNIQUE, "USERNAME" TEXT, 
+			 "PASSWORD" TEXT, "PORT" INTEGER);''')
+	c.execute('''CREATE TABLE "READERS" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "PROTOCOL" TEXT NOT NULL, "READER" TEXT NOT NULL,
+			 "HOSTNAME" TEXT NOT NULL,
+			 "USERNAME" TEXT NOT NULL, "PASSWORD" TEXT NOT NULL, 
+			 "PORT"	TEXT NOT NULL, "DESKEY" INTEGER);''')
+	c.execute('''CREATE TABLE "RECORDS" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "CAMINHO"	TEXT);''')
+	c.execute('''CREATE TABLE "OSCAM" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "PROTOCOL"	TEXT NOT NULL, "BOXTYPE" TEXT NOT NULL,
+			 "IP" TEXT NOT NULL, "PORT" TEXT NOT NULL);''')
+	c.execute('''CREATE TABLE "PVR" 
+			 ("ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+			 "PROGRAM" TEXT NOT NULL, "USERNAME" TEXT NOT NULL,
+			 "PASSWORD" TEXT NOT NULL, "IP" TEXT NOT NULL);''')
+	conn.commit()
+
+# Delete Tempfolder
+def delete_tempfolder():
+    shutil.rmtree(tempfolder)
+
+# Write log
 def writeLog(message, level=xbmc.LOGDEBUG):
     xbmc.log('[%s %s] %s' % (xbmcaddon.Addon().getAddonInfo('id'),
                              xbmcaddon.Addon().getAddonInfo('version'),
                              message.encode('utf-8')), level)
 
+# Language strings
 def langString(id):
 	return addon.getLocalizedString(id)
 
+# Use bash commands
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
     proc_stdout = process.communicate()[0].strip()
     print proc_stdout
 
+# Fix picons in Kodi
 def fixpicons():
 	subprocess_cmd("rm $HOME/.kodi/userdata/Thumbnails/*/*.png")
 	subprocess_cmd("rm $HOME/.kodi/userdata/Database/Textures13.db")
 
+# Insert data in database
+def insert_tvhwizard(strings,choices):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
 
+	c.execute("INSERT INTO TVHWIZARD (STRING,CHOICES) \
+      VALUES (?,?)", [strings, choices]);
+
+	conn.commit()
+	conn.close()
+
+def insert_pvr(program,username,password,ip):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+
+	c.execute("INSERT INTO PVR (PROGRAM,USERNAME,PASSWORD,IP) \
+      VALUES (?,?,?,?)", [program, username, password, ip]);
+
+	conn.commit()
+	conn.close()
+
+def insert_oscam(protocol,boxtype,ip,port):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+
+	c.execute("INSERT INTO OSCAM (PROTOCOL,BOXTYPE,IP,PORT) \
+      VALUES (?,?,?,?)", [protocol, boxtype, ip, port]);
+
+	conn.commit()
+	conn.close()
+
+def insert_users(program,username,password,port):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+
+	c.execute("INSERT INTO USERS (PROGRAM,USERNAME,PASSWORD,PORT) \
+      VALUES (?,?,?,?)", [program, username, password, port] );
+
+	conn.commit()
+	conn.close()
+
+def insert_readers(protocol,reader,hostname,username,password,port,deskey):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+
+	c.execute("INSERT INTO READERS (PROTOCOL,READER,HOSTNAME,USERNAME,PASSWORD,PORT,DESKEY) \
+      VALUES (?,?,?,?,?,?,?)", [protocol, reader, hostname, username, password, port, deskey]);
+
+	conn.commit()
+	conn.close()
+
+def insert_records(caminho):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+	c.execute("INSERT INTO RECORDS (CAMINHO) \
+      VALUES (?)", [caminho]);
+	conn.commit()
+	conn.close()
+
+# Return data from db
+def return_data(table, filter, string, key):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+	query = '%s%s%s%s%s' % ('SELECT * FROM ', table, " WHERE ", filter,"=?")
+	c.execute(query, [string])
+	for row in c.fetchall():
+		return row[key]
+	conn.close()
+
+# Update data from db
+def update_data(table, set, string1, where, string2):
+	conn = sqlite3.connect(database)
+	c = conn.cursor()
+	query = '%s%s%s%s%s%s%s%s%s%s' % ("UPDATE ", table, " set ", set, " = '", string1, "' WHERE ", where, " = ", string2)
+	c.execute(query)
+	conn.commit()
+	conn.close()
+
+# Download, compress and extract
 def downloader(url,dest, header):
     
     dp.create(header, langString(50075), langString(50080))
@@ -55,7 +195,7 @@ def _pbhook(numblocks, blocksize, filesize, url=None,dp=None):
         xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, "Download cancelled", 1000, addonicon))
         dp.close()
         sys.exit()
-		
+
 def extract(_in, _out, dp, header):
     dp.create(header, langString(50076), langString(50080))
 
@@ -76,6 +216,12 @@ def extract(_in, _out, dp, header):
 
     return True
 
+def compress(path, ziph):
+	for folder, subfolders, files in os.walk(path):
+		for file in files:
+			ziph.write(os.path.join(folder, file), os.path.relpath(os.path.join(folder,file), path), compress_type = zipfile.ZIP_DEFLATED)
+
+# Javascript
 def jsonrpc(query):
     querystring = {"jsonrpc": "2.0", "id": 1}
     querystring.update(query)
@@ -122,6 +268,7 @@ def updateJsonFile(path, string, value):
 	jsonFile.write(json.dumps(data, indent=4))
 	jsonFile.close()
 
+# Inset data in Tunners via Javascript
 def dvbc(path, network):	
 	jsonFile = open(path, "r")
 	data = json.load(jsonFile, object_pairs_hook=OrderedDict)
@@ -159,6 +306,7 @@ def dvbs(path, network):
 	jsonFile.write(json.dumps(data, indent=4))
 	jsonFile.close()
 
+#Download channels and Picons
 def channels(url):
 	tndsDir = os.path.join('/tmp/tnds82')
 	packageFile = os.path.join('/tmp/tnds82', 'channels.zip')
@@ -169,39 +317,21 @@ def channels(url):
 	downloader(url,packageFile,header)
 	extract(packageFile,tndsDir,dp,header)
 	
-def picons(url, path):
-	piconspath = os.path.join('/storage/picons/')
+def picons(url):
 	piconsDir = os.path.join('/storage/picons/vdr/')
 	packageFile = os.path.join('/tmp/tnds82', 'picons.zip')
 	header = 'Picons for Tvheadend'
 	dp = xbmcgui.DialogProgress()
-	if not os.path.exists(piconspath):
-		os.makedirs(piconspath)	
 	if not os.path.exists(piconsDir):
 		os.makedirs(piconsDir)
 	downloader(url,packageFile,header)
 	extract(packageFile,piconsDir,dp,header)
 
+# Profiles for recording
 def check_mkvprofile(number, source):
 	profilepathname = os.listdir(source)[number]
 	profilepath     = "%s%s" % (source, profilepathname)
 	if '"profile-matroska"' in  open(profilepath).read():
-		return profilepathname
-	else:
-		None
-		
-def check_passprofile(number, source):
-	profilepathname = os.listdir(source)[number]
-	profilepath     = "%s%s" % (source, profilepathname)
-	if '"profile-mpegts"' in  open(profilepath).read():
-		return profilepathname
-	else:
-		None
-
-def check_htspprofile(number, source):
-	profilepathname = os.listdir(source)[number]
-	profilepath     = "%s%s" % (source, profilepathname)
-	if '"profile-htsp"' in  open(profilepath).read():
 		return profilepathname
 	else:
 		None
@@ -218,45 +348,15 @@ def recording_profile(profile, recordingpath, source, name):
 			'day-dir':True, 'channel-dir':True, 'title-dir':False, 'channel-in-title':True,
 			'date-in-title':False, 'time-in-title':False, 'episode-in-title':False, 'subtitle-in-title':False,
 			'omit-title':False, 'clean-title':False, 'whitespace-in-title':False, 'windows-compatible-filenames':False}, outfile, indent=4)
-			
-def advancedsettings_jarvis(dest):
-	optprofile = open(dest, 'a')
-	optprofile.write('<!-- Created using Config Tvheadend addon by tnds82 -->\n')
-	optprofile.write('<advancedsettings>\n')
-	optprofile.write('    <network>\n')
-	optprofile.write('        <cachemembuffersize>0</cachemembuffersize>\n')
-	optprofile.write('        <readbufferfactor>20</readbufferfactor>\n')
-	optprofile.write('    </network>\n')
-	optprofile.write('    <videoscanner>\n')
-	optprofile.write('        <ignoreerrors>true</ignoreerrors>\n')
-	optprofile.write('    </videoscanner>\n')
-	optprofile.write('    <gui>\n')
-	optprofile.write('        <algorithmdirtyregions>3</algorithmdirtyregions>\n')
-	optprofile.write('        <nofliptimeout>0</nofliptimeout>\n')
-	optprofile.write('    </gui>\n')
-	optprofile.write('    <lookandfeel>\n')
-	optprofile.write('        <enablerssfeeds>false</enablerssfeeds>\n')
-	optprofile.write('    </lookandfeel>\n')
-	optprofile.write('    <splash>false</splash>\n')
-	optprofile.write('    <pvr>\n')
-	optprofile.write('        <minvideocachelevel>0</minvideocachelevel>\n')
-	optprofile.write('        <minaudiocachelevel>0</minaudiocachelevel>\n')
-	optprofile.write('        <maxvideocachelevel>0</maxvideocachelevel>\n')
-	optprofile.write('        <maxaudiocachelevel>0</maxaudiocachelevel>\n')
-	optprofile.write('        <cacheindvdplayer>false</cacheindvdplayer>\n')
-	optprofile.write('    </pvr>\n')
-	optprofile.write('    <musiclibrary>\n')
-	optprofile.write('        <backgroundupdate>true</backgroundupdate>\n')
-	optprofile.write('    </musiclibrary>\n')
-	optprofile.write('</advancedsettings>\n')
-	optprofile.close()
 
-def advancedsettings_krypton(dest):
+# Advanced Settings
+def advancedsettings_leia(dest):
 	optprofile = open(dest, 'a')
 	optprofile.write('<!-- Created using Config Tvheadend addon by tnds82 -->\n')
 	optprofile.write('<advancedsettings>\n')
 	optprofile.write('    <cache>\n')
-	optprofile.write('        <memorysize>419430400</memorysize>\n')
+	optprofile.write('        <buffermode>1</buffermode>\n')
+	optprofile.write('        <memorysize>139460608</memorysize>\n')
 	optprofile.write('        <readfactor>20</readfactor>\n')
 	optprofile.write('    </cache>\n')
 	optprofile.write('    <videoscanner>\n')
@@ -270,19 +370,10 @@ def advancedsettings_krypton(dest):
 	optprofile.write('        <enablerssfeeds>false</enablerssfeeds>\n')
 	optprofile.write('    </lookandfeel>\n')
 	optprofile.write('    <splash>false</splash>\n')
-	optprofile.write('    <pvr>\n')
-	optprofile.write('        <minvideocachelevel>0</minvideocachelevel>\n')
-	optprofile.write('        <minaudiocachelevel>0</minaudiocachelevel>\n')
-	optprofile.write('        <maxvideocachelevel>0</maxvideocachelevel>\n')
-	optprofile.write('        <maxaudiocachelevel>0</maxaudiocachelevel>\n')
-	optprofile.write('        <cacheindvdplayer>false</cacheindvdplayer>\n')
-	optprofile.write('    </pvr>\n')
-	optprofile.write('    <musiclibrary>\n')
-	optprofile.write('        <backgroundupdate>true</backgroundupdate>\n')
-	optprofile.write('    </musiclibrary>\n')
 	optprofile.write('</advancedsettings>\n')
 	optprofile.close()
 
+# Confog PVR
 def pvrsettings(dest, hostname, password, username):
 	createsett = open(dest, 'a')
 	createsett.write("<settings>\n")
@@ -306,7 +397,8 @@ def pvrsettings(dest, hostname, password, username):
 	createsett.write('    <setting id="user" value="%s" />\n' % username)
 	createsett.write('</settings>\n')
 	createsett.close()	
-	
+
+# Create reader cccam
 def readercccam(dest, nome, hostname, port, username, passw, description):
 	createreader = open(dest, 'a')
 	createreader.write("[reader]\n")
@@ -324,38 +416,8 @@ def readercccam(dest, nome, hostname, port, username, passw, description):
 	createreader.write("cccreshare                    = 2\n")
 	createreader.write("\n")
 	createreader.close()
-			
-def readernewcamd(dest, nome, username, passw, description):
-	createreader = open(dest, 'a')
-	createreader.write("[reader]\n")
-	createreader.write("label                         = %s\n" % nome)
-	createreader.write("description                   = %s\n" % description)
-	createreader.write("enable                        = 1\n")
-	createreader.write("protocol                      = newcamd\n")
-	createreader.write("key                           = 0102030405060708091011121314\n")
-	createreader.write("user                          = %s\n" % username)
-	createreader.write("password                      = %s\n" % passw)
-	createreader.write("connectoninit                 = 1\n")
-	createreader.write("fallback                      = 1\n")
-	createreader.write("group                         = 1\n")
-	createreader.write("\n")
-	createreader.close()
-			
-def readercs357x(dest, nome, hostname, port, username, passw, description):
-	createreader = open(dest, 'a')
-	createreader.write("[reader]\n")
-	createreader.write("label                         = %s\n" % nome)
-	createreader.write("description                   = %s\n" % description)
-	createreader.write("enable                        = 1\n")
-	createreader.write("protocol                      = cs357x\n")
-	createreader.write("device                        = %s,%s\n" % (hostname, port))
-	createreader.write("user                          = %s\n" % username)
-	createreader.write("password                      = %s\n" % passw)
-	createreader.write("fallback                      = 1\n")
-	createreader.write("group                         = 1\n")
-	createreader.write("\n")
-	createreader.close()
 
+# Remove, Change and Insert words in files		
 def change_words(file, words):
 	lines = []
 	with open(file) as infile:
@@ -387,6 +449,7 @@ def insert_words(file, line, words):
 	insert.write(contents)
 	insert.close()
 
+# Enable addons
 def set_addon(module, enabled):
     query = {"method": "Addons.SetAddonEnabled",
              "params": {"addonid": module, "enabled": enabled}}

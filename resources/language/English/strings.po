@@ -114,7 +114,7 @@ msgid "Fix picons OK"
 msgstr ""
 
 msgctxt "#50021"
-msgid "You chose No"
+msgid "You choose No"
 msgstr ""
 
 msgctxt "#50022"
@@ -125,12 +125,65 @@ msgctxt "#50023"
 msgid "KODI is restart"
 msgstr ""
 
+msgctxt "#50024"
+msgid "There is no update of Channels"
+msgstr ""
+
+msgctxt "#50025"
+msgid "New channels. Do you want to update?"
+msgstr ""
+
+msgctxt "#50026"
+msgid "Successfully reset settings"
+msgstr ""
+
+
 msgctxt "#50033"
 msgid "OSCam set up and ready"
 msgstr ""
 
 msgctxt "#50041"
 msgid "IP was successfully updated, the box is restarting"
+msgstr ""
+
+msgctxt "#50042"
+msgid "Nos list sent successfully"
+msgstr ""
+
+msgctxt "#50043"
+msgid "Nowo list sent successfully"
+msgstr ""
+
+msgctxt "#50044"
+msgid "Hispasat list sent successfully"
+msgstr ""
+
+msgctxt "#50045"
+msgid "Astra list sent successfully"
+msgstr ""
+
+msgctxt "#50046"
+msgid "Hotbird list sent successfully"
+msgstr ""
+
+msgctxt "#50047"
+msgid "Tdt list sent successfully"
+msgstr ""
+
+msgctxt "#50048"
+msgid "Meo list sent successfully"
+msgstr ""
+
+msgctxt "#50049"
+msgid "Vodafone list sent successfully"
+msgstr ""
+
+msgctxt "#50050"
+msgid "Net list sent successfully"
+msgstr ""
+
+msgctxt "#50051"
+msgid "ClaroTV list sent successfully"
 msgstr ""
 
 msgctxt "#50053"
@@ -197,6 +250,11 @@ msgstr ""
 msgctxt "#50076"
 msgid "Extracting"
 msgstr ""
+
+msgctxt "#50078"
+msgid "Channels were successfully updated."
+msgstr ""
+
 
 msgctxt "#50080"
 msgid "Please Wait..."

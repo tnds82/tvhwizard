@@ -8,12 +8,12 @@ import xbmcaddon
 
 
 from lib import tvhwizard
-from lib import tndstvh
 
 addon       = xbmcaddon.Addon(id='script.tvhwizard')
 addonname   = addon.getAddonInfo('name')
 
 if addon.getSetting('tvhstatus') == 'Configured':
-	tndstvh.TndsTvh().doModal()
+	from lib import tndstvh
+	tndstvh.Status().doModal()
 else:
 	tvhwizard.TvhWizard().doModal()
