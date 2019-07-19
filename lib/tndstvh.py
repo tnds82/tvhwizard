@@ -73,7 +73,7 @@ class Status(pyxbmct.AddonFullWindow):
         image = pyxbmct.Image(addonfolder+artsfolder+'/yourip.png')
         self.placeControl(image, 14, 0, rowspan=1, columnspan=3)		
         label = pyxbmct.Label(pvripbox, textColor='0xFF009BC2')
-        self.placeControl(label, 14, 3, columnspan=2)
+        self.placeControl(label, 14, 3, columnspan=4)
         #country
         image = pyxbmct.Image(addonfolder+artsfolder+'/countrysmall.png')
         self.placeControl(image, 16, 0, rowspan=1, columnspan=3)		
