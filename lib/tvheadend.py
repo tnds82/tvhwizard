@@ -309,20 +309,20 @@ class Tvheadend():
 							if tools.return_data('TVHWIZARD', 'STRING', 'tvhwosc', 2) == 1:
 								self.tvh_channels('nos')
 								self.tvh_picons('nos')
-								tools.dvbc(kdvbc, nosnetwork)
+								tools.dvbc(w2dvbc, nosnetwork)
 							else:
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
-								tools.dvbc(kdvbc, nosnetwork)
+								tools.dvbc(w2dvbc, nosnetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
-							tools.dvbc(kdvbc, nowonetwork)
+							tools.dvbc(w2dvbc, nowonetwork)
 					elif tools.return_data('TVHWIZARD', 'STRING', 'brasil', 2) == 1:
 						if tools.return_data('TVHWIZARD', 'STRING', 'net', 2) == 1:
 							self.tvh_channels('net')
 							self.tvh_picons('net')
-							tools.dvbc(kdvbc, netnetwork)
+							tools.dvbc(w2dvbc, netnetwork)
 				elif tools.return_data('TVHWIZARD', 'STRING', 'wdvbs', 2) == 1:
 					wetek2tuners = os.listdir(addontvhtuners)[0]
 					w2dvbs = "%s%s" % (addontvhtuners, wetek2tuners)
@@ -330,20 +330,20 @@ class Tvheadend():
 						if tools.return_data('TVHWIZARD', 'STRING', 'hispasat', 2) == 1:
 							self.tvh_channels('hispasat')
 							self.tvh_picons('hispasat')
-							tools.dvbs(kdvbs, hispanetwork)
+							tools.dvbs(w2dvbs, hispanetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'astra', 2) == 1:
 							self.tvh_channels('astra')
 							self.tvh_picons('astra')
-							tools.dvbs(kdvbs, astranetwork)
+							tools.dvbs(w2dvbs, astranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'hotbird', 2) == 1:
 							self.tvh_channels('hotbird')
 							self.tvh_picons('hotbird')
-							tools.dvbs(kdvbs, hotbirdnetwork)
+							tools.dvbs(w2dvbs, hotbirdnetwork)
 					elif tools.return_data('TVHWIZARD', 'STRING', 'brasil', 2) == 1:
 						if tools.return_data('TVHWIZARD', 'STRING', 'clarotv', 2) == 1:
 							self.tvh_channels('clarotv')
 							self.tvh_picons('clarotv')
-							tools.dvbs(kdvbs, claronetwork)						
+							tools.dvbs(w2dvbs, claronetwork)						
 				elif tools.return_data('TVHWIZARD', 'STRING', 'wdvbt', 2) == 1:
 					wetek2tuner = os.listdir(addontvhtuners)[0]
 					w2dvbt = "%s%s" % (addontvhtuners, wetek2tuner)
