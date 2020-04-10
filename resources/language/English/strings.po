@@ -186,6 +186,10 @@ msgctxt "#50051"
 msgid "ClaroTV list sent successfully"
 msgstr ""
 
+msgctxt "#50052"
+msgid "Nos Madeira list sent successfully"
+msgstr ""
+
 msgctxt "#50053"
 msgid "OSCam Config it has already been set"
 msgstr

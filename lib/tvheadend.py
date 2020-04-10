@@ -20,9 +20,15 @@ addonchaver = os.path.join(addondata, 'version')
 addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 
 	##### ADDON SERVICE TVHEADEND #####
-addontvh            = xbmcaddon.Addon(id='service.tvheadend42')
-addontvhname        = addontvh.getAddonInfo('name')
-addontvhfolder      = addontvh.getAddonInfo('path')
+if 'NAME="LibreELEC"' in open(release).read():
+    addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
+    addontvhname     = addontvh.getAddonInfo('name')
+    addontvhfolder   = addontvh.getAddonInfo('path')
+else:
+    addontvh         = xbmcaddon.Addon(id='service.tvheadend43')
+    addontvhname     = addontvh.getAddonInfo('name')
+    addontvhfolder   = addontvh.getAddonInfo('path')
+
 
 	##### DESTINATION #####
 addontvhdest        = xbmc.translatePath(addontvh.getAddonInfo('profile'))
@@ -51,7 +57,7 @@ advanced = os.path.join(userdata, 'advancedsettings.xml')
 
 
 def langString(id):
-	return addon.getLocalizedString(id)
+    return addon.getLocalizedString(id)
 
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
@@ -193,6 +199,7 @@ class Tvheadend():
 	def tvh_tunners(self):
 		nosnetwork      = "d2e2dd7ba943289f15a46ee502e13b12"
 		nowonetwork     = "00e7faf22eece16481b49486b74d81e2"
+		madeiranetwork  = "38d11aa2a640b69385d6032649389a92"
 		tdtnetwork      = "3b71a44c08543bd024fad8630f745d60"
 		meonetwork      = "f06c23593ca3971f3ff00f4eaa565fb2"
 		vodafonenetwork = "fd3e986178c77d3687b337718c332a39"
@@ -216,10 +223,14 @@ class Tvheadend():
 							self.tvh_channels('nosfree')
 							self.tvh_picons('nosfree')
 							tools.dvbc(wdvbc, nosnetwork)
+					elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+						self.tvh_channels('madeira')
+						self.tvh_picons('madeira')
+						tools.dvbc(wdvbc, madeiranetwork)
 					elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 						self.tvh_channels('nowo')
 						self.tvh_picons('nowo')
-						tools.dvbc(wdvbc, nowonetwork)					
+						tools.dvbc(wdvbc, nowonetwork)
 				elif tools.return_data('TVHWIZARD', 'STRING', 'wdvbs', 2) == 1:
 					wetektuners1 = os.listdir(addontvhtuners)[0]
 					wdvbs1 = "%s%s" % (addontvhtuners, wetektuners1)
@@ -314,6 +325,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(w2dvbc, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(w2dvbc, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -374,6 +389,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(kdvbc, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(kdvbc, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -433,6 +452,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(kdvbc, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(kdvbc, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -492,6 +515,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(kdvbc, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(kdvbc, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -551,6 +578,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(kdvbc, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(kdvbc, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -610,6 +641,10 @@ class Tvheadend():
 							self.tvh_channels('nosfree')
 							self.tvh_picons('nosfree')
 							tools.dvbc(kvtvdvbc, nosnetwork)
+					elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+						self.tvh_channels('madeira')
+						self.tvh_picons('madeira')
+						tools.dvbc(kvtvdvbc, madeiranetwork)
 					elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 						self.tvh_channels('nowo')
 						self.tvh_picons('nowo')
@@ -658,6 +693,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(tuners, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(tuners, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')
@@ -699,6 +738,10 @@ class Tvheadend():
 								self.tvh_channels('nosfree')
 								self.tvh_picons('nosfree')
 								tools.dvbc(tuners, nosnetwork)
+						elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+							self.tvh_channels('madeira')
+							self.tvh_picons('madeira')
+							tools.dvbc(tuners, madeiranetwork)
 						elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
 							self.tvh_channels('nowo')
 							self.tvh_picons('nowo')

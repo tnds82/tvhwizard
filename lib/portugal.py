@@ -17,6 +17,7 @@ addonicon   = os.path.join(addonfolder, 'resources/icon.png')
 artsfolder  = '/resources/img/tvhwizard'
 addonsetts  = os.path.join(addondata, 'settings.xml')
 database    = os.path.join(addondata, 'tvhwizard.db')
+release     = "/etc/os-release"
 
 pyxbmct.skin.estuary = True
 
@@ -86,9 +87,15 @@ class Finish(pyxbmct.AddonFullWindow):
             xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50033), 2000, addonicon))
 
             import tvheadend
-            os.system('systemctl stop service.tvheadend42')
+            if 'NAME="LibreELEC"' in open(release).read():
+                os.system('systemctl stop service.tvheadend42')
+            else:
+                os.system('systemctl stop service.tvheadend43')
             tvheadend.Tvheadend()
-            os.system('systemctl start service.tvheadend42')
+            if 'NAME="LibreELEC"' in open(release).read():
+                os.system('systemctl start service.tvheadend42')
+            else:
+                os.system('systemctl start service.tvheadend43')
             xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50022), 2000, addonicon))
             addon.setSetting(id='tvhstatus', value='Configured')
             addon.setSetting(id='tvh', value='Configured')
@@ -100,9 +107,15 @@ class Finish(pyxbmct.AddonFullWindow):
                 tools.insert_pvr('tvh_htsp', '', '', self.get_ip_address())
 
             import tvheadend
-            os.system('systemctl stop service.tvheadend42')
+            if 'NAME="LibreELEC"' in open(release).read():
+                os.system('systemctl stop service.tvheadend42')
+            else:
+                os.system('systemctl stop service.tvheadend43')
             tvheadend.Tvheadend()
-            os.system('systemctl start service.tvheadend42')
+            if 'NAME="LibreELEC"' in open(release).read():
+                os.system('systemctl start service.tvheadend42')
+            else:
+                os.system('systemctl start service.tvheadend43')
             xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, langString(50022), 2000, addonicon))
             addon.setSetting(id='tvhstatus', value='Configured')
             addon.setSetting(id='tvh', value='Configured')
@@ -329,25 +342,36 @@ class DVBC(pyxbmct.AddonFullWindow):
 
 		# Nos
         self.nos_button = pyxbmct.RadioButton('')
-        self.placeControl(self.nos_button, 11, 3, rowspan=1, columnspan=4)
+        self.placeControl(self.nos_button, 10, 3, rowspan=1, columnspan=4)
         self.connect(self.nos_button, self.nos_button_update)
         if tools.return_data('TVHWIZARD', 'STRING', 'nos', 2) == 1:
             self.nos_button.setSelected(True)
         else:
             self.nos_button.setSelected(False)
         nos = pyxbmct.Image(addonfolder+artsfolder+'/nos.png')
-        self.placeControl(nos, 11, 3, rowspan=1, columnspan=4)
-        
+        self.placeControl(nos, 10, 3, rowspan=1, columnspan=4)
+
+		# Nos Madeira
+        self.madeira_button = pyxbmct.RadioButton('')
+        self.placeControl(self.madeira_button, 12, 6, rowspan=1, columnspan=4)
+        self.connect(self.madeira_button, self.madeira_button_update)
+        if tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+            self.madeira_button.setSelected(True)
+        else:
+            self.madeira_button.setSelected(False)
+        madeira = pyxbmct.Image(addonfolder+artsfolder+'/madeira.png')
+        self.placeControl(madeira, 12, 6, rowspan=1, columnspan=4)
+
 		# Nowo
         self.nowo_button = pyxbmct.RadioButton('')
-        self.placeControl(self.nowo_button, 11, 9, rowspan=1, columnspan=4)
+        self.placeControl(self.nowo_button, 10, 9, rowspan=1, columnspan=4)
         self.connect(self.nowo_button, self.nowo_button_update)
         if tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
             self.nowo_button.setSelected(True)
         else:
             self.nowo_button.setSelected(False)
         nowo = pyxbmct.Image(addonfolder+artsfolder+'/nowo.png')
-        self.placeControl(nowo, 11, 9, rowspan=1, columnspan=4)
+        self.placeControl(nowo, 10, 9, rowspan=1, columnspan=4)
 
 		# Close button
         self.close_button = pyxbmct.Button('Exit')
@@ -357,10 +381,12 @@ class DVBC(pyxbmct.AddonFullWindow):
     def set_navigation(self):
         """Set up keyboard/remote navigation between controls."""
         self.close_button.controlUp(self.nos_button)
-        self.nos_button.controlDown(self.close_button)
+        self.nos_button.controlDown(self.madeira_button)
         self.nos_button.controlRight(self.nowo_button)
-        self.nowo_button.controlDown(self.close_button)
+        self.nowo_button.controlDown(self.madeira_button)
         self.nowo_button.controlLeft(self.nos_button)
+        self.madeira_button.controlUp(self.nos_button)
+        self.madeira_button.controlDown(self.close_button)
 	    # Set initial focus.
         self.setFocus(self.close_button)
 
@@ -371,6 +397,14 @@ class DVBC(pyxbmct.AddonFullWindow):
             Finish().doModal()
         else:
             tools.insert_tvhwizard('nos', 0)
+
+    def madeira_button_update(self):
+        if self.madeira_button.isSelected():
+            self.close()
+            tools.insert_tvhwizard('madeira', 1)
+            Finish().doModal()
+        else:
+            tools.insert_tvhwizard('madeira', 0)
 
     def nowo_button_update(self):
         if self.nowo_button.isSelected():
@@ -1562,17 +1596,17 @@ class Tvheadend(pyxbmct.AddonFullWindow):
 		# Tvheadend button
         self.tvh_button = pyxbmct.Button('TVHEADEND')
         self.placeControl(self.tvh_button, 10, 11, rowspan=1, columnspan=3)
-        self.connect(self.tvh_button, lambda: self.installaddons('service.tvheadend42'))
+        self.connect(self.tvh_button, lambda: self.installaddons('service.tvheadend42', 'service.tvheadend43'))
 
 		# Tvheadend HTSP Client button
         self.htsp_button = pyxbmct.Button('HTSP CLIENT')
         self.placeControl(self.htsp_button, 10, 2, rowspan=1, columnspan=3)
-        self.connect(self.htsp_button, lambda: self.installaddons('pvr.hts'))
+        self.connect(self.htsp_button, lambda: self.installaddon('pvr.hts'))
 
 		# Start button
         self.start_button = pyxbmct.Button('START')
         self.placeControl(self.start_button, 12, 7, rowspan=1, columnspan=2)
-        self.connect(self.start_button, lambda: self.page('service.tvheadend42', 'pvr.hts'))
+        self.connect(self.start_button, lambda: self.page('service.tvheadend42', 'service.tvheadend43', 'pvr.hts'))
 
 		# Close button
         self.close_button = pyxbmct.Button('Exit')
@@ -1592,7 +1626,18 @@ class Tvheadend(pyxbmct.AddonFullWindow):
 	    # Set initial focus.
         self.setFocus(self.start_button)
 
-    def installaddons(self, id):
+    def installaddons(self, id1, id2):
+        if os.path.exists(xbmc.translatePath('special://home/addons/') + id1):
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Addon was alredy installed', 2000, addonicon))
+        elif os.path.exists(xbmc.translatePath('special://home/addons/') + id2):
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Addon was alredy installed', 2000, addonicon))
+        else:
+            if 'NAME="LibreELEC"' in open(release).read():
+                xbmc.executebuiltin('InstallAddon(%s)'%(id1))
+            else:
+                xbmc.executebuiltin('InstallAddon(%s)'%(id2))
+
+    def installaddon(self, id):
         if os.path.exists(xbmc.translatePath('special://home/addons/') + id):
             xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(addonname, 'Addon was alredy installed', 2000, addonicon))
         else:
@@ -1603,19 +1648,33 @@ class Tvheadend(pyxbmct.AddonFullWindow):
         s.connect(("8.8.8.8", 80))
         return s.getsockname()[0]
 
-    def page(self, id1, id2):
-        if not os.path.exists(xbmc.translatePath('special://home/addons/') + id1):
-            xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
-        elif not os.path.exists(xbmc.translatePath('special://home/addons/') + id2):
-            xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
-        else:
-            tools.insert_tvhwizard('tvhconfig', 1)
-            if tools.return_data('TVHWIZARD', 'STRING', 'tvhwosc', 2) == 1:
-                tools.insert_oscam('dvbapi', 'pc', self.get_ip_address(), '9002')
-                self.close()
+    def page(self, id1, id2, id3):
+        if 'NAME="LibreELEC"' in open(release).read():
+            if not os.path.exists(xbmc.translatePath('special://home/addons/') + id1):
+                xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
+            elif not os.path.exists(xbmc.translatePath('special://home/addons/') + id3):
+                xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))        
             else:
-                self.close()
-            Users().doModal()
+                tools.insert_tvhwizard('tvhconfig', 1)
+                if tools.return_data('TVHWIZARD', 'STRING', 'tvhwosc', 2) == 1:
+                    tools.insert_oscam('dvbapi', 'pc', self.get_ip_address(), '9002')
+                    self.close()
+                else:
+                    self.close()
+                Users().doModal()
+        else:    
+            if not os.path.exists(xbmc.translatePath('special://home/addons/') + id2):
+                xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))
+            elif not os.path.exists(xbmc.translatePath('special://home/addons/') + id3):
+                xbmc.executebuiltin(xbmcgui.Dialog().ok("Tvheadend Config", "The addons are not installed. Please install them to continue"))        
+            else:
+                tools.insert_tvhwizard('tvhconfig', 1)
+                if tools.return_data('TVHWIZARD', 'STRING', 'tvhwosc', 2) == 1:
+                    tools.insert_oscam('dvbapi', 'pc', self.get_ip_address(), '9002')
+                    self.close()
+                else:
+                    self.close()
+                Users().doModal()
 
     def closepage(self):
         self.close()

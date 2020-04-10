@@ -111,6 +111,8 @@ class Status(pyxbmct.AddonFullWindow):
                 self.checkupdate('nos')
             else:
                 self.checkupdate('nosfree')
+        elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+            self.checkupdate('madeira')
         elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
             self.checkupdate('nowo')
         elif tools.return_data('TVHWIZARD', 'STRING', 'hispasat', 2) == 1:
@@ -300,6 +302,9 @@ class Status(pyxbmct.AddonFullWindow):
             if tools.return_data('TVHWIZARD', 'STRING', 'nos', 2) == 1:
                 label = pyxbmct.Label('NOS', textColor='0xFF009BC2')
                 self.placeControl(label, 13, 10, columnspan=3)
+            elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+                label = pyxbmct.Label('Nos Madeira', textColor='0xFF009BC2')
+                self.placeControl(label, 13, 10, columnspan=3)
             elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
                 label = pyxbmct.Label('Nowo', textColor='0xFF009BC2')
                 self.placeControl(label, 13, 10, columnspan=3)
@@ -387,6 +392,8 @@ class Status(pyxbmct.AddonFullWindow):
                 self.check('nos')
             else:
                 self.check('nosfree')
+        elif tools.return_data('TVHWIZARD', 'STRING', 'madeira', 2) == 1:
+            self.check('madeira')
         elif tools.return_data('TVHWIZARD', 'STRING', 'nowo', 2) == 1:
             self.check('nowo')
         elif tools.return_data('TVHWIZARD', 'STRING', 'hispasat', 2) == 1:
@@ -423,7 +430,7 @@ class Status(pyxbmct.AddonFullWindow):
     def mopts(self):
         self.close()
         TndsTvh().doModal()
-		
+
     def update(self):
         self.close()
         update.Update()

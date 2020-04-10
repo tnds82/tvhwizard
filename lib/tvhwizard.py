@@ -23,7 +23,7 @@ database    = os.path.join(addondata, 'tvhwizard.db')
 pyxbmct.skin.estuary = True
 
 def langString(id):
-	return addon.getLocalizedString(id)
+    return addon.getLocalizedString(id)
 
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
@@ -46,7 +46,7 @@ class Country(pyxbmct.AddonFullWindow):
         image = pyxbmct.Image(addonfolder+artsfolder+'/tnds82.png')
         self.placeControl(image, 0, 0, rowspan=8, columnspan=16)
 
-		# Portugal
+        # Portugal
         self.portugal_button = pyxbmct.RadioButton('')
         self.placeControl(self.portugal_button, 9, 3, rowspan=2, columnspan=4)
         self.connect(self.portugal_button, self.portugal_button_update)
@@ -57,7 +57,7 @@ class Country(pyxbmct.AddonFullWindow):
         portugal = pyxbmct.Image(addonfolder+artsfolder+'/portugal.png')
         self.placeControl(portugal, 9, 3, rowspan=2, columnspan=4)
 
-		# Brasil
+        # Brasil
         self.brasil_button = pyxbmct.RadioButton('')
         self.placeControl(self.brasil_button, 9, 9, rowspan=2, columnspan=4)
         self.connect(self.brasil_button, self.brasil_button_update)
@@ -68,7 +68,7 @@ class Country(pyxbmct.AddonFullWindow):
         brasil = pyxbmct.Image(addonfolder+artsfolder+'/brasil.png')
         self.placeControl(brasil, 9, 9, rowspan=2, columnspan=4)
 
-		# Close button
+        # Close button
         self.close_button = pyxbmct.Button('Exit')
         self.placeControl(self.close_button, 13, 15, rowspan=1, columnspan=1)
         self.connect(self.close_button, lambda: self.closepage())
@@ -149,4 +149,3 @@ class TvhWizard(pyxbmct.AddonFullWindow):
     def closepage(self):
         self.close()
         subprocess_cmd('%s %s' % ('rm -r', database))
-
