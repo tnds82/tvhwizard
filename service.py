@@ -78,8 +78,12 @@ class Services():
                     addontvh = xbmcaddon.Addon(id='service.tvheadend42')
                     addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
                 else:
-                    addontvh = xbmcaddon.Addon(id='service.tvheadend43')
-                    addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
+                    if os.path.exists(xbmc.translatePath('special://home/addons/service.tvheadend42')):
+                        addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
+                        addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
+                    else:
+                        addontvh = xbmcaddon.Addon(id='service.tvheadend43')
+                        addontvhdest = xbmc.translatePath(addontvh.getAddonInfo('profile'))
                 dvbapifile = os.path.join(addontvhdest, 'caclient/6fe6f142570588eb975ddf49861ce970')
 
                 if old_ip == ipdvbapi:

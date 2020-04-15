@@ -34,12 +34,21 @@ if 'NAME="LibreELEC"' in open(release).read():
     addontvhchannels = os.path.join(addontvhdata, 'channel')
     addontvhnetworks = os.path.join(addontvhdata, 'input/dvb/networks')
 else:
-    addontvh         = xbmcaddon.Addon(id='service.tvheadend43')
-    addontvhname     = addontvh.getAddonInfo('name')
-    addontvhfolder   = addontvh.getAddonInfo('path')
-    addontvhdata     = xbmc.translatePath(addontvh.getAddonInfo('profile'))
-    addontvhchannels = os.path.join(addontvhdata, 'channel')
-    addontvhnetworks = os.path.join(addontvhdata, 'input/dvb/networks')
+    if os.path.exists(xbmc.translatePath('special://home/addons/service.tvheadend42')):
+        addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
+        addontvhname     = addontvh.getAddonInfo('name')
+        addontvhfolder   = addontvh.getAddonInfo('path')
+        addontvhdata     = xbmc.translatePath(addontvh.getAddonInfo('profile'))
+        addontvhchannels = os.path.join(addontvhdata, 'channel')
+        addontvhnetworks = os.path.join(addontvhdata, 'input/dvb/networks')
+    else:
+        addontvh         = xbmcaddon.Addon(id='service.tvheadend43')
+        addontvhname     = addontvh.getAddonInfo('name')
+        addontvhfolder   = addontvh.getAddonInfo('path')
+        addontvhdata     = xbmc.translatePath(addontvh.getAddonInfo('profile'))
+        addontvhchannels = os.path.join(addontvhdata, 'channel')
+        addontvhnetworks = os.path.join(addontvhdata, 'input/dvb/networks')
+
 
 addontvhpicons   = os.path.join("/storage/picons/vdr")
 

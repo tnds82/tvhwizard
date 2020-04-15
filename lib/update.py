@@ -24,9 +24,14 @@ if 'NAME="LibreELEC"' in open(release).read():
     addontvhname     = addontvh.getAddonInfo('name')
     addontvhfolder   = addontvh.getAddonInfo('path')
 else:
-    addontvh         = xbmcaddon.Addon(id='service.tvheadend43')
-    addontvhname     = addontvh.getAddonInfo('name')
-    addontvhfolder   = addontvh.getAddonInfo('path')
+    if os.path.exists(xbmc.translatePath('special://home/addons/service.tvheadend42')):
+        addontvh         = xbmcaddon.Addon(id='service.tvheadend42')
+        addontvhname     = addontvh.getAddonInfo('name')
+        addontvhfolder   = addontvh.getAddonInfo('path')   
+    else:
+        addontvh         = xbmcaddon.Addon(id='service.tvheadend43')
+        addontvhname     = addontvh.getAddonInfo('name')
+        addontvhfolder   = addontvh.getAddonInfo('path')
 
 
 	##### DESTINATION #####
